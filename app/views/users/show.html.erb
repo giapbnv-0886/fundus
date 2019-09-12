@@ -1,0 +1,42 @@
+<% provide :title, @user.name %>
+  <section id="page-head" class="page-head-section">
+    <div class="page-head-overlay">
+      <div class="container">
+        <div class="row">
+          <div class="page-head-content">
+            <div class="page-head-style">
+              <%= image_tag src="page-head-style.png" %>
+            </div>
+            <div class="page-head-title text-uppercase">
+              <h2>about us</h2>
+            </div>
+            <div class="page-breadcrumb">
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="home-1.html"><span class="mr5 ti-home"></span>Home</a></li>
+                <li class="breadcrumb-item active">User</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- /row -->
+      </div>
+      <!-- /container -->
+    </div>
+    <!-- /page-head-overlay -->
+  </section>
+
+  <section id="way-help" class="way-help-section">
+    <div class="container">
+      <div class="row section-content">
+        <div class="section-title text-center">
+          <div class="section-title-text text-uppercase">
+            <h2><%= @user.name %></h2>
+          </div>
+          <div class="section-title-text text-uppercase">
+            <p><%= @user.email %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+

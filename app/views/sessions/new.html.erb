@@ -1,0 +1,59 @@
+<% provide :title, "Log in" %>
+
+  <section id="page-head" class="page-head-section">
+    <div class="page-head-overlay">
+      <div class="container">
+        <div class="row">
+          <div class="page-head-content">
+            <div class="page-head-style">
+              <%= image_tag src="page-head-style.png" %>
+            </div>
+            <div class="page-head-title text-uppercase">
+              <h2>sign up</h2>
+            </div>
+            <div class="page-breadcrumb">
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="home-1.html"><span class="mr5 ti-home"></span>Home</a></li>
+                <li class="breadcrumb-item active">Log in</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- /row -->
+      </div>
+      <!-- /container -->
+    </div>
+    <!-- /page-head-overlay -->
+  </section>
+
+  <section id="way-help" class="way-help-section">
+    <div class="container">
+      <div class="row section-content">
+
+       <div class="section-title text-center">
+          <div class="section-title-text text-uppercase">
+            <h2>Log in</h2>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 form-group">
+            <%= form_for(:session, url: login_path) do |f| %>
+
+
+              <%= f.label :email %><br>
+              <%= f.email_field :email, class: "form-control" %><br>
+
+              <%= f.label :password %><br>
+              <%= f.password_field :password, class: "form-control" %><br>
+
+              <%= f.submit "Log in", class: "btn btn-primary" %><br>
+            <% end %>
+            <%= link_to "Log in with Facebook?", "#" %><br>
+            <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+

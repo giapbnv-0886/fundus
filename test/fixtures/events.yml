@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  content: MyText
+  place: MyString
+  total_person: 1
+  start_time: 2019-08-30 08:44:45
+  end_time: 2019-08-30 08:44:45
+  photos: 
+  category: one
+  user: one
+
+two:
+  title: MyString
+  content: MyText
+  place: MyString
+  total_person: 1
+  start_time: 2019-08-30 08:44:45
+  end_time: 2019-08-30 08:44:45
+  photos: 
+  category: two
+  user: two
