@@ -1,2 +1,13 @@
 en:
-  hello: "Hello world"
+  application:
+    header:
+      sign_in: "Sign in"
+      sign_up: "Sign up"
+      sign_out: "Sign out"
+      change_pw: "Change password"
+      home: "Home"
+      causes: "Causes"
+      events: "Events"
+      blog: "Blog"
+      donate_now: "DONATE NOW"
+      search_holder: "Enter Your Search Word..."

@@ -1,4 +1,4 @@
-class DuserAbility
+class UserAbility
   include CanCan::Ability
 
   def initialize duser

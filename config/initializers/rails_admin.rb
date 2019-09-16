@@ -6,15 +6,15 @@ RailsAdmin.config do |config|
 
   # == Devise ==
   config.authenticate_with do
-    warden.authenticate! scope: :duser
+    warden.authenticate! scope: :user
   end
 
   # == CancanCan ==
   # #Config current user for ability
   config.current_user_method do
-    current_duser
+    current_user
   end
-  config.authorize_with :cancancan, DuserAbility
+  config.authorize_with :cancancan, UserAbility
 
   ## == Pundit ==
   # config.authorize_with :pundit
