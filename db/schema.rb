@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_06_073003) do
+ActiveRecord::Schema.define(version: 2019_09_13_022913) do
 
   create_table "attendances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "event_id"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_09_06_073003) do
   create_table "blogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.json "photo"
+    t.text "photo", limit: 4294967295, collation: "utf8mb4_bin"
     t.string "category"
     t.string "references"
     t.datetime "created_at", null: false
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2019_09_06_073003) do
     t.datetime "end_time"
     t.decimal "reached_money", precision: 10, default: "0"
     t.decimal "goal_money", precision: 10, default: "0"
-    t.json "photos"
+    t.text "photos", limit: 4294967295, collation: "utf8mb4_bin"
     t.bigint "category_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -64,18 +64,6 @@ ActiveRecord::Schema.define(version: 2019_09_06_073003) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "d_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.index ["email"], name: "index_d_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_d_users_on_reset_password_token", unique: true
-  end
-
   create_table "donations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.decimal "amount", precision: 10, default: "0"
     t.bigint "user_id"
@@ -86,19 +74,6 @@ ActiveRecord::Schema.define(version: 2019_09_06_073003) do
     t.index ["user_id"], name: "index_donations_on_user_id"
   end
 
-  create_table "dusers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "role", default: 0
-    t.index ["email"], name: "index_dusers_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_dusers_on_reset_password_token", unique: true
-  end
-
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -106,7 +81,7 @@ ActiveRecord::Schema.define(version: 2019_09_06_073003) do
     t.integer "total_person"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.json "photos"
+    t.text "photos", limit: 4294967295, collation: "utf8mb4_bin"
     t.bigint "category_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -132,12 +107,23 @@ ActiveRecord::Schema.define(version: 2019_09_06_073003) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "email"
-    t.integer "type"
+    t.integer "role", default: 0
     t.string "password_digest"
-    t.json "photo"
+    t.text "photo", limit: 4294967295, collation: "utf8mb4_bin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "attendances", "events"
