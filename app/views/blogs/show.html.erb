@@ -17,7 +17,7 @@
                   <ul class="meta-list pb20 mb20">
                     <li><span class = "mr5 ti-pencil"></span><%= link_to @blog.user.name, @blog.user, class: "black" %></li>
                     <li><span class="mr5 ti-timer"></span> <span class = "black"> <%= (@blog.created_at).strftime("%D") %></span></li>
-                    <li><span class="mr5 ti-comment-alt"></span>45</a></li>
+                    <li><span class="mr5 ti-comment-alt"></span><%= @blog.comments.count %></li>
                     <% if user_signed_in? %>
                     <% if current_user == @blog.user %>
                     <li><span class="mr5 ti-trash"></span>
@@ -48,3 +48,32 @@
     </div>
   </div>
 </section>
+
+<div>
+  <div class="reply-comment mb50">
+    <div class="side-bar-title mb40">
+      <h2><%= t "comment.view.com" %>[<span id="count-comment"> <%= @blog.comments.count %></span>]</h2>
+    </div>
+    <div id="div-create">
+      <% if @blog.comments.any? %>
+      <div id="div-destroy">
+        <%= render @comments %>
+      </div>
+      <% end %>
+    </div>
+
+    <div id="paginate">
+      <% if @blog.comments.any? %>
+      <div id="paginate1">
+        <%= will_paginate @comments, remote: true %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% if user_signed_in? %>
+  <div id="ajax-form-create">
+    <%= render "comments/comment_form" %>
+  </div>
+  <% end %>
+</div>

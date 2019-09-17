@@ -34,3 +34,13 @@ en:
       education: "EDUCATION"
     controller:
       fail: "Fail"
+
+  comment:
+    view:
+      com: "Comments"
+      posted: "Posted"
+      delete: "delete"
+      sure: "You sure"
+      ago: "ago."
+      write: "Write your comment"
+      post: "Post"

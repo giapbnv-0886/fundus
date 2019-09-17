@@ -8,6 +8,7 @@ class BlogsController < ApplicationController
 
   def show
     @blog = Blog.find_by id: params[:id]
+    @comments = @blog.comments.paginate page: params[:page], per_page: 5
   end
 
   def create
@@ -23,7 +24,7 @@ class BlogsController < ApplicationController
     if @blog.destroy
       redirect_to user_path id: @blog.user_id
     else
-      flash[:danger] = t "fail"
+      flash[:danger] = t "blog.controller.fail"
       redirect_to user_path id: @blog.user_id
     end
   end

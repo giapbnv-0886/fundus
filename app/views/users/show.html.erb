@@ -51,8 +51,9 @@
       <%= render @blogs %>
     </ol>
     <div class="pagination">
-      <%= paginate @blogs %>
+      <%= will_paginate @blogs %>
     </div>
     <% end %>
   </div>
+
 
