@@ -6,6 +6,8 @@ en:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
+      resend_confirm: "Resend confirmation instructions"
+      email: "E-mail"
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account is not activated yet."
@@ -19,8 +21,13 @@ en:
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"
+        content: "Welcome%{email}! You can confirm your account email through the link below:"
+        confirm_link: "Confirm account"
       reset_password_instructions:
         subject: "Reset password instructions"
+        content: "Hello %{email}!
+         Someone has requested a link to change your password. You can do this through the link below."
+        reset_password_link: "Change password"
       unlock_instructions:
         subject: "Unlock instructions"
       email_changed:
@@ -36,6 +43,14 @@ en:
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password has been changed successfully. You are now signed in."
       updated_not_active: "Your password has been changed successfully."
+      forgot_pass: "Forgot your password?"
+      email: "E-mail"
+      password: "New Password"
+      minimum_password: "(%{minimum_password_length} characters minimum)"
+      password_confirmation: "Confirm new password"
+      change_password: "Change password"
+      send_reset_mail: "Send me reset password instructions"
+
     registrations:
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
