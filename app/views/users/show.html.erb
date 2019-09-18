@@ -1,28 +1,26 @@
 <% provide :title, @user.name %>
-  <section id="page-head" class="page-head-section">
-    <div class="page-head-overlay">
-      <div class="container">
-        <div class="row">
-          <div class="page-head-content">
-            <div class="page-head-style">
-              <%= image_tag src="page-head-style.png" %>
-            </div>
-            <div class="page-head-title text-uppercase">
-              <h2>about us</h2>
-            </div>
-            <div class="page-breadcrumb">
-              <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="home-1.html"><span class="mr5 ti-home"></span>Home</a></li>
-                <li class="breadcrumb-item active">User</li>
+<section id="page-head" class="page-head-section">
+  <div class="page-head-overlay">
+    <div class="container">
+      <div class="row">
+        <div class="page-head-content">
+          <div class="page-head-style">
+            <%= image_tag src="page-head-style.png" %>
+          </div>
+          <div class="page-head-title text-uppercase">
+            <h2><%= t "user.view.profile" %></h2>
+          </div>
+          <div class="page-breadcrumb">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><span class="mr5 ti-home"></span><%= link_to t("user.view.home"), root_path %></li>
+              <li class="breadcrumb-item active">
+                <%= t "user.view.user" %></li>
               </ul>
             </div>
           </div>
         </div>
-        <!-- /row -->
       </div>
-      <!-- /container -->
     </div>
-    <!-- /page-head-overlay -->
   </section>
 
   <section id="way-help" class="way-help-section">
@@ -39,4 +37,22 @@
       </div>
     </div>
   </section>
+  <div>
+    <% if user_signed_in? %>
+    <% if current_user == @user %>
+    <button class="btn btn-primary"><%= link_to t("user.view.createblog"), new_blog_path %></button>
+    <% end %>
+    <% end %>
+  </div>
+  <div>
+    <% if @user.blogs.any? %>
+    <h3><%= t "user.view.blogs" %> (<%= @user.blogs.count %>)</h3><br>
+    <ol>
+      <%= render @blogs %>
+    </ol>
+    <div class="pagination">
+      <%= paginate @blogs %>
+    </div>
+    <% end %>
+  </div>
 

@@ -1,0 +1,43 @@
+<div class="blog-pic-text mb50">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="blog-img">
+        <%= image_tag src="cause-1.jpg" %>
+      </div>
+    </div>
+    <!-- /col-md-6 -->
+    <div class="col-sm-6">
+      <div class="blog-text">
+        <div class="blog-tag text-uppercase pt40">
+          <span class="tag-name red"><%= t "blog.view.education" %></span>
+        </div>
+        <!-- /blog-tag -->
+        <div class="blog-head-title pt15">
+          <h2 class="black"><%= link_to blog.title, blog, class: "title" %></h2>
+        </div>
+        <div class="blog-meta mt10">
+          <ul class="meta-list">
+            <li><span class = "mr5 ti-pencil"></span><%= link_to blog.user.name, blog.user, class: "black" %></li>
+            <li><span class="mr5 ti-timer"></span> <span class = "black"> <%= (blog.created_at).strftime("%D") %></span></li>
+            <li><span class="mr5 ti-comment-alt"></span></li>
+            <% if user_signed_in? %>
+            <% if current_user == blog.user %>
+            <li><span class="mr5 ti-trash"></span>
+              <%= link_to t("blog.view.delete"), blog, method: :delete, data: { confirm: t("blog.view.sure") } %></li>
+              <% end %>
+              <% end %>
+            </ul>
+          </div>
+          <div class="blog-text-content mt10 pb20">
+            <p>
+              <%= blog.content %>
+            </p>
+          </div>
+          <div class="blog-button text-uppercase">
+
+            <%= link_to t("blog.view.readmore"), blog %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

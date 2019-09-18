@@ -4,10 +4,10 @@ class CreateBlogs < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :content
       t.json :photo
-      t.string :category
-      t.string :references
-
+      t.references :user, foreign_key: true
       t.timestamps
     end
+    add_index :blogs, [:user_id, :created_at]
+
   end
 end

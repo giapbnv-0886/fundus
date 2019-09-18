@@ -1,0 +1,50 @@
+<% provide :title, @blog.title %>
+<section id="blog-details" class="blog-details-section pt60  pb80">
+  <div class="container">
+    <div class="row">
+      <div class="blog-details-section-content">
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="blog-details-section-left-side  pb80">
+              <div class="blog-details-main-pic">
+                <%= image_tag src="cause-1.jpg" %>
+              </div>
+              <div class="blog-single-text  pb50">
+                <div class="blog-head-title pt15 pb20">
+                  <h2 class="black"><%= @blog.title %></h2>
+                </div>
+                <div class="blog-recent-post-meta">
+                  <ul class="meta-list pb20 mb20">
+                    <li><span class = "mr5 ti-pencil"></span><%= link_to @blog.user.name, @blog.user, class: "black" %></li>
+                    <li><span class="mr5 ti-timer"></span> <span class = "black"> <%= (@blog.created_at).strftime("%D") %></span></li>
+                    <li><span class="mr5 ti-comment-alt"></span>45</a></li>
+                    <% if user_signed_in? %>
+                    <% if current_user == @blog.user %>
+                    <li><span class="mr5 ti-trash"></span>
+                      <%= link_to t("blog.view.delete"), @blog, method: :delete, data: { confirm: t("blog.view.sure") } %></li>
+                      <% end %>
+                      <% end %>
+                    </ul>
+                  </div>
+                  <div class="blog-details-text">
+                    <p> <%= @blog.content %></p>
+                  </div>
+                </div>
+              </div>
+              <div class="footer-social pull-right mt10">
+                <div class="social">
+                  <ul class="social-list">
+                    <li><a href="#"><span class="ti-facebook"></span></a></li>
+                    <li><a href="#"><span class="ti-twitter"></span></a></li>
+                    <li><a href="#"><span class="ti-google"></span></a></li>
+                    <li><a href="#"><span class="ti-instagram"></span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

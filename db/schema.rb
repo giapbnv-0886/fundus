@@ -25,10 +25,11 @@ ActiveRecord::Schema.define(version: 2019_09_13_022913) do
     t.string "title"
     t.text "content"
     t.text "photo", limit: 4294967295, collation: "utf8mb4_bin"
-    t.string "category"
-    t.string "references"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "created_at"], name: "index_blogs_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_blogs_on_user_id"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -133,6 +134,7 @@ ActiveRecord::Schema.define(version: 2019_09_13_022913) do
 
   add_foreign_key "attendances", "events"
   add_foreign_key "attendances", "users"
+  add_foreign_key "blogs", "users"
   add_foreign_key "causes", "categories"
   add_foreign_key "causes", "users"
   add_foreign_key "comments", "blogs"

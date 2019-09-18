@@ -11,3 +11,26 @@ en:
       blog: "Blog"
       donate_now: "DONATE NOW"
       search_holder: "Enter Your Search Word..."
+
+
+  user:
+    view:
+      blogs: "Blogs"
+      createblog: "Create blog"
+      home: "Home"
+      user: "User"
+      profile: "Profile"
+
+  blog:
+    view:
+      sure: "You sure?"
+      readmore: "read more"
+      post: "Post"
+      title: "title"
+      content: "content"
+      new: "New blog"
+      create: "Create new blog"
+      delete: "delete"
+      education: "EDUCATION"
+    controller:
+      fail: "Fail"
