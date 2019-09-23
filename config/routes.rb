@@ -9,5 +9,9 @@ Rails.application.routes.draw do
   get "/contact", to: "static_pages#contact"
 
   resources :users, only: %i(index show)
-  resources :blogs
+  resources :comments
+  resources :blogs do
+    resources :comments
+  end
+
 end

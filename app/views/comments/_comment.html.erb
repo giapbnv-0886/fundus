@@ -1,0 +1,26 @@
+
+<div class="client-name-reply pb70">
+  <div class="reply-pic pull-left mr25">
+    <img src="assets/img/reply-1.jpg" alt="image">
+  </div>
+  <div class="name-reply-text">
+    <div class="name-reply pb20">
+      <span class="client-name"><a href="#"><%= comment.user.name %></a></span>
+      <span class="designation">
+        <%= t "comment.view.posted" %> <%= time_ago_in_words comment.created_at %> <%= t "comment.view.ago" %>
+      </span>
+      <div class="comment-icon pull-right">
+        <% if user_signed_in? %>
+        <% if current_user == comment.user %>
+        <li><span class="mr5 ti-trash"></span>
+          <%= link_to t("comment.view.delete"), comment, method: :delete, data: { confirm: t("comment.view.sure") }, remote: true %></li>
+          <% end %>
+          <% end %>
+          <a href="#"><span class="ti-comments"></span></a>
+        </div>
+      </div>
+      <div class="reply-text">
+        <p><%= comment.content %></p>
+      </div>
+    </div>
+  </div>
