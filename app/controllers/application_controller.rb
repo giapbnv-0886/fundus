@@ -1,12 +1,9 @@
 class ApplicationController < ActionController::Base
+  include Pundit
+  protect_from_forgery with: :exception
+
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
-
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to main_app.root_path, alert: exception.message
-  end
-
-  protect_from_forgery with: :exception
 
   protected
   def configure_permitted_parameters

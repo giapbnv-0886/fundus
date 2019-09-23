@@ -1,0 +1,4 @@
+en:
+  application:
+    policy:
+      error: "unable to find policy %{action} for %{record}"

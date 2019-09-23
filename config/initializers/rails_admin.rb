@@ -1,7 +1,6 @@
 RailsAdmin.config do |config|
 
   config.parent_controller = "ApplicationController"
-
   ### Popular gems integration
 
   # == Devise ==
@@ -9,16 +8,18 @@ RailsAdmin.config do |config|
     warden.authenticate! scope: :user
   end
 
-  # == CancanCan ==
-  # #Config current user for ability
-  config.current_user_method do
-    current_user
-  end
-  config.authorize_with :cancancan, UserAbility
+  #  # == CancanCan ==
+  # config.authorize_with :cancancan, UserAbility
 
   ## == Pundit ==
-  # config.authorize_with :pundit
+  config.authorize_with :pundit
 
+  ## == method to call for current_user ==
+  config.current_user_method(&:current_user)
+
+  config.authorize_with do
+    redirect_to main_app.root_path, alert: 'You are not authorized to perform this action.' unless current_user.admin?
+  end
   ## == PaperTrail ==
   # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
 
