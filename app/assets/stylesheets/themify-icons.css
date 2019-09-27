@@ -23,6 +23,9 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.ti-calender:before {
+	content: "\e109";
+}
 .ti-wand:before {
 	content: "\e600";
 }

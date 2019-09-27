@@ -13,12 +13,11 @@
 ActiveRecord::Schema.define(version: 2019_09_17_153307) do
 
   create_table "attendances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "event_id"
-    t.bigint "user_id"
+    t.integer "event_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_attendances_on_event_id"
-    t.index ["user_id"], name: "index_attendances_on_user_id"
+    t.index ["event_id", "user_id"], name: "index_attendances_on_event_id_and_user_id", unique: true
   end
 
   create_table "blogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -26,10 +25,8 @@ ActiveRecord::Schema.define(version: 2019_09_17_153307) do
     t.text "content"
     t.text "photo", limit: 4294967295, collation: "utf8mb4_bin"
     t.bigint "user_id"
-    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_blogs_on_category_id"
     t.index ["user_id", "created_at"], name: "index_blogs_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_blogs_on_user_id"
   end
@@ -84,12 +81,14 @@ ActiveRecord::Schema.define(version: 2019_09_17_153307) do
     t.integer "total_person"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.datetime "expiration_date"
     t.text "photos", limit: 4294967295, collation: "utf8mb4_bin"
     t.bigint "category_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_events_on_category_id"
+    t.index ["user_id", "created_at"], name: "index_events_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -110,7 +109,7 @@ ActiveRecord::Schema.define(version: 2019_09_17_153307) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "role", default: "member"
+    t.integer "role", default: 0
     t.string "password_digest"
     t.text "photo", limit: 4294967295, collation: "utf8mb4_bin"
     t.datetime "created_at", null: false
@@ -136,9 +135,6 @@ ActiveRecord::Schema.define(version: 2019_09_17_153307) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "attendances", "events"
-  add_foreign_key "attendances", "users"
-  add_foreign_key "blogs", "categories"
   add_foreign_key "blogs", "users"
   add_foreign_key "causes", "categories"
   add_foreign_key "causes", "users"

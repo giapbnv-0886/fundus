@@ -1,0 +1,40 @@
+<% provide :title, t("event.view.allevents") %>
+
+<section id="page-head" class="page-head-section">
+  <div class="page-head-overlay">
+    <div class="container">
+      <div class="row">
+        <div class="page-head-content">
+          <div class="page-head-style">
+            <%= image_tag src="page-head-style.png" %>
+          </div>
+          <div class="page-head-title text-uppercase">
+            <h2><%= t "event.view.ourEvents" %></h2>
+          </div>
+          <div class="page-breadcrumb">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="home-1.html"><span class="mr5 ti-home"></span><%= t "event.view.home" %></a></li>
+              <li class="breadcrumb-item active"><%= t "event.view.event" %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="event" class="event-list">
+  <div class="container">
+    <div class="row section-content">
+      <div class="event-list-content">
+        <div class="row">
+          <%= render @events %>
+        </div>
+        <div>
+          <%= will_paginate @events %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

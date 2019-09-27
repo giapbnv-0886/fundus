@@ -1,0 +1,24 @@
+<div class="col-sm-4">
+  <div class="event-list-item colmd4">
+    <div class="event-list-pic">
+      <%= image_tag src="cause-1.jpg" %>
+    </div>
+    <div class="event-date">
+      <span><%= event.start_time.strftime("%d %b") %></span>
+    </div>
+    <div class="event-text clearfix ">
+      <div class="blog-head-title pt15">
+        <h2 class="black"><%= link_to event.title, event %></h2>
+      </div>
+      <div class="event-location mt10">
+        <div class="way-help-text-content pull-left">
+          <p><%= event.place %>
+          </p>
+        </div>
+        <div class="blog-button text-uppercase pull-right mt25 mr15">
+          <%= link_to t("event.view.read"), event %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
