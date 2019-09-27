@@ -42,6 +42,7 @@
     <% if current_user == @user %>
     <button class="btn btn-primary"><%= link_to t("user.view.createblog"), new_blog_path %></button>
     <button class="btn btn-success"><%= link_to t("user.view.createEvent"), new_event_path %></button>
+    <button class="btn btn-danger"><%= link_to t("user.view.createCause"), new_cause_path %></button>
     <% end %>
     <% end %>
   </div>

@@ -1,0 +1,40 @@
+<% provide :title, t("causes") %>
+<section id="page-head" class="page-head-section">
+  <div class="page-head-overlay">
+    <div class="container">
+      <div class="row">
+        <div class="page-head-content">
+          <div class="page-head-style">
+            <%= image_tag src="page-head-style.png" %>
+          </div>
+          <div class="page-head-title text-uppercase">
+            <h2><%= yield(:title) %></h2>
+          </div>
+          <div class="page-breadcrumb">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="home-1.html"><span class="mr5 ti-home"></span><%= t "cause.view.causes" %></a></li>
+              <li class="breadcrumb-item active"><%= yield(:title) %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="causes-page-content" class="causes-page-section">
+  <div class="container">
+    <div class="row section-content">
+      <div class="causes-page-item">
+        <div class="causes-page-left-item">
+          <div class="causes-item">
+            <div class="row">
+              <%= render @causes %>
+            </div>
+            <%= will_paginate @causes %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

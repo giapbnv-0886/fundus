@@ -1,0 +1,92 @@
+<% provide :title, t("cause.view.cause") %>
+
+<section id="page-head" class="page-head-section">
+  <div class="page-head-overlay">
+    <div class="container">
+      <div class="row">
+        <div class="page-head-content">
+          <div class="page-head-style">
+            <img src="assets/img/page-head-style.png" alt="image">
+          </div>
+          <div class="page-head-title text-uppercase">
+            <h2><%= yield :title %></h2>
+          </div>
+          <div class="page-breadcrumb">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="home-1.html"><span class="mr5 ti-home"></span><%= t "cause.view.home" %></a></li>
+              <li class="breadcrumb-item active"><%= yield :title %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cause-details-content" class="cause-details-section">
+  <div class="container">
+    <div class="row section-content">
+      <div class="cause-details">
+        <div class="cause-details-slide">
+          <%= image_tag src="cause-1.jpg" %>
+          <%= image_tag src="cause-1.jpg" %>
+          <%= image_tag src="cause-1.jpg" %>
+        </div>
+      </div>
+      <div class="cause-details-content">
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="cause-goal mb40">
+              <div class="progress">
+                <div class="progress-bar wow Rx-width-85 animated animated" role="progressbar" data-wow-duration="0.5s" data-wow-delay=".5s" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.5s; animation-name: Rx-width-85;">
+                  <span><%= ratio(@cause) %>%</span>
+                </div>
+              </div>
+              <div class="count-reached-goal clearfix pb30 mt10">
+                <div class="count-reached pull-left">
+                  <p><%= t "cause.view.reached" %>  <%= number_to_currency(@cause.reached_money) %> </p>
+                </div>
+                <div class="count-reached pull-right">
+                  <p><%= t "cause.view.goal" %>  <%= number_to_currency(@cause.goal_money) %> </p>
+                </div>
+              </div>
+              <div class="donate-now-btn">
+                <div class="donate-btn text-uppercase">
+                  <a href="donation.html"><%= t "cause.view.donate_now" %></a>
+                </div>
+              </div>
+            </div>
+            <div class="cause-details-title">
+              <div class="section-title-text mb20">
+                <h2><%= @cause.title %></h2>
+              </div>
+              <div class="cause-details-text">
+                <p><%= @cause.detail %></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="side-bar-content ml15">
+              <div class="side-bar-search mb40">
+                <form action="#" method="get">
+                  <%= text_field :search, class: "" %>
+                  <button type="submit"><span class="ti-search"></span></button>
+                </form>
+              </div>
+              <div class="category mb40">
+                <div class="side-bar-title mb40">
+                  <h2 class="widgettitle"><%= t "cause.view.categories" %></h2>
+                </div>
+                <div class="category-item">
+                  <ul class="category-item-list">
+                    <%= render partial: "shared/category", collection: @categories, as: "category" %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
