@@ -10,8 +10,12 @@ Rails.application.routes.draw do
 
   resources :users, only: %i(index show)
   resources :comments
+  resources :attendances, only: %i(create destroy)
   resources :blogs do
     resources :comments
+  end
+  resources :events do
+    resource :attendances, only: %i(create destroy)
   end
 
 end

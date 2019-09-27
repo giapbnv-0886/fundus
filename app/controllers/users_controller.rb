@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by id: params[:id] || current_user
     @blogs = @user.blogs.sort_by_created.paginate(page: params[:page], per_page: 5)
+    @events = @user.events
   end
 
   private

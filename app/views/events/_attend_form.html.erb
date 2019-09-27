@@ -1,0 +1,15 @@
+<% if @event.expirationTime? %>
+<%= render "expiration" %>
+<% else %>
+<% if user_signed_in? %>
+  <div id="attend_form">
+    <% if event.attendance? current_user %>
+      <%= render "unattend" %>
+    <% else %>
+      <%= render "attend" %>
+    <% end %>
+  </div>
+<% else %>
+<%= render "attend" %>
+<% end %>
+<% end %>

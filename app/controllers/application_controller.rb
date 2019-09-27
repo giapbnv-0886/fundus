@@ -20,4 +20,9 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
+
+  def logged_in_user
+    return if user_signed_in?
+    redirect_to user_session_path
+  end
 end

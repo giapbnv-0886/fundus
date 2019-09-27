@@ -1,0 +1,89 @@
+<section id="page-head" class="page-head-section">
+  <div class="page-head-overlay">
+    <div class="container">
+      <div class="row">
+        <div class="page-head-content">
+          <div class="page-head-style">
+            <img src="assets/img/page-head-style.png" alt="image">
+          </div>
+          <div class="page-head-title text-uppercase">
+            <h2><%= t "event.view.detail" %></h2>
+          </div>
+          <div class="page-breadcrumb">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="home-1.html"><span class="mr5 ti-home"></span><%= t "event.view.home" %></a></li>
+              <li class="breadcrumb-item active"><%= t "event.view.detail" %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="event-single" class="event-single-content">
+  <div class="container">
+    <div class="row section-content">
+      <div class="event-single-content-pic-text">
+        <div class="event-single-pic">
+          <%= image_tag src="cause-1.jpg" %>
+        </div>
+        <div class="event-single-text">
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="event-single-head">
+                <div class="blog-head-title pt40">
+                  <h2 class="black"><%= link_to @event.title, event_path %></h2>
+                </div>
+                <div class="blog-details-text pt15">
+                  <%= @event.content %>
+                </div>
+              </div>
+              <div class="comment-form mt25">
+                <div class="send-button text-uppercase">
+                  <%= render "attend_form", event: @event %>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="event-single-time-location clearfix mt25 pt40">
+                <div class="event-single-time">
+                  <div class="side-bar-title pb20">
+                    <h3><%= t "event.view.event" %></h3>
+                  </div>
+                  <div class="event-single-time-date">
+                    <span class="me-time"><%= t "event.view.expiration_time" %> <br><%= @event.expiration_date.strftime("%d %B %Y %H") %></span>
+                    <span class="me-time" ><%= t "event.view.attendees" %> <span id="count-attendee" > <%= @event.active_attendances.count %> </span></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="event-single-time-location clearfix mt25 pt40">
+                <div class="event-single-time">
+                  <div class="side-bar-title pb20">
+                    <h3><%= t "event.view.eventTime" %></h3>
+                  </div>
+                  <div class="event-single-time-date">
+                    <span class="me-time"><%= t "event.view.date" %> <br><%= @event.start_time.strftime("%d %B %Y %H") %></span>
+                    <span class="me-time"><%= t "event.view.toDay" %> <br><%= @event.end_time.strftime("%d %B %Y %H") %></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="event-single-time-location clearfix mt25 pt40">
+                <div class="event-single-time">
+                  <div class="side-bar-title pb20">
+                    <h3><%= t "event.view.event_location" %></h3>
+                  </div>
+                  <div class="event-single-time-date">
+                    <span class="me-time"><%= t "event.view.event_place" %><br> <%= @event.place %></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
