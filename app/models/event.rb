@@ -25,7 +25,7 @@ class Event < ApplicationRecord
     end
   end
 
-  def unattend user
+  def unattend? user
     Attendance.find_by(user_id: user.id, event_id: self.id).destroy
   end
 

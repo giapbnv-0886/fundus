@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: %i{create destroy}
   before_action :correct_user, only: %i{destroy}
+  before_action  :get_event, :get_attendance, only: %i{show}
 
   def new
     @event = Event.new
@@ -32,9 +33,6 @@ class EventsController < ApplicationController
     end
   end
 
-  def attendancing
-  end
-
   private
   def event_params
     params.require(:event).permit(:title, :category_id, :place, :start_time, :end_time, :content, :expiration_date).merge({user_id: params[:user_id]})
@@ -43,5 +41,15 @@ class EventsController < ApplicationController
   def correct_user
     @event = current_user.events.find_by id: params[:id]
     redirect_to root_path if @event.nil?
+  end
+
+  def get_attendance
+    @attendance = @event.active_attendances.find_by user_id: current_user.id
+  end
+
+  def get_event
+    @event = Event.find_by id: params[:id]
+    return if @event
+    redirect_to root_path
   end
 end

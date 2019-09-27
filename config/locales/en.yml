@@ -17,6 +17,7 @@ en:
     view:
       blogs: "Blogs"
       createblog: "Create blog"
+      createEvent: "Create new event"
       home: "Home"
       user: "User"
       profile: "Profile"

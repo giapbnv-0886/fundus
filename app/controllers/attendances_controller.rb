@@ -3,7 +3,7 @@ class AttendancesController < ApplicationController
   before_action :get_event, only: %i{create destroy}
 
   def create
-    @attendance = @event.active_attendances.build(attendance_params)
+    @attendance = @event.active_attendances.build attendance_params
     if @attendance.save
       respond_to do |format|
         format.html { redirect_to @event }
@@ -15,7 +15,7 @@ class AttendancesController < ApplicationController
   end
 
   def destroy
-    if @event.unattend(current_user)
+    if @event.unattend? current_user
       respond_to do |format|
         format.html { redirect_to @event }
         format.js
