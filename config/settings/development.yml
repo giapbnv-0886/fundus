@@ -1,0 +1,7 @@
+ggmap:
+  default:
+    position:
+      lat: 21.0283
+      lng: 105.853
+    location: "Don't have money, set default: Ha Noi, Viet Nam"
+  key: <%= ENV["GOOGLE_KEY"] %>

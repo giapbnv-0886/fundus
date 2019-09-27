@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2019_09_17_153307) do
     t.datetime "end_time"
     t.datetime "expiration_date"
     t.text "photos", limit: 4294967295, collation: "utf8mb4_bin"
+    t.text "geocode", limit: 4294967295, collation: "utf8mb4_bin"
     t.bigint "category_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false

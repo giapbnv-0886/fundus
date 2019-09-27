@@ -11,6 +11,8 @@ en:
       blog: "Blog"
       donate_now: "DONATE NOW"
       search_holder: "Enter Your Search Word..."
+    ggmap:
+      geo_error: "Geocode was not successful for the following reason: "
 
 
   user:
