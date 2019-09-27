@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'mapgoogle/new'
   devise_for :users, controllers: { confirmations: "confirmations", omniauth_callbacks: "users/omniauth_callbacks" }
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
 
@@ -19,5 +18,13 @@ Rails.application.routes.draw do
     resource :attendances, only: %i(create destroy)
   end
   resources :causes
+  resources :causes do
+    resource :donations, only: %i(new create)
+    resource :purchases, only: %i(new create)
+  end
+
+
   resources :categories
+
+
 end

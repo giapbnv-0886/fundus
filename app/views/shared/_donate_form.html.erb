@@ -1,0 +1,7 @@
+<%= form_for :donate, url: cause_purchases_url(cause)  do |f| %>
+  <%= f.label t "shared.purchase.new.amount" %>
+  <%= f.number_field :amount, class: "form-control" %>
+  <%= f.label t "shared.purchase.new.description" %>
+  <%= f.text_field :description, class: "form-control" %>
+  <%= f.submit t("shared.purchase.new.donate"), class: "btn btn primary" %>
+<% end %>

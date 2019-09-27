@@ -31,6 +31,8 @@ gem "will_paginate-bootstrap"
 gem "bootstrap-kaminari-views"
 gem "omniauth-facebook"
 gem "config"
+# gem "paypal-express"
+gem "activemerchant"
 
 
 group :development, :test do

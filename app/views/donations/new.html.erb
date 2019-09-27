@@ -1,0 +1,5 @@
+<%= form_for @donation, url: cause_donations_url(@cause) do |f| %>
+  <h3><%= t "donation.new.notice", amount: @donation.amount, cause: @cause.title %></h3>
+  <%= f.hidden_field :token %>
+  <%= f.submit t("donation.new.confirm"), class: "btn btn-primary" %>
+<% end %>

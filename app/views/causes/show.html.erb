@@ -52,7 +52,7 @@
               </div>
               <div class="donate-now-btn">
                 <div class="donate-btn text-uppercase">
-                  <a href="donation.html"><%= t "cause.view.donate_now" %></a>
+                 <%= link_to t("cause.view.donate_now"), new_cause_purchases_path(@cause) %>
                 </div>
               </div>
             </div>
