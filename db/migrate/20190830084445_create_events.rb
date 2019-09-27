@@ -9,6 +9,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.datetime :end_time
       t.datetime :expiration_date
       t.json :photos
+      t.json :geocode
       t.references :category, foreign_key: true
       t.references :user, foreign_key: true
 

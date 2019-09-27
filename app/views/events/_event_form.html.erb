@@ -4,7 +4,8 @@
 <%= f.label t("event.view.category") %>
 <%= f.collection_select :category_id, Category.all, :id, :name , options = {},html_options = {class: "form-control"} %><br>
 <%= f.label t("event.view.place") %><br>
-<%= f.text_field :place, class: "form-control" %><br>
+<%= f.text_field :place, {class: "form-control", id: "address"} %><br>
+<%= render "map" , ff: f, obj: @event, is_dynamic: true %>
 <%= f.label t("event.view.start_time") %><br>
 <%= f.date_field :start_time, class: "form-control" %><br>
 <%= f.label t("event.view.end_time") %><br>

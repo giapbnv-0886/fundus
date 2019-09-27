@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: %i{create destroy}
+  before_action :authenticate_user!, except: %i{show}
   before_action :correct_user, only: %i{destroy}
   before_action  :get_event, :get_attendance, only: %i{show}
 

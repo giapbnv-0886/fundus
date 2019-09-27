@@ -40,6 +40,8 @@
                 </div>
               </div>
               <div class="comment-form mt25">
+                <%= render "map", ff: nil, obj: @event, is_dynamic: false %>
+                <br>
                 <div class="send-button text-uppercase">
                   <%= render "attend_form", event: @event %>
                 </div>
