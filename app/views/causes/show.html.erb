@@ -61,7 +61,7 @@
                 <h2><%= @cause.title %></h2>
               </div>
               <div class="cause-details-text">
-                <p><%= @cause.detail %></p>
+                <div><%= @cause.detail.html_safe %></div>
               </div>
             </div>
           </div>

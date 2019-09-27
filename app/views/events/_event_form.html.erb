@@ -1,20 +1,26 @@
 <%= form_for @event do |f| %>
-<%= f.label t("event.view.title") %><br>
-<%= f.text_field :title, class: "form-control" %><br>
-<%= f.label t("event.view.category") %>
-<%= f.collection_select :category_id, Category.all, :id, :name , options = {},html_options = {class: "form-control"} %><br>
-<%= f.label t("event.view.place") %><br>
-<%= f.text_field :place, {class: "form-control", id: "address"} %><br>
-<%= render "map" , ff: f, obj: @event, is_dynamic: true %>
-<%= f.label t("event.view.start_time") %><br>
-<%= f.date_field :start_time, class: "form-control" %><br>
-<%= f.label t("event.view.end_time") %><br>
-<%= f.date_field :end_time, class: "form-control" %><br>
-<%= f.label t("event.view.content") %><br>
-<%= f.text_area :content, class: "form-control", rows: 10 %><br>
-<%= f.label t("event.view.expiration_date") %><br>
-<%= f.date_field :expiration_date, class: "form-control" %><br>
-<%= f.submit t("event.view.post"), class: "btn btn-primary" %><br>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 form-group">
+      <%= f.label t("event.view.title") %><br>
+      <%= f.text_field :title, class: "form-control" %><br>
+      <%= f.label t("event.view.category") %>
+      <%= f.collection_select :category_id, Category.all, :id, :name , options = {},html_options = {class: "form-control"} %><br>
+      <%= f.label t("event.view.place") %><br>
+      <%= f.text_field :place, {class: "form-control", id: "address"} %><br>
+      <%= render "map" , ff: f, obj: @event, is_dynamic: true %>
+      <%= f.label t("event.view.start_time") %><br>
+      <%= f.date_field :start_time, class: "form-control" %><br>
+      <%= f.label t("event.view.end_time") %><br>
+      <%= f.date_field :end_time, class: "form-control" %><br>
+      <%= f.label t("event.view.expiration_date") %><br>
+      <%= f.date_field :expiration_date, class: "form-control" %><br>
+    </div>
+  </div>
+  <div class="row">
+    <%= f.label t("event.view.content") %><br>
+    <%= f.cktext_area :content, class: "form-control", ckeditor: {toolbar: 'Full'} %><br>
+    <%= f.submit t("event.view.post"), class: "btn btn-primary" %><br>
+  </div>
 <% end %>
 
 

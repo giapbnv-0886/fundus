@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :authenticate_user!, only: %i{create destroy}
+  before_action :authenticate_user!, only: %i{new create destroy}
   before_action :correct_user, only: %i{destroy}
 
   def new

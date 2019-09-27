@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_03_034147) do
+ActiveRecord::Schema.define(version: 2019_10_09_042243) do
 
   create_table "attendances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "event_id"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 2019_10_03_034147) do
     t.string "title"
     t.text "content"
     t.text "photo", limit: 4294967295, collation: "utf8mb4_bin"
-    t.bigint "category_id"
     t.bigint "user_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false
@@ -53,6 +52,20 @@ ActiveRecord::Schema.define(version: 2019_10_03_034147) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_causes_on_category_id"
     t.index ["user_id"], name: "index_causes_on_user_id"
+  end
+
+  create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "type", limit: 30
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "assetable_id"
+    t.string "assetable_type", limit: 30
+    t.index ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable"
+    t.index ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
