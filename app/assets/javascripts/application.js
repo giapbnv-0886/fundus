@@ -16,4 +16,5 @@
 //= require activestorage
 //= require turbolinks
 //= require google_map
+//= require ckeditor/init
 //= require_tree .
