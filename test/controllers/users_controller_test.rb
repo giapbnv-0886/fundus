@@ -1,4 +1,4 @@
-require 'test_helper'
+equire 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
@@ -10,5 +10,4 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get users_show_url
     assert_response :success
   end
-
 end

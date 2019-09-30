@@ -39,15 +39,15 @@
             <div class="cause-goal mb40">
               <div class="progress">
                 <div class="progress-bar wow Rx-width-85 animated animated" role="progressbar" data-wow-duration="0.5s" data-wow-delay=".5s" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.5s; animation-name: Rx-width-85;">
-                  <span><%= ratio(@cause) %>%</span>
+                  <span><%= ratio @cause %>%</span>
                 </div>
               </div>
               <div class="count-reached-goal clearfix pb30 mt10">
                 <div class="count-reached pull-left">
-                  <p><%= t "cause.view.reached" %>  <%= number_to_currency(@cause.reached_money) %> </p>
+                  <p><%= t "cause.view.reached" %>  <%= number_to_currency @cause.reached_money %> </p>
                 </div>
                 <div class="count-reached pull-right">
-                  <p><%= t "cause.view.goal" %>  <%= number_to_currency(@cause.goal_money) %> </p>
+                  <p><%= t "cause.view.goal" %>  <%= number_to_currency @cause.goal_money %> </p>
                 </div>
               </div>
               <div class="donate-now-btn">
