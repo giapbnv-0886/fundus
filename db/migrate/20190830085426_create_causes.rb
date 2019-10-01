@@ -3,7 +3,6 @@ class CreateCauses < ActiveRecord::Migration[5.2]
     create_table :causes do |t|
       t.string :title
       t.text :detail
-      t.datetime :start_time
       t.datetime :end_time
       t.decimal :reached_money, default: 0
       t.decimal :goal_money, default: 0

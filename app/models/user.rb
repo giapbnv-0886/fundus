@@ -20,6 +20,8 @@ class User < ApplicationRecord
   has_many :passive_attendances, class_name: "Attendance", foreign_key: "event_id", dependent: :destroy
   has_many :attend_events, through: :passive_attendances, source: "event_id"
 
+  has_many :donations, dependent: :destroy
+
   validates :name, presence: true, length: {maximum: 50}
 
 

@@ -21,6 +21,7 @@ en:
       home: "Home"
       user: "User"
       profile: "Profile"
+      createCause: "Create new cause"
 
   blog:
     view:
@@ -77,3 +78,22 @@ en:
       time1: "can't be less than start_time"
       time2: "can't be in the pass"
       time3: "can't be greater than start_time"
+
+  cause:
+    view:
+      raised: "Raised: "
+      goal: "Goal: "
+      donate_now: "donate now"
+      post: "Post"
+      title: "title"
+      category: "category"
+      end_time: "end_time"
+      detail: "detail"
+      causes: "Causes"
+      home: "Home"
+      cause: "Cause"
+      reached: "Reached: "
+      categories: "Categories"
+
+
+

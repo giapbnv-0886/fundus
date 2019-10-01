@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   resources :events do
     resource :attendances, only: %i(create destroy)
   end
-
+  resources :causes
+  resources :categories
 end
