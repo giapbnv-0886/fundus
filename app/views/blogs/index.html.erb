@@ -1,0 +1,51 @@
+<% provide :title, t("blog.view.all") %>
+<section id="blog-archive" class="blog-archive-section pt60 pb40">
+    <div class="container">
+      <div class="row">
+        <div class="blog-archive-content">
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="left-side-blog">
+                <%= render @blogs %>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="side-bar-content ml15">
+                <div class="side-bar-search mb40">
+                  <form action="#" method="get">
+                    <input type="text" class="" placeholder="Search here...">
+                    <button type="submit"><span class="ti-search"></span></button>
+                  </form>
+                </div>
+                <div class="category mb40">
+                  <div class="side-bar-title mb40">
+                    <h2 class="widgettitle"><%= t("blog.view.categories") %></h2>
+                  </div>
+                  <div class="category-item">
+                    <ul class="category-item-list">
+                      <%= render partial: "shared/category", collection: @categories, as: "category" %>
+                    </ul>
+                  </div>
+                </div>
+                <div class="instagram-pic">
+                  <div class="side-bar-title mb40">
+                    <h2 class="widgettitle"><%= t("blog.view.insta") %></h2>
+                  </div>
+                  <div class="instagram-pic-list">
+                    <ul class="footer-gallery text-center">
+                      <li><%= image_tag src="g-1.png" %></li>
+                      <li><%= image_tag src="g-2.png" %></li>
+                      <li><%= image_tag src="g-3.png" %></li>
+                      <li><%= image_tag src="g-4.png" %></li>
+                      <li><%= image_tag src="g-5.png" %></li>
+                      <li><%= image_tag src="g-6.png" %></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
