@@ -34,6 +34,9 @@ en:
       create: "Create new blog"
       delete: "delete"
       education: "EDUCATION"
+      all: "All bolgs"
+      categories: "Categories"
+      insta: "Intagram"
     controller:
       fail: "Fail"
 
@@ -94,6 +97,8 @@ en:
       cause: "Cause"
       reached: "Reached: "
       categories: "Categories"
+      mon: "$1000000"
 
-
-
+  category:
+    view:
+      categories: "Categories"

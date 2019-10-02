@@ -1,4 +1,4 @@
-<% provide :title, t("causes") %>
+<% provide :title, t("cause.view.causes") %>
 <section id="page-head" class="page-head-section">
   <div class="page-head-overlay">
     <div class="container">
@@ -8,12 +8,12 @@
             <%= image_tag src="page-head-style.png" %>
           </div>
           <div class="page-head-title text-uppercase">
-            <h2><%= yield(:title) %></h2>
+            <h2><%= yield :title %></h2>
           </div>
           <div class="page-breadcrumb">
             <ul class="breadcrumb">
               <li class="breadcrumb-item"><a href="home-1.html"><span class="mr5 ti-home"></span><%= t "cause.view.causes" %></a></li>
-              <li class="breadcrumb-item active"><%= yield(:title) %></li>
+              <li class="breadcrumb-item active"><%= yield :title %></li>
             </ul>
           </div>
         </div>
