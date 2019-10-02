@@ -25,8 +25,10 @@ ActiveRecord::Schema.define(version: 2019_09_17_153307) do
     t.text "content"
     t.text "photo", limit: 4294967295, collation: "utf8mb4_bin"
     t.bigint "user_id"
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_blogs_on_category_id"
     t.index ["user_id", "created_at"], name: "index_blogs_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_blogs_on_user_id"
   end
@@ -40,7 +42,6 @@ ActiveRecord::Schema.define(version: 2019_09_17_153307) do
   create_table "causes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "detail"
-    t.datetime "start_time"
     t.datetime "end_time"
     t.decimal "reached_money", precision: 10, default: "0"
     t.decimal "goal_money", precision: 10, default: "0"
@@ -109,7 +110,7 @@ ActiveRecord::Schema.define(version: 2019_09_17_153307) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.integer "role", default: 0
+    t.string "role", default: "member"
     t.string "password_digest"
     t.text "photo", limit: 4294967295, collation: "utf8mb4_bin"
     t.datetime "created_at", null: false
@@ -135,6 +136,7 @@ ActiveRecord::Schema.define(version: 2019_09_17_153307) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "blogs", "categories"
   add_foreign_key "blogs", "users"
   add_foreign_key "causes", "categories"
   add_foreign_key "causes", "users"
