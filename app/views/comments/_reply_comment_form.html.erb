@@ -1,0 +1,7 @@
+<%= form_for Comment.new, url: blog_comments_path(@blog), remote: true do |f| %>
+<div class="form-group">
+  <%= f.text_field :content, placeholder: t("comment.view.write") , class: "form-control"%>
+  <%= hidden_field_tag :parent_id, comment.id %>
+</div>
+<%= f.submit t("comment.view.post"), class: "btn btn-primary" %>
+<% end %>

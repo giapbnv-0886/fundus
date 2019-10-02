@@ -4,6 +4,10 @@ class CommentsController < ApplicationController
   before_action :get_blog_destroy, only: %i{destroy}
   before_action :get_comments, only: %i{create destroy}
 
+  def new
+    @comment = current_user.comments.build
+  end
+
   def create
     @comment = current_user.comments.build comment_params
     if @comment.save
@@ -29,7 +33,7 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    (params.require(:comment).permit(:content)).merge({blog_id: params[:blog_id]})
+    (params.require(:comment).permit(:content, :parent_id)).reverse_merge!({blog_id: params[:blog_id], parent_id: params[:parent_id]})
   end
 
   def get_blog
@@ -39,7 +43,7 @@ class CommentsController < ApplicationController
   end
 
   def get_comments
-    @comments = @blog.comments.paginate page: params[:page], per_page: 5
+    @comments = @blog.comments.parent_comments.paginate page: params[:page], per_page: 5
   end
 
   def get_blog_destroy

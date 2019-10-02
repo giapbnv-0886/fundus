@@ -1,7 +1,6 @@
-
 <div class="client-name-reply pb70">
   <div class="reply-pic pull-left mr25">
-    <img src="assets/img/reply-1.jpg" alt="image">
+    <%= image_tag src="g-1.png" %>
   </div>
   <div class="name-reply-text">
     <div class="name-reply pb20">
@@ -15,12 +14,19 @@
         <li><span class="mr5 ti-trash"></span>
           <%= link_to t("comment.view.delete"), comment, method: :delete, data: { confirm: t("comment.view.sure") }, remote: true %></li>
           <% end %>
+           <span id ="reply-comments" class= "ti-comments" ></span>
           <% end %>
-          <a href="#"><span class="ti-comments"></span></a>
         </div>
       </div>
       <div class="reply-text">
         <p><%= comment.content %></p>
+        <div id="rreply-comments">
+          <%= render "comments/reply_comment_form", comment: comment %>
+        </div>
+      </div>
+      <div>
+        <%= render comment.replies if comment.replies.any? %>
       </div>
     </div>
+
   </div>
