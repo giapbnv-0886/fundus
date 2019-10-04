@@ -13,7 +13,7 @@ class Cause < ApplicationRecord
 
   def check_time
     if end_time < Date.today
-      errors.add(:end_time, "can't in the pass")
+      errors.add(:end_time, t("cause.model.errorTime"))
     end
   end
 end

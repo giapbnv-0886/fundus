@@ -4,4 +4,8 @@ class Category < ApplicationRecord
   has_many :events, dependent: :destroy
 
   validates :name, presence: true
+
+  def count_category
+    self.causes.count + self.blogs.count + self.events.count
+  end
 end

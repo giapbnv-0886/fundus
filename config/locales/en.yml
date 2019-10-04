@@ -98,6 +98,8 @@ en:
       reached: "Reached: "
       categories: "Categories"
       mon: "$1000000"
+    model:
+      errorTime: "can't in the pass"
 
   category:
     view:
