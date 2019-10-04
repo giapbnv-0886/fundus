@@ -1,5 +1,4 @@
 <% provide :title, t("cause.view.cause") %>
-
 <section id="page-head" class="page-head-section">
   <div class="page-head-overlay">
     <div class="container">
@@ -21,6 +20,7 @@
       </div>
     </div>
   </div>
+</div>
 </section>
 
 <section id="cause-details-content" class="cause-details-section">
@@ -69,7 +69,7 @@
             <div class="side-bar-content ml15">
               <div class="side-bar-search mb40">
                 <form action="#" method="get">
-                  <%= text_field :search, class: "" %>
+                  <%= text_field :search, placeholder: t("cause.view.search") %>
                   <button type="submit"><span class="ti-search"></span></button>
                 </form>
               </div>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="category-item">
                   <ul class="category-item-list">
-                    <%= render partial: "shared/category", collection: @categories, as: "category" %>
+                    <%= render partial: "categories/category", collection: @categories, as: "category" %>
                   </ul>
                 </div>
               </div>

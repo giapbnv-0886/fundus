@@ -4,11 +4,11 @@ class EventsController < ApplicationController
   before_action  :get_event, :get_attendance, only: %i{show}
 
   def new
-    @event = Event.new
+    @event = current_user.events.build
   end
 
   def index
-    @events = Event.sort_by_created.paginate(page: params[:page], per_page: 6)
+    @events = Event.sort_by_created.paginate page: params[:page], per_page: 6
   end
 
   def show
@@ -35,7 +35,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:title, :category_id, :place, :start_time, :end_time, :content, :expiration_date).merge({user_id: params[:user_id]})
+    params.require(:event).permit :title, :category_id, :place, :start_time, :end_time, :content, :expiration_date
   end
 
   def correct_user

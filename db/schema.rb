@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_09_17_153307) do
     t.string "title"
     t.text "content"
     t.text "photo", limit: 4294967295, collation: "utf8mb4_bin"
+    t.bigint "category_id"
     t.bigint "user_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false

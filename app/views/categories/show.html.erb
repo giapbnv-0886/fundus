@@ -1,0 +1,31 @@
+<% provide :title, @category.name %>
+<section id="causes-page-content" class="causes-page-section">
+  <div class="container">
+    <div class="row section-content">
+      <div class="causes-page-item">
+        <div class="causes-page-left-item">
+          <div class="causes-item">
+            <div class="row">
+              <%= render partial: "causes/cause", collection: @causes, as: "cause" %>
+            </div>
+            <div>
+              <%= will_paginate @causes %>
+            </div>
+            <div class="row">
+              <%= render partial: "events/event", collection: @events, as: "event" %>
+            </div>
+            <div>
+              <%= will_paginate @events %>
+            </div>
+            <div class="row">
+              <%= render partial: "blogs/blog", collection: @blogs, as: "blog" %>
+            </div>
+            <div>
+              <%= will_paginate @blogs %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -19,11 +19,11 @@
                 </div>
                 <div class="category mb40">
                   <div class="side-bar-title mb40">
-                    <h2 class="widgettitle"><%= t("blog.view.categories") %></h2>
+                    <h2 class="widgettitle"><%= t "blog.view.categories" %></h2>
                   </div>
                   <div class="category-item">
                     <ul class="category-item-list">
-                      <%= render partial: "shared/category", collection: @categories, as: "category" %>
+                      <%= render partial: "categories/category", collection: @categories, as: "category" %>
                     </ul>
                   </div>
                 </div>
