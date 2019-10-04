@@ -6,7 +6,7 @@
 <%= f.label t("event.view.end_time") %><br>
 <%= f.date_field :end_time, class: "form-control" %><br>
 <%= f.label :goal_money %><br>
-<%= f.text_field :goal_money, class: "form-control", placeholder: "$1000000" %><br>
+<%= f.text_field :goal_money, class: "form-control", placeholder: t("cause.view.mon") %><br>
 <%= f.label :detail %><br>
 <%= f.text_area :detail, class: "form-control", rows: 10 %><br>
 <%= f.submit t("event.view.post"), class: "btn btn-primary" %><br>

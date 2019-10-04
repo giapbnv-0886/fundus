@@ -16,6 +16,7 @@ class AttendancesController < ApplicationController
 
   def destroy
     if @event.unattend? current_user
+
       respond_to do |format|
         format.html { redirect_to @event }
         format.js
@@ -34,6 +35,6 @@ class AttendancesController < ApplicationController
   end
 
   def attendance_params
-    params.permit(:user_id)
+    params.permit :user_id
   end
 end

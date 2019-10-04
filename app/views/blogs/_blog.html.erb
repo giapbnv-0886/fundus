@@ -5,20 +5,18 @@
         <%= image_tag src="cause-1.jpg" %>
       </div>
     </div>
-    <!-- /col-md-6 -->
     <div class="col-sm-6">
       <div class="blog-text">
         <div class="blog-tag text-uppercase pt40">
-          <span class="tag-name red"><%= t "blog.view.education" %></span>
+          <span class="tag-name red"><%= blog.category.name %></span>
         </div>
-        <!-- /blog-tag -->
         <div class="blog-head-title pt15">
           <h2 class="black"><%= link_to blog.title, blog, class: "title" %></h2>
         </div>
         <div class="blog-meta mt10">
           <ul class="meta-list">
             <li><span class = "mr5 ti-pencil"></span><%= link_to blog.user.name, blog.user, class: "black" %></li>
-            <li><span class="mr5 ti-timer"></span> <span class = "black"> <%= (blog.created_at).strftime("%D") %>&nbsp;</span></li>
+            <li><span class="mr5 ti-timer"></span> <span class = "black"> <%= blog.created_at.strftime("%D") %>&nbsp;</span></li>
             <li><span class="mr5 ti-comment-alt"></span><%= blog.comments.count %></li>
           </ul>
         </div>
