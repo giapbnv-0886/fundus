@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2019_09_17_153307) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
-    t.integer "reply_for", default: 0
+    t.integer "parent_id"
     t.bigint "blog_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false

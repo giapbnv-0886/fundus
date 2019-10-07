@@ -13,7 +13,7 @@ class BlogsController < ApplicationController
 
   def show
     @blog = Blog.find_by id: params[:id]
-    @comments = @blog.comments.paginate page: params[:page], per_page: 5
+    @comments = @blog.comments.parent_comments.paginate page: params[:page], per_page: 5
     @category = @blog.category
     @categories = Category.all
   end

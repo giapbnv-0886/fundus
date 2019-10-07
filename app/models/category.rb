@@ -5,7 +5,7 @@ class Category < ApplicationRecord
 
   validates :name, presence: true
 
-  def count_category
+  def count_element
     self.causes.count + self.blogs.count + self.events.count
   end
 end
