@@ -18,5 +18,13 @@ Rails.application.routes.draw do
     resource :attendances, only: %i(create destroy)
   end
   resources :causes
+  resources :causes do
+    resource :donations, only: %i(new create)
+    resource :purchases, only: %i(new create)
+  end
+
+
   resources :categories
+
+
 end

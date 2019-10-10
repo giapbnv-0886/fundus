@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_17_153307) do
+ActiveRecord::Schema.define(version: 2019_10_03_034147) do
 
   create_table "attendances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "event_id"
@@ -72,6 +72,10 @@ ActiveRecord::Schema.define(version: 2019_09_17_153307) do
     t.bigint "cause_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
+    t.string "token"
+    t.string "payer_id"
+    t.datetime "purchased_at"
     t.index ["cause_id"], name: "index_donations_on_cause_id"
     t.index ["user_id"], name: "index_donations_on_user_id"
   end
@@ -85,6 +89,7 @@ ActiveRecord::Schema.define(version: 2019_09_17_153307) do
     t.datetime "end_time"
     t.datetime "expiration_date"
     t.text "photos", limit: 4294967295, collation: "utf8mb4_bin"
+    t.text "geocode", limit: 4294967295, collation: "utf8mb4_bin"
     t.bigint "category_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false

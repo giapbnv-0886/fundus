@@ -11,6 +11,8 @@ en:
       blog: "Blog"
       donate_now: "DONATE NOW"
       search_holder: "Enter Your Search Word..."
+    ggmap:
+      geo_error: "Geocode was not successful for the following reason: "
 
 
   user:
@@ -104,3 +106,22 @@ en:
   category:
     view:
       categories: "Categories"
+  donation:
+    alert:
+      success: "Thanks! You have been donated %{amount} $ for %{cause}!"
+      error: "Purchase has been error. Please try again!"
+    cause:
+      error: "Cannot find this cause. Please try again!"
+    new:
+      notice: "Please confirm to donate %{amount}$ for %{cause}!"
+      confirm: "Confirm"
+  shared:
+    purchase:
+      new:
+        amount: "Amount (00.00$):"
+        description: "Description:"
+        donate: "Donate"
+  purchase:
+    title: "Donate Fundus"
+    cause:
+      error: "Cannot find this cause. Please try again!"

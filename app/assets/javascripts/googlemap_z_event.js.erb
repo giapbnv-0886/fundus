@@ -1,0 +1,17 @@
+$(document).ready( function () {
+    var obj_map = document.getElementById('map');
+    var obj_geocode = document.getElementById('geocode');
+    var obj_address = document.getElementById('address');
+    let is_dynamic = document.getElementById('is_dynamic');
+
+   if (obj_geocode != null){
+       if (obj_geocode.value == '' ){
+           initialize(obj_map, obj_geocode, obj_address, <%= Settings.ggmap.default.position.lat %>, <%= Settings.ggmap.default.position.lng %>, is_dynamic );
+       }
+       else{
+           let _latlng = obj_geocode.value;
+           let latlngStr =  _latlng.split(',', 2);
+           initialize(obj_map, obj_geocode, obj_address, parseFloat(latlngStr[0]), parseFloat(latlngStr[1]), is_dynamic);
+       }
+   }
+});

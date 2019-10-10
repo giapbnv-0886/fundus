@@ -1,6 +1,7 @@
 class CausesController < ApplicationController
   before_action :authenticate_user!, only: %i{create destroy}
   before_action :correct_user, only: %i{destroy}
+  before_action :get_cause, only: %i(show edit)
 
   def new
     @cause = current_user.causes.build
@@ -11,7 +12,6 @@ class CausesController < ApplicationController
   end
 
   def show
-    @cause = Cause.find_by id: params[:id]
     @categories = Category.all
   end
 
@@ -27,5 +27,10 @@ class CausesController < ApplicationController
   private
   def cause_params
     params.require(:cause).permit :title, :category_id, :end_time, :detail, :goal_money
+  end
+
+  def get_cause
+    @cause = Cause.find_by id: params[:id]
+    redirect_to root_path unless  @cause
   end
 end
