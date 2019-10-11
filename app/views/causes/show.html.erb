@@ -63,6 +63,11 @@
               <div class="cause-details-text">
                 <p><%= @cause.detail %></p>
               </div>
+              <br>
+              <div class="row">
+                <%= render "donations_statistical", donations: @cause.donations.purchased  if @cause.belong? current_user %>
+              </div>
+              <%= link_to t("csv.export_btn"), cause_donations_url(@cause, format: :csv, belong: @cause.class.name), html_options = {class: "btn btn-primary"} if @cause.belong? current_user %>
             </div>
           </div>
           <div class="col-sm-4">

@@ -1,10 +1,17 @@
 class Donation < ApplicationRecord
+  CSV_ATTRIBUTES = %w(id user_name user_email amount description purchased_at)
+
   belongs_to :user
   belongs_to :cause
 
   validates :user_id, presence: true
   validates :cause_id, presence: true
   validates :amount, presence: true
+
+  scope :purchased, -> { where.not purchased_at: nil }
+
+  delegate :name, :email, to: :user, prefix: true, allow_nil: true
+  delegate :title, to: :cause, prefix: true, allow_nil: true
 
   def token=(token)
     self[:token] = token

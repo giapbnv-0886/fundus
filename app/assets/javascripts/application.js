@@ -16,4 +16,5 @@
 //= require activestorage
 //= require turbolinks
 //= require google_map
+//= require datatables
 //= require_tree .

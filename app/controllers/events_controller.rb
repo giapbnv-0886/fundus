@@ -12,7 +12,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by id: params[:id]
   end
 
   def create
@@ -44,7 +43,7 @@ class EventsController < ApplicationController
   end
 
   def get_attendance
-    @attendance = @event.active_attendances.find_by user_id: current_user.id
+    @attendance = @event.active_attendances.find_by user_id: current_user.id if user_signed_in?
   end
 
   def get_event

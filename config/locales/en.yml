@@ -24,6 +24,12 @@ en:
       user: "User"
       profile: "Profile"
       createCause: "Create new cause"
+    attributes:
+      id: "ID"
+      name: "Name"
+      email: "E-mail"
+      phone: "Phone Number"
+      attended_at: "Attended at"
 
   blog:
     view:
@@ -83,6 +89,8 @@ en:
       time1: "can't be less than start_time"
       time2: "can't be in the pass"
       time3: "can't be greater than start_time"
+    statistical:
+      list_user: "List user attend this Event"
 
   cause:
     view:
@@ -100,8 +108,13 @@ en:
       reached: "Reached: "
       categories: "Categories"
       mon: "$1000000"
+      amount: "%{amount}$"
     model:
       errorTime: "can't in the pass"
+    statistical:
+      list_donation: "List user donate this Cause"
+    error:
+      notfound: "Can't find this cause. Please try again!"
 
   category:
     view:
@@ -125,3 +138,19 @@ en:
     title: "Donate Fundus"
     cause:
       error: "Cannot find this cause. Please try again!"
+    csv_name: "Donation_%{title}"
+
+  attendaces:
+    csv_name: "Attendance_User_%{title}"
+
+  header_csv:
+    id: "ID"
+    amount: "Amount"
+    description: "Description"
+    purchased_at: "Purchased at"
+    user_name: "User Name"
+    user_email: "E-mail"
+    created_at: "Created at"
+
+  csv:
+    export_btn: "Export to CSV"

@@ -1,5 +1,6 @@
 class CausesController < ApplicationController
-  before_action :authenticate_user!, only: %i{create destroy}
+  before_action :authenticate_user!, only: %i{new create destroy}
+  before_action :get_cause, only: %i(show)
   before_action :correct_user, only: %i{destroy}
   before_action :get_cause, only: %i(show edit)
 
@@ -31,6 +32,7 @@ class CausesController < ApplicationController
 
   def get_cause
     @cause = Cause.find_by id: params[:id]
-    redirect_to root_path unless  @cause
+    return if @cause
+    redirect_to root_path
   end
 end

@@ -15,15 +15,16 @@ Rails.application.routes.draw do
     resources :comments
   end
   resources :events do
-    resource :attendances, only: %i(create destroy)
+    resources :attendances, only: %i(index create destroy)
+  end
+  resources :causes do
+    resources :donations, only: %i(index)
   end
   resources :causes
   resources :causes do
     resource :donations, only: %i(new create)
     resource :purchases, only: %i(new create)
   end
-
-
   resources :categories
 
 
