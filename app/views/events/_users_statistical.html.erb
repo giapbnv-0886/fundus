@@ -1,0 +1,25 @@
+<div class="row">
+  <label for="attended-users"><%= t "event.statistical.list_user" %></label>
+  <div class="users-statistical">
+    <table id="attended-users" class="table table-striped table-bordered datatable">
+      <thead>
+      <tr>
+        <th><%= t "user.attributes.id" %></th>
+        <th><%= t "user.attributes.name" %></th>
+        <th><%= t "user.attributes.email" %></th>
+        <th><%= t "user.attributes.attended_at" %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% attendances.each do |at| %>
+        <tr>
+          <td><%= at.user_id%></td>
+          <td><%= at.user_name %></td>
+          <td><%= at.user_email%></td>
+          <td><%= at.created_at.to_s %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

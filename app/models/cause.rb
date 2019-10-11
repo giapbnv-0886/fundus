@@ -16,4 +16,8 @@ class Cause < ApplicationRecord
       errors.add(:end_time, t("cause.model.errorTime"))
     end
   end
+
+  def belong? user
+    self.user == user
+  end
 end

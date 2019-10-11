@@ -40,4 +40,8 @@ class Event < ApplicationRecord
   def expirationTime?
     self.expiration_date < Date.today
   end
+
+  def belong? user
+    self.user == user
+  end
 end
