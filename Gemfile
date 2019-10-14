@@ -35,6 +35,7 @@ gem "omniauth-facebook"
 gem "config"
 # gem "paypal-express"
 gem "activemerchant"
+gem "ransack"
 
 
 group :development, :test do

@@ -24,6 +24,17 @@
 
 <section id="causes-page-content" class="causes-page-section">
   <div class="container">
+    <div class="row">
+      <% if @search %>
+        <div id="sb-search" class="sb-search">
+          <%= search_form_for @search do |f| %>
+            <%= f.search_field :title_or_detail_cont, html_options = {class: "sb-search-input", placeholder: "Enter Your Search Word..."} %>
+            <%= f.submit "<i class='ti-search'></i>".html_safe, html_options = {class: "sb-search-submit"} %>
+            <span class="sb-icon-search"><i class="ti-search"></i></span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
     <div class="row section-content">
       <div class="causes-page-item">
         <div class="causes-page-left-item">

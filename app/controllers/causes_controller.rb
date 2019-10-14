@@ -10,7 +10,8 @@ class CausesController < ApplicationController
   end
 
   def index
-    @causes = Cause.sort_by_created.paginate page: params[:page], per_page: 6
+    @search = Cause.search(params[:q])
+    @causes = @search.result.sort_by_created.paginate page: params[:page], per_page: 6
   end
 
   def show

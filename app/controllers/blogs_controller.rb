@@ -7,7 +7,8 @@ class BlogsController < ApplicationController
   end
 
   def index
-    @blogs = Blog.all.sort_by_created.paginate page: params[:page], per_page: 6
+    @search = Blog.search(params[:q])
+    @blogs = @search.result.sort_by_created.paginate page: params[:page], per_page: 6
     @categories = Category.all
   end
 
