@@ -7,4 +7,5 @@ class Blog < ApplicationRecord
   validates :content, presence: true
 
   scope :sort_by_created, ->{order created_at: :desc}
+  scope :recent_post, -> {limit 3}
 end
