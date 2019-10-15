@@ -2,13 +2,15 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: %i{show edit}
   before_action :correct_user, only: %i{destroy}
   before_action  :get_event, :get_attendance, only: %i{show}
+  before_action :get_category, only: %i(index show)
 
   def new
     @event = current_user.events.build
   end
 
   def index
-    @events = Event.sort_by_created.paginate page: params[:page], per_page: 6
+    @search = Event.search(params[:q])
+    @events = @search.result.sort_by_created.paginate page: params[:page], per_page: 6
   end
 
   def show
@@ -16,11 +18,11 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.build event_params
-
     if @event.save
       redirect_to event_path  @event
     else
-      redirect_to root_path
+      flash[:danger] = @event.errors
+      render :new
     end
   end
 
@@ -50,5 +52,9 @@ class EventsController < ApplicationController
     @event = Event.find_by id: params[:id]
     return if @event
     redirect_to root_path
+  end
+
+  def get_category
+    @categories = Category.all
   end
 end

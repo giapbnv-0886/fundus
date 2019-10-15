@@ -5,14 +5,15 @@
       <div class="row">
         <div class="page-head-content">
           <div class="page-head-style">
-            <%= image_tag src="page-head-style.png" %>
+            <%= image_tag src = "page-head-style.png" %>
           </div>
           <div class="page-head-title text-uppercase">
             <h2><%= yield :title %></h2>
           </div>
           <div class="page-breadcrumb">
             <ul class="breadcrumb">
-              <li class="breadcrumb-item"><a href="home-1.html"><span class="mr5 ti-home"></span><%= t "cause.view.causes" %></a></li>
+              <li class="breadcrumb-item">
+                <a href="home-1.html"><span class="mr5 ti-home"></span><%= t "cause.view.causes" %></a></li>
               <li class="breadcrumb-item active"><%= yield :title %></li>
             </ul>
           </div>
@@ -24,23 +25,37 @@
 
 <section id="causes-page-content" class="causes-page-section">
   <div class="container">
-    <div class="row">
-      <% if @search %>
-        <div id="sb-search" class="sb-search">
-          <%= search_form_for @search do |f| %>
-            <%= f.search_field :title_or_detail_cont, html_options = {class: "sb-search-input", placeholder: "Enter Your Search Word..."} %>
-            <%= f.submit "<i class='ti-search'></i>".html_safe, html_options = {class: "sb-search-submit"} %>
-            <span class="sb-icon-search"><i class="ti-search"></i></span>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
     <div class="row section-content">
       <div class="causes-page-item">
         <div class="causes-page-left-item">
           <div class="causes-item">
             <div class="row">
-              <%= render @causes %>
+              <div class="col-md-9">
+                <%= render @causes %>
+              </div>
+              <div class="col-md-3">
+                <div class="side-bar-content ml15">
+                  <div class="side-bar-search mb40">
+                    <% if @search %>
+                      <%= search_form_for @search do |f| %>
+                        <%= f.search_field :title_or_detail_cont, html_options = {placeholder: t("cause.view.search")} %>
+                        <%= f.submit html_options = {class: "sb-search-submit"} %>
+                        <span class="sb-icon-search"><i class="ti-search"></i></span>
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <div class="category mb40">
+                    <div class="side-bar-title mb40">
+                      <h2 class="widgettitle"><%= t "cause.view.categories" %></h2>
+                    </div>
+                    <div class="category-item">
+                      <ul class="category-item-list">
+                        <%= render partial: "categories/category", collection: @categories, as: "category" %>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <%= will_paginate @causes %>
           </div>

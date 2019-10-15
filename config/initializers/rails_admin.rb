@@ -1,6 +1,18 @@
 RailsAdmin.config do |config|
   config.parent_controller = "ApplicationController"
   ### Popular gems integration
+  #
+  # ==Custom fields==
+  # config.model "User" do
+  #   edit do
+  #     field :name
+  #     field :email
+  #     field :password
+  #     field :password_confirm
+  #     field :role
+  #     field :confirmed_at
+  #   end
+  # end
 
   # == Devise ==
   config.authenticate_with do

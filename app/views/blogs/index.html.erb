@@ -5,6 +5,7 @@
         <div class="blog-archive-content">
           <div class="row">
             <% if @search %>
+              <p>Day la search</p>
               <div id="sb-search" class="sb-search">
                 <%= search_form_for @search do |f| %>
                   <%= f.search_field :title_or_content_cont, html_options = {class: "sb-search-input", placeholder: "Enter Your Search Word..."} %>
