@@ -56,4 +56,8 @@ node_modules/
 config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml
+<<<<<<< HEAD
+=======
+
+>>>>>>> using whenever and delay_job to create background task
 /public/uploads/

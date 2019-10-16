@@ -35,8 +35,14 @@ gem "omniauth-facebook"
 gem "config"
 # gem "paypal-express"
 gem "activemerchant"
+<<<<<<< HEAD
 gem "ransack"
 
+=======
+gem "whenever"
+gem "delayed_job_active_record"
+gem "devise-async"
+>>>>>>> using whenever and delay_job to create background task
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
