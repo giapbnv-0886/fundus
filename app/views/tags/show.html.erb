@@ -1,0 +1,37 @@
+<% provide :title, @tag.name %>
+<section id="way-help" class="way-help-section">
+  <div class="container">
+    <div class="row section-content">
+      <div class="section-title text-center">
+        <div class="section-title-text ">
+          <%= image_tag src="g-1.png" %>
+          <h3>#<%= @tag.name %></h3>
+        </div>
+        <div class="section-title-text ">
+          <p><%= @tag.count_element %> <%= t "tags.view.show.elemen" %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="blogs-page-content" class="blogs-page-section">
+  <div class="container">
+    <div class="row section-content">
+      <div class="blogs-page-item">
+        <div class="blogs-page-left-item">
+          <div class="blogs-item">
+            <div class="row">
+              <%= render partial: "blogs/blog", collection: @blogs, as: "blog" %>
+            </div>
+            <div class="row">
+              <%= render partial: "events/event", collection: @events, as: "event" %>
+            </div>
+            <div class="row">
+              <%= render partial: "causes/cause", collection: @causes, as: "cause" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

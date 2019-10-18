@@ -12,18 +12,19 @@ class AttendancesController < ApplicationController
   end
 
   def create
-    @attendance = @event.active_attendances.build attendance_params
+    @attendance = @event.attendances.build attendance_params
     if @attendance.save
       respond_to do |format|
         format.html { redirect_to @event }
         format.js
       end
     else
-    redirect_to root_path
+    redirect_to event_path
     end
   end
 
   def destroy
+
     if @event.unattend? current_user
       respond_to do |format|
         format.html { redirect_to @event }
@@ -49,7 +50,7 @@ class AttendancesController < ApplicationController
   def get_object
     @event = Event.find_by id: params[:event_id]
     if @event
-      @object = @event.active_attendances
+      @object = @event.attendances
     else
       flash[:danger] = t "cause.error.notfound"
       redirect_to events_path

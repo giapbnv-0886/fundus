@@ -2,8 +2,10 @@ class Event < ApplicationRecord
   belongs_to :category
   belongs_to :user
 
-  has_many :active_attendances, class_name: "Attendance", foreign_key: "event_id", dependent: :destroy
-  has_many :users, through: :active_attendances
+  has_many :attendances, dependent: :destroy
+  has_many :users, through: :attendances, source: :user
+
+  has_and_belongs_to_many :tags
 
   validates :title, presence: true, length: {maximum: 100}
   validates :place, presence: true, length: {maximum: 150}
@@ -12,6 +14,8 @@ class Event < ApplicationRecord
   validates :content, presence: true, length: {maximum: 200}
   validates :expiration_date, presence: true
   validate :compareDate
+
+  after_commit :create_hash_tags, on: :create
 
   scope :sort_by_created, ->{order created_at: :desc}
   scope :recent_post, -> {limit 3}
@@ -44,5 +48,14 @@ class Event < ApplicationRecord
 
   def belong? user
     self.user == user
+  end
+
+  def create_hash_tags
+    event = Event.find_by id: self.id
+    hashtags = self.content.scan(/#\w+/)
+    hashtags.uniq.map do |hashtag|
+      tag = Tag.find_or_create_by name: hashtag.downcase.delete('#')
+      event.tags << tag
+    end
   end
 end

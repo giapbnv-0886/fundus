@@ -29,6 +29,11 @@
                   <div class="blog-details-text">
                     <p> <%= @blog.content.html_safe %></p>
                   </div>
+                  <div class= "section-title">
+                  <div class="section-title-text ">
+                    <p><%= t "blog.view.tag" %>  <%= render_blog_with_hashtag @blog.hash_tag %></p>
+                  </div>
+                </div>
                 </div>
               </div>
               <div class="footer-social pull-right mt10">
@@ -45,13 +50,6 @@
 
             <div class="col-sm-4">
               <div class="side-bar-content ml15">
-                <div class="side-bar-search mb40">
-                  <form action="#" method="get">
-
-                    <%= text_field :search, class:"" %>
-                    <button type="submit"><span class="ti-search"></span></button>
-                  </form>
-                </div>
                 <div class="category mb40">
                   <div class="side-bar-title mb40">
                     <h2 class="widgettitle"><%= t("blog.view.categories") %></h2>

@@ -3,6 +3,8 @@
     <div class="col-md-6 col-md-offset-3 form-group">
       <%= f.label t("blog.view.title") %><br>
       <%= f.text_field :title, class: "form-control" %><br>
+      <%= f.label t("blog.view.tags") %><br>
+      <%= f.text_field :hash_tag, class: "form-control", id: "tags" %><br>
       <%= f.label :category %>
       <%= f.collection_select :category_id, Category.all, :id, :name , options = {},html_options = {class: "form-control"} %><br>
       <%= hidden_field_tag :user_id, current_user.id %>
@@ -14,3 +16,5 @@
     <%= f.submit t("blog.view.post"), class: "btn btn-primary" %><br>
   </div>
 <% end %>
+
+

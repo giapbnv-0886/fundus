@@ -1,25 +1,33 @@
+<% if @event.belong? current_user %>
 <div class="row">
+  <% if attendances.blank? %>
+    <h2> <%= t "event.statistical.no_user" %></h2>
+  <% else %>
   <label for="attended-users"><%= t "event.statistical.list_user" %></label>
   <div class="users-statistical">
     <table id="attended-users" class="table table-striped table-bordered datatable">
       <thead>
-      <tr>
-        <th><%= t "user.attributes.id" %></th>
-        <th><%= t "user.attributes.name" %></th>
-        <th><%= t "user.attributes.email" %></th>
-        <th><%= t "user.attributes.attended_at" %></th>
-      </tr>
+        <tr>
+          <th><%= t "user.attributes.id" %></th>
+          <th><%= t "user.attributes.name" %></th>
+          <th><%= t "user.attributes.email" %></th>
+          <th><%= t "user.attributes.attended_at" %></th>
+        </tr>
       </thead>
       <tbody>
-      <% attendances.each do |at| %>
+        <% attendances.each do |at| %>
         <tr>
           <td><%= at.user_id%></td>
           <td><%= at.user_name %></td>
           <td><%= at.user_email%></td>
           <td><%= at.created_at.to_s %></td>
         </tr>
-      <% end %>
+        <% end %>
       </tbody>
     </table>
   </div>
 </div>
+<%= link_to t("csv.export_btn"), event_attendances_path(@event, format: :csv, belong: @event.class.name), html_options = {class: "btn btn-primary"}  %>
+<% end %>
+<% else %>
+<% end %>

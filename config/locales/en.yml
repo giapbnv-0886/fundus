@@ -53,8 +53,12 @@ en:
       all: "All bolgs"
       categories: "Categories"
       insta: "Intagram"
+      tags: "hash_tag"
+      tag: "Tags: "
     controller:
       fail: "Fail"
+    model:
+      tags: "Maximum 5 tags"
 
   comment:
     view:
@@ -99,6 +103,7 @@ en:
       time3: "can't be greater than start_time"
     statistical:
       list_user: "List user attend this Event"
+      no_user: "No attendee"
 
   cause:
     view:
@@ -172,3 +177,21 @@ en:
       events: "Events"
       blogs: "Blogs"
       search: "Search"
+
+  static_page:
+    view:
+      notF: "404"
+      oops: "OOPS! THE PAGE YOU ARE REQUESTED WAS NOT FOUND"
+      goto: "go to home"
+      about:
+        title: "About"
+      contact:
+        title: "Contact"
+      help:
+        title: "Help"
+
+  tags:
+    view:
+      show:
+        elemen: "blogs, events and cause"
+    model:
