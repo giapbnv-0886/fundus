@@ -5,8 +5,8 @@
         <div class="header-top">
           <div class="head-top-info pull-left">
             <ul class="top-info">
-              <li><%= image_tag src="call.png" %><%= t "application.header.phone" %></li>
-              <li><%= image_tag src="inbox.png" %><%= t "application.header.email" %></li>
+              <li><%= image_tag src = "call.png" %><%= t "application.header.phone" %></li>
+              <li><%= image_tag src = "inbox.png" %><%= t "application.header.email" %></li>
             </ul>
           </div>
           <!-- /head-top-info -->
@@ -28,42 +28,24 @@
   <div class="menu-bar">
     <div class="container">
       <div class="row">
-        <nav class="navbar">
+        <nav class="navbar header">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-<<<<<<< HEAD
-            <a class="navbar-brand" href="/"><%= image_tag src = "logo.png", class: "fundus-logo" %></a>
+            <a class="navbar-brand"><%= image_tag src = "logo.png", class: "fundus-logo" %></a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="cause.html">Causes</a>
-                <ul class="menu-dropdown">
-                  <li><a href="cause.html">Causes</a></li>
-                  <li><a href="cause-single.html">Causes Details</a></li>
-                </ul>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1  header__menu">
+            <ul class="nav navbar-nav">
+              <li><%= link_to t("application.header.home"), root_path %></li>
+              <li><%= link_to t("application.header.cause"), causes_path %>
               </li>
-              <li><a href="event.html">Events</a>
-                <ul class="menu-dropdown">
-                  <li><a href="event.html">Events</a></li>
-                  <li><a href="event-single.html">Events Details</a></li>
-                </ul>
+              <li><%= link_to t("application.header.event"), events_path %>
               </li>
-              <li><a href="blog-archive.html">Blog</a>
-                <ul class="menu-dropdown">
-                  <li><a href="blog-archive.html">Blog Archive</a></li>
-                  <li><a href="blog-single.html">Blog Details</a></li>
-                </ul>
+              <li><%= link_to t("application.header.blog"), blogs_path %>
               </li>
-              <li><a href="#">Pages</a>
-                <ul class="menu-dropdown">
-                  <li><a href="contact.html">Contact</a></li>
-                  <li><a href="404.html">404</a></li>
-                  <li><a href="about.html">About-us</a></li>
-                </ul>
-              </li>
+              <li><%= link_to t("application.header.contact"), contact_path %></li>
+              <li><%= link_to t("application.header.about"), about_path %></li>
               <% if user_signed_in? %>
                 <li><%= link_to current_user.name, "#" %>
                   <ul class="menu-dropdown">
@@ -74,20 +56,15 @@
               <% else %>
                 <li><%= link_to t("application.header.sign_in"), new_user_session_path %></li>
               <% end %>
+              <li class="header__menu frmsearch">
+                <%= form_with url: search_path, local: true, method: :get, html: {class: "form-inline"} do |f| %>
+                  <%= f.text_field :q, placeholder: t("static_pages.search.search"), data: {behavior: "autocomplete"} %>
+                  <label for="frmsearch" class="btn-submit"><i class="ti-search"></i></label>
+                  <%= f.submit t("static_pages.search.search"), html_options = {class: "sb-search-submit", id: "frmsearch"} %>
+                <% end %>
+              </li>
             </ul>
-          </div><!-- /.navbar-collapse -->
-          <div class="home-donate donate-btn-1 text-uppercase">
-            <%= link_to "Donate Now", causes_path %>
           </div>
-          <%# if @search %>
-<!--            <div id="sb-search" class="sb-search">-->
-              <%#= search_form_for @search do |f| %>
-                <%#= f.search_field :title_or_detail_cont, html_options = {class: "sb-search-input", placeholder: "Enter Your Search Word..."} %>
-                <%#= f.submit  html_options = {class: "sb-search-submit"} %>
-<!--                <span class="sb-icon-search"><i class="ti-search"></i></span>-->
-              <%# end %>
-<!--            </div>-->
-          <%# end %>
         </nav>
         <div class="wrap">
           <!--MENU-->
@@ -98,102 +75,33 @@
               <div class="menu-btn-line menu-btn-line-3"></div>
             </div>
             <div class="moduletable_menu">
-
               <ul class="nav menu">
-                <li><a href="home-1.html">Home</a></li>
-                <li><a href="about-us.html">About</a></li>
-                <li><a href="blog-archive.html">Blog</a></li>
-                <li><a href="blog-single.html">Blog Single</a></li>
-                <li><a href="cause.html">Cause</a></li>
-                <li><a href="cause-single.html">Cause Details</a></li>
-                <li><a href="event.html">Event</a></li>
-                <li><a href="event-single.html">Event Single</a></li>
-                <li><a href="404.html">404</a></li>
-                <li><a href="contact.html">Contacts</a></li>
+                <li><%= link_to "Home", root_path %></li>
+                <li><%= link_to "Causes", causes_path %>
+                </li>
+                <li><%= link_to "Events", events_path %>
+                </li>
+                <li><%= link_to "Blogs", blogs_path %>
+                </li>
+                <li><%= link_to "Contact", contact_path %></li>
+                <li><%= link_to "About us", about_path %></li>
+                <% if user_signed_in? %>
+                  <li><%= link_to current_user.name, "#" %>
+                    <ul class="menu-dropdown">
+                      <li><%= link_to t("application.header.change_pw"), edit_user_registration_path %></li>
+                      <li><%= link_to t("application.header.sign_out"), destroy_user_session_path, method: :delete %></li>
+                    </ul>
+                  </li>
+                <% else %>
+                  <li><%= link_to t("application.header.sign_in"), new_user_session_path %></li>
+                <% end %>
               </ul>
             </div>
-          </div>
-          <!-- END menu -->
-        </div><!--/wrap  -->
-      </div><!--/row  -->
-    </div><!--/container  -->
-  </div><!--/menu-bar  -->
-=======
-            <a class="navbar-brand"><%= image_tag src="logo.png", class: "fundus-logo" %></a>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to t("application.header.home"), root_path %></li>
-              <li><%= link_to t("application.header.cause"), causes_path  %>
-              </li>
-              <li><%= link_to t("application.header.event"), events_path %>
-              </li>
-              <li><%= link_to t("application.header.blog"), blogs_path %>
-              </li>
-              <li><%= link_to t("application.header.contact"), contact_path %></li>
-              <li><%= link_to t("application.header.about"), about_path %></li>
-              <% if user_signed_in? %>
-              <li><%= link_to current_user.name, "#" %>
-                <ul class="menu-dropdown">
-                  <li><%= link_to t("application.header.change_pw"), edit_user_registration_path %></li>
-                  <li><%= link_to t("application.header.sign_out"), destroy_user_session_path, method: :delete %></li>
-                </ul>
-              </li>
-              <% else %>
-              <li><%= link_to t("application.header.sign_in"), new_user_session_path %></li>
-              <% end %>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-          <div class="home-donate donate-btn-1 text-uppercase">
-            <a href="donation.html">donate now</a>
-          </div>
-          <div id="sb-search" class="sb-search " >
-                <form action="#" method="post">
-                 <input class="sb-search-input " onkeyup="buttonUp();" placeholder="Enter Your Search Word..." type="search" value="" name="search" id="search">
-               <input class="sb-search-submit" type="submit"  value="">
-               <span class="sb-icon-search"><i class="ti-search"></i></span>
-                </form>
-          </div>
-        </nav>
-        <div class="wrap">
-          <!--MENU-->
-          <div id="main-menu">
-            <div class="menu-btn">
-              <div class="menu-btn-line menu-btn-line-1"></div>
-              <div class="menu-btn-line menu-btn-line-2"></div>
-              <div class="menu-btn-line menu-btn-line-3"></div>
-            </div>
-            <div class="moduletable_menu">
-              <ul class="nav menu">
-               <li><%= link_to "Home", root_path %></li>
-               <li><%= link_to "Causes", causes_path  %>
-               </li>
-               <li><%= link_to "Events", events_path %>
-               </li>
-               <li><%= link_to "Blogs", blogs_path %>
-               </li>
-               <li><%= link_to "Contact", contact_path %></li>
-               <li><%= link_to "About us", about_path %></li>
-               <% if user_signed_in? %>
-               <li><%= link_to current_user.name, "#" %>
-                <ul class="menu-dropdown">
-                  <li><%= link_to t("application.header.change_pw"), edit_user_registration_path %></li>
-                  <li><%= link_to t("application.header.sign_out"), destroy_user_session_path, method: :delete %></li>
-                </ul>
-              </li>
-              <% else %>
-              <li><%= link_to t("application.header.sign_in"), new_user_session_path %></li>
-              <% end %>
-            </ul>
           </div>
         </div>
         <!-- END menu -->
       </div><!--/wrap  -->
     </div><!--/row  -->
   </div><!--/container  -->
-</div><!--/menu-bar  -->
->>>>>>> Create home_page
 </header>
 <!-- End of Header -->

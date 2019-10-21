@@ -1,4 +1,5 @@
 class CausesController < ApplicationController
+
   before_action :authenticate_user!, only: %i{new create destroy}
 
   before_action :get_cause, only: %i(show)
@@ -11,7 +12,7 @@ class CausesController < ApplicationController
   end
 
   def index
-    @search = Cause.search(params[:q])
+    @search = Cause.ransack( params[:q])
     @causes = @search.result.sort_by_created.paginate page: params[:page], per_page: 6
   end
 

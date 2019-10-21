@@ -167,3 +167,8 @@ en:
     index:
       home: "Home"
       recent: "Recent Post"
+    search:
+      causes: "Causes"
+      events: "Events"
+      blogs: "Blogs"
+      search: "Search"
