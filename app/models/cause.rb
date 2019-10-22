@@ -10,10 +10,15 @@ class Cause < ApplicationRecord
   validate :check_time
 
   scope :sort_by_created, ->{order created_at: :desc}
+  scope :recent_post, -> {limit 3}
 
   def check_time
     if end_time < Date.today
       errors.add(:end_time, t("cause.model.errorTime"))
     end
+  end
+
+  def belong? user
+    self.user == user
   end
 end

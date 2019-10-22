@@ -14,6 +14,7 @@ class Event < ApplicationRecord
   validate :compareDate
 
   scope :sort_by_created, ->{order created_at: :desc}
+  scope :recent_post, -> {limit 3}
 
   def compareDate
     if end_time < start_time
@@ -39,5 +40,9 @@ class Event < ApplicationRecord
 
   def expirationTime?
     self.expiration_date < Date.today
+  end
+
+  def belong? user
+    self.user == user
   end
 end

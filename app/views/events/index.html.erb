@@ -28,10 +28,37 @@
     <div class="row section-content">
       <div class="event-list-content">
         <div class="row">
-          <%= render @events %>
-        </div>
-        <div>
-          <%= will_paginate @events %>
+          <div class="col-md-9">
+            <div class="row">
+              <%= render @events %>
+            </div>
+            <div class="row">
+              <%= will_paginate @events %>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="side-bar-content ml15">
+              <div class="side-bar-search mb40">
+                <% if @search %>
+                  <%= search_form_for @search do |f| %>
+                    <%= f.search_field :title_or_content_cont, html_options = {placeholder: t("cause.view.search")} %>
+                    <%= f.submit html_options = {class: "sb-search-submit"} %>
+                    <span class="sb-icon-search"><i class="ti-search"></i></span>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="category mb40">
+                <div class="side-bar-title mb40">
+                  <h2 class="widgettitle"><%= t "cause.view.categories" %></h2>
+                </div>
+                <div class="category-item">
+                  <ul class="category-item-list">
+                    <%= render partial: "categories/category", collection: @categories, as: "category" %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

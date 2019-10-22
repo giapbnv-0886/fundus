@@ -15,9 +15,11 @@ gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
 gem "jquery-ui-rails"
 gem "bootstrap-sass"
+gem "jquery-datatables"
 gem "bcrypt", "~> 3.1.7"
 gem "mini_magick", "~> 4.8"
-gem "ckeditor"
+gem "ckeditor", "4.2.0"
+gem "carrierwave"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "rails_admin"
 gem "rails_admin_rollincode"
@@ -33,7 +35,10 @@ gem "omniauth-facebook"
 gem "config"
 # gem "paypal-express"
 gem "activemerchant"
-
+gem "ransack"
+gem "whenever"
+gem "delayed_job_active_record"
+gem "devise-async"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

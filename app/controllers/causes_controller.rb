@@ -1,18 +1,22 @@
 class CausesController < ApplicationController
-  before_action :authenticate_user!, only: %i{create destroy}
+
+  before_action :authenticate_user!, only: %i{new create destroy}
+
+  before_action :get_cause, only: %i(show)
   before_action :correct_user, only: %i{destroy}
   before_action :get_cause, only: %i(show edit)
+  before_action :get_category, only: %i(index show)
 
   def new
     @cause = current_user.causes.build
   end
 
   def index
-    @causes = Cause.sort_by_created.paginate page: params[:page], per_page: 6
+    @search = Cause.ransack( params[:q])
+    @causes = @search.result.sort_by_created.paginate page: params[:page], per_page: 6
   end
 
   def show
-    @categories = Category.all
   end
 
   def create
@@ -31,6 +35,11 @@ class CausesController < ApplicationController
 
   def get_cause
     @cause = Cause.find_by id: params[:id]
-    redirect_to root_path unless  @cause
+    return if @cause
+    redirect_to root_path
+  end
+
+  def get_category
+    @categories = Category.all
   end
 end

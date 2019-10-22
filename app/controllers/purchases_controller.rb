@@ -1,8 +1,12 @@
 class PurchasesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: %i(create)
   before_action :get_cause, only: %i(new create)
 
   def new
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def create

@@ -55,7 +55,7 @@ p {
 	font-family: 'Merriweather Sans', sans-serif;
 }
 li {
-	display: inline-block;
+	/*display: inline-block;*/
 }
 section {
 	overflow: hidden;

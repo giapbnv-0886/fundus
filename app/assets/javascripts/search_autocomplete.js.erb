@@ -1,0 +1,33 @@
+document.addEventListener("turbolinks:load", function() {
+    $input = $("[data-behavior='autocomplete']");
+
+    var options = {
+        getValue: "title",
+        url: function(phrase) {
+            return "/search.json?q=" + phrase;
+        },
+        categories: [
+            {
+                listLocation: "causes",
+                header: '<strong><%= I18n.t "static_pages.search.causes" %></strong>',
+            },
+            {
+                listLocation: "events",
+                header: '<strong><%= I18n.t "static_pages.search.events" %></strong>',
+            },
+            {
+                listLocation: "blogs",
+                header: '<strong><%= I18n.t "static_pages.search.blogs" %></strong>',
+            }
+        ],
+        list: {
+            onChooseEvent: function() {
+                var url = $input.getSelectedItemData().url;
+                $input.val("");
+                Turbolinks.visit(url);
+            }
+        }
+    };
+
+    $input.easyAutocomplete(options);
+});

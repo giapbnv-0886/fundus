@@ -1,0 +1,23 @@
+<% provide :title, t("static_pages.search.search") %>
+
+<h2><%= t "static_pages.search.search" %> </h2>
+<section id="event" class="event-list">
+  <div class="container">
+    <div class="row section-content">
+      <div class="event-list-content">
+        <h3><%= t "static_pages.search.causes" %></h3>
+        <div class="row">
+          <%= render partial: "causes/cause", collection: @causes, as: "cause" %>
+        </div>
+        <h3><%= t "static_pages.search.events" %></h3>
+        <div class="row">
+          <%= render partial: "events/event", collection: @events, as: "event" %>
+        </div>
+        <h3><%= t "static_pages.search.blogs" %></h3>
+        <div class="row">
+          <%= render partial: "blogs/blog", collection: @blogs, as: "blog" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
