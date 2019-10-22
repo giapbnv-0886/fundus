@@ -6,9 +6,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable, :confirmable,
          :omniauthable, omniauth_providers: %i(facebook)
 
-  has_many :blogs, dependent: :destroy
-  has_many :events, dependent: :destroy
   has_many :causes, dependent: :destroy
+  has_many :blogs, through: :causes, dependent: :destroy
+  has_many :events, through: :causes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship",
            foreign_key: "follower_id",dependent: :destroy

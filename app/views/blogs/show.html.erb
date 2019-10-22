@@ -15,7 +15,7 @@
                 </div>
                 <div class="blog-recent-post-meta">
                   <ul class="meta-list pb20 mb20">
-                    <li><span class = "mr5 ti-pencil"></span><%= link_to @blog.user.name, @blog.user, class: "black" %></li>
+                    <li><span class = "mr5 ti-pencil"></span><%= link_to @blog.cause_user_name, @blog.cause_user, class: "black" %></li>
                     <li><span class="mr5 ti-timer"></span> <span class = "black"> <%= (@blog.created_at).strftime("%D") %></span></li>
                     <li><span class="mr5 ti-comment-alt"></span><%= @blog.comments.count %></li>
                     <% if user_signed_in? %>
@@ -50,6 +50,9 @@
 
             <div class="col-sm-4">
               <div class="side-bar-content ml15">
+                <div class="event-single-time-location clearfix mt25 pt40">
+                  <%= render partial: "causes/cause_event", locals: { cause: @blog.cause } %>
+                </div>
                 <div class="category mb40">
                   <div class="side-bar-title mb40">
                     <h2 class="widgettitle"><%= t("blog.view.categories") %></h2>

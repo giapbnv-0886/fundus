@@ -1,9 +1,13 @@
 class Blog < ApplicationRecord
-  belongs_to :user
-  belongs_to :category
+  belongs_to :user, optional: true
+  belongs_to :category, optional: true
+  belongs_to :cause, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :tags
   validates :user_id, presence: true
+
+  delegate :user, :user_name, :user_email, to: :cause, prefix: true, allow_nil: true
+
   validates :title, presence: true, length: {maximum: 140}
   validate :limit_tags
 

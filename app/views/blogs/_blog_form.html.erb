@@ -1,4 +1,4 @@
-<%= form_for @blog do |f| %>
+<%= form_for @blog, url: cause_blogs_path(@cause) do |f| %>
   <div class="row">
     <div class="col-md-6 col-md-offset-3 form-group">
       <%= f.label t("blog.view.title") %><br>
@@ -7,7 +7,6 @@
       <%= f.text_field :hash_tag, class: "form-control", id: "tags" %><br>
       <%= f.label :category %>
       <%= f.collection_select :category_id, Category.all, :id, :name , options = {},html_options = {class: "form-control"} %><br>
-      <%= hidden_field_tag :user_id, current_user.id %>
     </div>
   </div>
   <div class="row">
