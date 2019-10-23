@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Fundus || <%= yield(:title) %></title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Fundus || <%= yield(:title) %></title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
-    <%= render "layouts/shim" %>
-  </head>
-  <body>
-    <%= render "layouts/header" %>
-    <div class="body">
-      <% flash.each do |type, message| %>
-        <div class="alert alert-<%= type %>"><%= message %></div>
-      <% end %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
-    </div>
-      <%= render "layouts/footer" %>
-  </body>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+  <%= render "layouts/shim" %>
+</head>
+<body>
+  <%= render "layouts/header" %>
+  <div class="body">
+    <% flash.each do |type, message| %>
+    <div class="alert alert-<%= type %>"><%= message %></div>
+    <% end %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </div>
+  <%= render "layouts/footer" %>
+</body>
+<script>
+  $(document).on('ready page:load', function () {
+    $('#tags').chosen({
+      allow_single_deselect: true,
+      width: '100%'
+    })
+  });
+</script>
 </html>
 

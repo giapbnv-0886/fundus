@@ -1,0 +1,18 @@
+<% provide :title, t("static_page.view.notF") %>
+<section id="error" class="error-section pb60">
+  <div class="container">
+    <div class="row section-content text-center">
+      <div class="error-section-content pb30">
+        <h2 class="red"><%= t "static_page.view.notF" %></h2>
+      </div>
+      <div class="error-text text-uppercase text-center pb20">
+        <p><%= t "static_page.view.oops", class: "red ti-signal" %></p>
+      </div>
+      <div class="become-member-button text-center text-uppercase">
+        <div class="donate-btn text-uppercase">
+          <%= link_to t("static_page.view.goto"), root_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

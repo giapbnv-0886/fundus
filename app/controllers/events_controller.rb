@@ -45,7 +45,7 @@ class EventsController < ApplicationController
   end
 
   def get_attendance
-    @attendance = @event.active_attendances.find_by user_id: current_user.id if user_signed_in?
+    @attendance = @event.attendances.find_by user_id: current_user.id if user_signed_in?
   end
 
   def get_event

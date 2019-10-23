@@ -64,7 +64,17 @@
               </div>
               <p><i>author: </i><%= link_to @cause.user.name, user_path(@cause.user) %></p>
               <div class="cause-details-text">
-                <div><%= @cause.detail.html_safe %></div>
+                <p><%= render_with_hashtags @cause.detail %></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="side-bar-content ml15">
+              <div class="side-bar-search mb40">
+                <form action="#" method="get">
+                  <%= text_field :search, placeholder: t("cause.view.search") %>
+                  <button type="submit"><span class="ti-search"></span></button>
+                </form>
               </div>
               <br>
               <div class="row">

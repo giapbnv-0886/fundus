@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_15_153558) do
+ActiveRecord::Schema.define(version: 2019_10_18_085357) do
 
   create_table "attendances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "event_id"
@@ -22,15 +22,23 @@ ActiveRecord::Schema.define(version: 2019_10_15_153558) do
 
   create_table "blogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
+    t.string "hash_tag"
     t.text "content"
     t.text "photo", limit: 4294967295, collation: "utf8mb4_bin"
-    t.bigint "user_id"
     t.bigint "category_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_blogs_on_category_id"
     t.index ["user_id", "created_at"], name: "index_blogs_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_blogs_on_user_id"
+  end
+
+  create_table "blogs_tags", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "blog_id"
+    t.bigint "tag_id"
+    t.index ["blog_id"], name: "index_blogs_tags_on_blog_id"
+    t.index ["tag_id"], name: "index_blogs_tags_on_tag_id"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -54,6 +62,13 @@ ActiveRecord::Schema.define(version: 2019_10_15_153558) do
     t.index ["user_id"], name: "index_causes_on_user_id"
   end
 
+  create_table "causes_tags", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "cause_id"
+    t.bigint "tag_id"
+    t.index ["cause_id"], name: "index_causes_tags_on_cause_id"
+    t.index ["tag_id"], name: "index_causes_tags_on_tag_id"
+  end
+
   create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "data_file_name", null: false
     t.string "data_content_type"
@@ -70,7 +85,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_153558) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
-    t.integer "reply_for", default: 0
+    t.integer "parent_id"
     t.bigint "blog_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -127,6 +142,13 @@ ActiveRecord::Schema.define(version: 2019_10_15_153558) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "events_tags", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "tag_id"
+    t.index ["event_id"], name: "index_events_tags_on_event_id"
+    t.index ["tag_id"], name: "index_events_tags_on_tag_id"
+  end
+
   create_table "events_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "event_id", null: false
     t.bigint "user_id", null: false
@@ -140,6 +162,12 @@ ActiveRecord::Schema.define(version: 2019_10_15_153558) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -171,12 +199,18 @@ ActiveRecord::Schema.define(version: 2019_10_15_153558) do
 
   add_foreign_key "blogs", "categories"
   add_foreign_key "blogs", "users"
+  add_foreign_key "blogs_tags", "blogs"
+  add_foreign_key "blogs_tags", "tags"
   add_foreign_key "causes", "categories"
   add_foreign_key "causes", "users"
+  add_foreign_key "causes_tags", "causes"
+  add_foreign_key "causes_tags", "tags"
   add_foreign_key "comments", "blogs"
   add_foreign_key "comments", "users"
   add_foreign_key "donations", "causes"
   add_foreign_key "donations", "users"
   add_foreign_key "events", "categories"
   add_foreign_key "events", "users"
+  add_foreign_key "events_tags", "events"
+  add_foreign_key "events_tags", "tags"
 end

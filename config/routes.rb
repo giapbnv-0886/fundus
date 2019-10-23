@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get "/about", to: "static_pages#about"
   get "/contact", to: "static_pages#contact"
   get "/search", to: "static_pages#search"
+  get "/help", to: "static_pages#help"
+    get "tags/:name", to: "tags#show"
 
   resources :users, only: %i(index show)
   resources :comments
@@ -27,6 +29,7 @@ Rails.application.routes.draw do
     resource :donations, only: %i(new create)
     resource :purchases, only: %i(new create)
   end
+
   resources :categories
 
 
