@@ -1,0 +1,18 @@
+var cause_content = $('.tab-content #my-cause-content');
+var willpage = $('.tab-content #will-page');
+var exportcsv = $('.tab-content #export-csv');
+var create_item = $('.tab-content #create-item');
+willpage.html('');
+create_item.html('');
+exportcsv.html('');
+
+if(cause_content != null){
+    cause_content.html('<%= j render @blogs %>');
+}
+if(willpage != null){
+    willpage.html('<%= j will_paginate @blogs %>');
+}
+<% if @cause.user == current_user %>
+  create_item.html('<%= j link_to t("cause.view.create_new"), new_cause_blog_path(@cause), class: "btn btn-primary" %>');
+<% end %>
+

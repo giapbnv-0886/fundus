@@ -31,7 +31,12 @@
           <div class="causes-item">
             <div class="row">
               <div class="col-md-9">
-                <%= render @causes %>
+                <div class="row">
+                  <%= render @causes  %>
+                </div>
+                <div class="row">
+                  <%= will_paginate @causes %>
+                </div>
               </div>
               <div class="col-md-3">
                 <div class="side-bar-content ml15">
@@ -48,7 +53,6 @@
                 </div>
               </div>
             </div>
-            <%= will_paginate @causes %>
           </div>
         </div>
       </div>

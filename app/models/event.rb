@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :category
-  belongs_to :user
+  belongs_to :user, optional: true
+  belongs_to :cause, optional: true
 
   has_many :attendances, dependent: :destroy
   has_many :users, through: :attendances, source: :user

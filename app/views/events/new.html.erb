@@ -9,7 +9,9 @@
       </div>
     </div>
     <div class="row">
-      <%= render "event_form" %>
+      <div class="col-md-12 form-group">
+         <%= render "event_form", event: @event, f_url: cause_events_path(@cause) %>
+      </div>
     </div>
   </div>
 </div>

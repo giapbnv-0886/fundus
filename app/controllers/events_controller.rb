@@ -1,28 +1,45 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: %i{show edit}
   before_action :correct_user, only: %i{destroy}
-  before_action  :get_event, :get_attendance, only: %i{show}
+  before_action :get_event, :get_attendance, only: %i{show}
   before_action :get_category, only: %i(index show)
+  before_action :get_cause, only: %i(new index update)
+  before_action :correct_cause, only: %i(create update)
 
   def new
-    @event = current_user.events.build
+    @event = @cause.events.build
   end
 
   def index
-    @search = Event.search(params[:q])
+    @search = @cause.events.search(params[:q])
     @events = @search.result.sort_by_created.paginate page: params[:page], per_page: 6
+    respond_to do |format|
+      format.html{}
+      format.js{}
+    end
   end
 
   def show
   end
 
   def create
-    @event = current_user.events.build event_params
+    @event = @cause.events.build event_params
     if @event.save
-      redirect_to event_path  @event
+      respond_to do |format|
+        format.html{
+          flash[:success] = t "event.notice.created"
+          redirect_to event_path  @event
+        }
+        format.js{}
+      end
     else
-      flash[:danger] = @event.errors
-      render :new
+      respond_to do |format|
+        format.html{
+          flash[:danger] = @event.errors
+          render :new
+        }
+        format.js{}
+      end
     end
   end
 
@@ -36,7 +53,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit :title, :category_id, :place, :start_time, :end_time, :content, :expiration_date
+    (params.require(:event).permit :title, :category_id, :place, :start_time, :end_time, :content, :expiration_date).reverse_merge({user_id: current_user.id})
   end
 
   def correct_user
@@ -56,5 +73,18 @@ class EventsController < ApplicationController
 
   def get_category
     @categories = Category.all
+  end
+
+  def get_cause
+    @cause = Cause.find_by id: params[:cause_id]
+    return if @cause
+    flash[:danger] = t "cause.error.not_found"
+    respond_to causes_path
+  end
+
+  def correct_cause
+    return if @cause&.user == current_user
+    flash[:warning] = t "cause.error.not_permit"
+    redirect_to @cause
   end
 end

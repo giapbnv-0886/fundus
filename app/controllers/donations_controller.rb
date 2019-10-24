@@ -1,12 +1,16 @@
 class DonationsController < ApplicationController
   before_action :authenticate_user!, only: %i(index new create)
   before_action :get_cause, except: %i(index show edit)
-  before_action :get_object, :get_attributes, :correct_owner, only: %i(index)
+  before_action :get_object, :get_attributes, only: %i(index)
 
 def index
-  csv = ExportCsv.new @object, @attributes
   respond_to do |format|
-    format.csv { send_data csv.perform, filename: "#{t "donation.csv_name", title: @cause.title}.csv" }
+    format.csv {
+      correct_owner
+      csv = ExportCsv.new @object, @attributes
+      send_data csv.perform, filename: "#{t "donation.csv_name", title: @cause.title}.csv"
+    }
+    format.js{}
   end
 end
 

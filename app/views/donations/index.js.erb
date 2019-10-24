@@ -1,0 +1,18 @@
+var cause_content = $('.tab-content #my-cause-content');
+var exportcsv = $('.tab-content #export-csv');
+var create_item = $('.tab-content #create-item');
+willpage.html('');
+create_item.html('');
+exportcsv.html('');
+
+if(cause_content != null){
+    cause_content.html('<%= j render "donations_statistical", donations: @object %>');
+    let dt = $('table.datatable');
+    if(dt != null){
+        dt.dataTable();
+    }
+}
+if(exportcsv != null){
+    exportcsv.html('<%= j link_to t("csv.export_btn"), cause_donations_url(@cause, format: :csv, belong: @cause.class.name),
+      html_options = {class: "btn btn-primary"} if @cause.belong? current_user %>');
+}

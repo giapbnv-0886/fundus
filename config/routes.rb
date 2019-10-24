@@ -26,8 +26,10 @@ Rails.application.routes.draw do
   end
   resources :causes
   resources :causes do
-    resource :donations, only: %i(new create)
+    resource :donations, only: %i(index new create)
     resource :purchases, only: %i(new create)
+    resources :events, only: %i(new index create update)
+    resources :blogs, only: %i(new index create update)
   end
 
   resources :categories

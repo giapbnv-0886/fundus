@@ -1,9 +1,12 @@
 class Cause < ApplicationRecord
   belongs_to :category
   belongs_to :user
-
+  has_many :events, dependent: :destroy
+  has_many :blogs, dependent: :destroy
   has_many :donations, dependent: :destroy
   has_and_belongs_to_many :tags
+
+  delegate :name, :email, to: :user, prefix: true, allow_nil: true
 
   validates :title, presence: true, length: {maximum: 140}
   validates :end_time, presence: true

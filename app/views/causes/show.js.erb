@@ -1,0 +1,10 @@
+var cause_content = $('.tab-content #my-cause-content');
+var willpage = $('.tab-content #will-page');
+var create_item = $('.tab-content #create-item');
+var exportcsv = $('.tab-content #export-csv');
+if(cause_content != null){
+    cause_content.html('<%= j render_with_hashtags @cause.detail.html_safe  %>');
+}
+willpage.html('');
+create_item.html('');
+exportcsv.html('');

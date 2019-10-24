@@ -1,0 +1,26 @@
+  <div class="recent-causes-pic-text causes colmd4">
+    <div class="recent-causes-pic">
+      <%= image_tag src="cause-1.jpg" %>
+    </div>
+    <div class="cause-text pt75 pb50">
+      <div class="donate-piechart">
+        <div class="second circle"><canvas width="100" height="100"></canvas><canvas width="80" height="80"></canvas>
+          <strong><%= ratio cause %><i>%</i></strong>
+        </div>
+      </div>
+      <div class="gola-reach">
+        <ul class="gola-reach-list">
+          <li class="black"><%= t("cause.view.raised") %><span class="red"><%= number_to_currency cause.reached_money %></span></li>
+          <li class="black"><%= t("cause.view.goal") %><span class="red"><%= number_to_currency cause.goal_money %></span></li>
+        </ul>
+      </div>
+      <div class="cause-text-head pt15 pb20 p10">
+        <h3><%= link_to cause.title, cause %></h3>
+      </div>
+      <div class="donate-now-btn">
+        <div class="donate-btn margin0 text-uppercase">
+          <%= link_to t("cause.view.donate_now"), cause %>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,29 @@
+<div class="row">
+  <label for="attended-users"><%= t "cause.statistical.list_donation" %></label>
+  <div class="users-statistical">
+    <table id="attended-users" class="table table-striped table-bordered datatable">
+      <thead>
+      <tr>
+        <th><%= t "user.attributes.id" %></th>
+        <th><%= t "user.attributes.name" %></th>
+        <th><%= t "user.attributes.email" %></th>
+        <th><%= t "donation.attributes.amount" %></th>
+        <th><%= t "donation.attributes.description" %></th>
+        <th><%= t "donation.attributes.purechased_at" %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% donations.each do |dn| %>
+        <tr>
+          <td><%= dn.id%></td>
+          <td><%= dn.user.name %></td>
+          <td><%= dn.user.email %></td>
+          <td><%= t "cause.view.amount", amount: dn.amount %></td>
+          <td><%= dn.description %></td>
+          <td><%= dn.purchased_at.to_s %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
