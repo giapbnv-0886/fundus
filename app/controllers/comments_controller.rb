@@ -37,7 +37,7 @@ class CommentsController < ApplicationController
   end
 
   def get_blog
-    @blog = Blog.find_by id: params[:blog_id]
+    @blog = Blog.find_by_slug(params[:blog_id]) || Blog.find_by(id: params[:blog_id])
     return if @blog
     redirect_to root_path
   end

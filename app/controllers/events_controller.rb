@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :correct_user, only: %i{destroy}
   before_action :get_event, :get_attendance, only: %i{show}
   before_action :get_category, only: %i(index show)
-  before_action :get_cause, only: %i(new index update)
+  before_action :get_cause, only: %i(index new create update)
   before_action :correct_cause, only: %i(create update)
 
   def new
@@ -66,7 +66,7 @@ class EventsController < ApplicationController
   end
 
   def get_event
-    @event = Event.find_by id: params[:id]
+    @event = Event.find_by_slug(params[:id]) ||Event.find_by(id: params[:id])
     return if @event
     redirect_to root_path
   end
@@ -76,7 +76,7 @@ class EventsController < ApplicationController
   end
 
   def get_cause
-    @cause = Cause.find_by id: params[:cause_id]
+    @cause = Cause.find_by_slug(params[:cause_id]) || Cause.find_by(id: params[:cause_id])
     return if @cause
     flash[:danger] = t "cause.error.not_found"
     respond_to causes_path

@@ -37,7 +37,7 @@ end
 
   private
   def get_cause
-    @cause = Cause.find_by id: params[:cause_id]
+    @cause = Cause.find_by_slug(params[:cause_id]) || Cause.find_by(id: params[:cause_id])
     return if @cause
     flash[:danger] = t "donation.cause.error"
     redirect_to causes_url
@@ -48,7 +48,7 @@ end
   end
 
   def get_object
-    @cause = Cause.find_by id: params[:cause_id]
+    @cause = Cause.find(params[:cause_id]) || Cause.find_by(id: params[:cause_id])
     if @cause
       @object = @cause.donations.purchased
     else

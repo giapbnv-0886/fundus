@@ -17,7 +17,7 @@ class PurchasesController < ApplicationController
 
   private
   def get_cause
-    @cause = Cause.find_by id: params[:cause_id]
+    @cause = Cause.find_by_slug(params[:cause_id]) || Cause.find_by(id: params[:cause_id])
     return if @cause
     flash[:error] = t "purchase.cause.error"
     redirect_to causes_url

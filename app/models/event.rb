@@ -1,4 +1,7 @@
 class Event < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: %i(slugged finders)
+
   belongs_to :category
   belongs_to :user, optional: true
   belongs_to :cause, optional: true
@@ -58,5 +61,9 @@ class Event < ApplicationRecord
       tag = Tag.find_or_create_by name: hashtag.downcase.delete('#')
       event.tags << tag
     end
+  end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || title_changed? || super
   end
 end

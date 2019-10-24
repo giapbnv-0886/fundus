@@ -37,7 +37,7 @@ class AttendancesController < ApplicationController
 
   private
   def get_event
-    @event = Event.find_by id: params[:event_id]
+    @event = Event.find_by_slug(params[:event_id]) || Event.find_by(id: params[:event_id])
     return if @event
     redirect_to events_path
 
@@ -48,7 +48,7 @@ class AttendancesController < ApplicationController
   end
 
   def get_object
-    @event = Event.find_by id: params[:event_id]
+    @event = Event.find_by_slug(params[:event_id]) || Event.find_by(id: params[:event_id])
     if @event
       @object = @event.attendances
     else

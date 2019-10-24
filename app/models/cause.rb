@@ -1,4 +1,7 @@
 class Cause < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: %i(slugged finders)
+
   belongs_to :category
   belongs_to :user
   has_many :events, dependent: :destroy
@@ -15,8 +18,8 @@ class Cause < ApplicationRecord
 
   after_commit :create_hash_tags, on: :create
 
-  scope :sort_by_created, ->{order created_at: :desc}
-  scope :recent_post, -> {limit 3}
+  scope :sort_by_created, -> { order created_at: :desc }
+  scope :recent_post, -> { limit 3 }
 
   def check_time
     if end_time < Date.today
@@ -35,5 +38,9 @@ class Cause < ApplicationRecord
       tag = Tag.find_or_create_by name: hashtag.downcase.delete('#')
       cause.tags << tag
     end
+  end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || title_changed? || super
   end
 end
