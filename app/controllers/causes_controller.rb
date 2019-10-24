@@ -24,6 +24,7 @@ class CausesController < ApplicationController
     if @cause.save
       redirect_to @cause
     else
+      flash[:danger] = @cause.errors.message
       redirect_to root_path
     end
   end
@@ -34,7 +35,7 @@ class CausesController < ApplicationController
   end
 
   def get_cause
-    @cause = Cause.find_by id: params[:id]
+    @cause = Cause.find_by_slug(params[:id]) || Cause.find_by(id: params[:id])
     return if @cause
     redirect_to root_path
   end

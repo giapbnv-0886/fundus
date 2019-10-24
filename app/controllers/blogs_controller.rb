@@ -19,7 +19,7 @@ class BlogsController < ApplicationController
   end
 
   def show
-    @blog = Blog.find_by id: params[:id]
+    @blog = Blog.find_by_slug(params[:id]) || Blog.find_by(id: params[:id])
     @comments = @blog.comments.parent_comments.paginate page: params[:page], per_page: 5
     @category = @blog.category
     @categories = Category.all
@@ -56,7 +56,7 @@ class BlogsController < ApplicationController
   end
 
   def get_cause
-    @cause = Cause.find_by id: params[:cause_id]
+    @cause = Cause.find_by_slug(params[:cause_id]) || Cause.find_by(id: params[:cause_id])
     return if @cause
     flash[:danger] = t "cause.error.not_found"
     redirect_to causes_path
