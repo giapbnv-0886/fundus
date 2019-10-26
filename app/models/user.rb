@@ -2,6 +2,8 @@ class User < ApplicationRecord
   AUTHORITIES = {admin: "admin", founder: "founder", member: "member"}.freeze
   enum role: AUTHORITIES
 
+  acts_as_paranoid
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable, :confirmable,
          :omniauthable, omniauth_providers: %i(facebook)

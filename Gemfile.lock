@@ -242,6 +242,8 @@ GEM
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
     orm_adapter (0.5.0)
+    paranoia (2.4.2)
+      activerecord (>= 4.0, < 6.1)
     polyamorous (2.3.0)
       activerecord (>= 5.0)
     public_suffix (3.1.1)
@@ -409,6 +411,7 @@ DEPENDENCIES
   mini_racer
   mysql2 (>= 0.4.4, < 0.6.0)
   omniauth-facebook
+  paranoia
   puma (~> 3.11)
   pundit
   rails (~> 5.2.3)
