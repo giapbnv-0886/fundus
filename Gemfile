@@ -41,6 +41,9 @@ gem "delayed_job_active_record"
 gem "devise-async"
 gem "friendly_id"
 gem "paranoia"
+gem "redis"
+gem "hiredis"
+
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
 end
