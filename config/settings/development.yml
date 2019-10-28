@@ -5,3 +5,5 @@ ggmap:
       lng: 105.853
     location: "Don't have money, set default: Ha Noi, Viet Nam"
   key: <%= ENV["GOOGLE_KEY"] %>
+redis_cache:
+  expired_time: 30

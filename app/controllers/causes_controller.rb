@@ -1,7 +1,5 @@
 class CausesController < ApplicationController
-
   before_action :authenticate_user!, only: %i{new create destroy}
-
   before_action :get_cause, only: %i(show)
   before_action :correct_user, only: %i{destroy}
   before_action :get_cause, only: %i(show edit)
@@ -12,8 +10,8 @@ class CausesController < ApplicationController
   end
 
   def index
-    @search = Cause.ransack( params[:q])
-    @causes = @search.result.sort_by_created.paginate page: params[:page], per_page: 6
+    @causes = fetch_from_redis
+    # @causes = Cause.all.sort_by_created.paginate page: params[:page], per_page: 6
   end
 
   def show
@@ -42,5 +40,12 @@ class CausesController < ApplicationController
 
   def get_category
     @categories = Category.all
+  end
+
+  def fetch_from_redis
+    causes = Rails.cache.fetch("causes:index:#{params[:page]}", expires_in: 30.minutes) do
+      Cause.all.sort_by_created.paginate page: params[:page], per_page: 6
+    end
+    return causes
   end
 end

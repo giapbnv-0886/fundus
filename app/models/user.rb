@@ -21,12 +21,22 @@ class User < ApplicationRecord
 
   has_many :attendances, dependent: :destroy
   has_many :attend_events, through: :attendances, source: :event
-
   has_many :donations, dependent: :destroy
 
   validates :name, presence: true, length: {maximum: 50}
 
-
+  def cached_causes
+    c_causes = Rails.cache.fetch([cache_key, updated_at.to_i.to_s, __method__.to_s]) do
+      causes
+    end
+    reflection = self.class.reflect_on_association(:causes)
+    if association_instance_get(name).nil?
+      association = reflection.association_class.new(self, reflection)
+      association.target = c_causes
+      association_instance_set(:causes, association)
+    end
+    c_causes
+  end
 
   class << self
     def from_omniauth auth

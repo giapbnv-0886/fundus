@@ -170,6 +170,7 @@ GEM
       temple (>= 0.8.0)
       tilt
     hashie (3.6.0)
+    hiredis (0.6.3)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.9.3)
@@ -251,6 +252,8 @@ GEM
     pundit (2.1.0)
       activesupport (>= 3.0.0)
     rack (2.0.7)
+    rack-cache (1.9.0)
+      rack (>= 0.4)
     rack-pjax (1.1.0)
       nokogiri (~> 1.5)
       rack (>= 1.1)
@@ -307,6 +310,28 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    redis (4.1.3)
+    redis-actionpack (5.1.0)
+      actionpack (>= 4.0, < 7)
+      redis-rack (>= 1, < 3)
+      redis-store (>= 1.1.0, < 2)
+    redis-activesupport (5.2.0)
+      activesupport (>= 3, < 7)
+      redis-store (>= 1.3, < 2)
+    redis-namespace (1.6.0)
+      redis (>= 3.0.4)
+    redis-rack (2.0.6)
+      rack (>= 1.5, < 3)
+      redis-store (>= 1.2, < 2)
+    redis-rack-cache (2.1.2)
+      rack-cache (>= 1.6, < 2)
+      redis-store (>= 1.6, < 2)
+    redis-rails (5.0.2)
+      redis-actionpack (>= 5.0, < 6)
+      redis-activesupport (>= 5.0, < 6)
+      redis-store (>= 1.2, < 2)
+    redis-store (1.8.1)
+      redis (>= 4, < 5)
     regexp_parser (1.6.0)
     remotipart (1.4.3)
     responders (3.0.0)
@@ -401,6 +426,7 @@ DEPENDENCIES
   devise-async
   figaro
   friendly_id
+  hiredis
   jbuilder (~> 2.5)
   jquery-datatables
   jquery-rails
@@ -419,6 +445,10 @@ DEPENDENCIES
   rails_admin
   rails_admin_rollincode
   ransack
+  redis
+  redis-namespace
+  redis-rack-cache
+  redis-rails
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

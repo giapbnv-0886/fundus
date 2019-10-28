@@ -4,8 +4,8 @@ class Cause < ApplicationRecord
 
   acts_as_paranoid
 
-  belongs_to :category
-  belongs_to :user
+  belongs_to :category, touch: true
+  belongs_to :user, touch: true
   has_many :events, dependent: :destroy
   has_many :blogs, dependent: :destroy
   has_many :donations, dependent: :destroy

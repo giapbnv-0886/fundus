@@ -82,4 +82,11 @@ Rails.application.configure do
     }
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
   end
+
+  config.cache_store = :redis_store, {
+      expires_in: (Settings.redis_cache.expired_time).minutes,
+      namespace: 'cache',
+      redis: { host: ENV.fetch('REDIS_HOST', "localhost"), port: ENV.fetch("REDIS_PORT", 6379), db: ENV.fetch("REDIS_DB", 0) },
+  }
+  config.action_controller.perform_caching = true
 end
