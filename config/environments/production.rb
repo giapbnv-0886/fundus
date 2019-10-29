@@ -89,6 +89,33 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  Rails.application.default_url_options[:host] = ENV["DEFAULT_HOST"]
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.action_mailer.default_url_options = { host: "sun-fundus.tk", port: 80 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address: ENV.fetch("MAIL_ADDRESS", "smtp.gmail.com"),
+      domain: ENV.fetch("MAIL_DOMAIN", "gmail.com"),
+      port: ENV.fetch("MAIL_PORT", 587),
+      user_name: ENV["MAIL_USER"],
+      password: ENV["MAIL_PASSWORD"],
+      authentication: 'plain',
+      enable_starttls_auto: true
+  }
+
+  #config paypal payment
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    paypal_options = {
+        login: ENV["PAYPAL_USERNAME"],
+        password: ENV["PAYPAL_PASSWORD"],
+        signature: ENV["PAYPAL_SIGNATURE"]
+    }
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+  end
+
+  #config redis
+  config.cache_store = :redis_cache_store, { driver: :hiredis, url: ENV['REDIS_URL'] }
+  config.action_controller.perform_caching = true
 end

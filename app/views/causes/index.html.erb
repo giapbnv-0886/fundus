@@ -32,7 +32,14 @@
             <div class="row">
               <div class="col-md-9">
                 <div class="row">
-                  <%= render @causes  %>
+                  <% cache @causes do %>
+                    <%= render @causes  %>
+                  <% end %>
+                  <%# @causes.each do |cause| %>
+                    <%# cache cause do  %>
+                      <%#= render cause %>
+                    <%# end %>
+                  <%# end %>
                 </div>
                 <div class="row">
                   <%= will_paginate @causes %>

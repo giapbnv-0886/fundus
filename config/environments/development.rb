@@ -84,6 +84,6 @@ Rails.application.configure do
   end
 
   #config redis
-  config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
+  config.cache_store = :redis_cache_store, { driver: :hiredis, url: ENV['REDIS_URL'] }
   config.action_controller.perform_caching = true
 end
