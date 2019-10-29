@@ -2,6 +2,8 @@ class Blog < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: %i(slugged finders)
 
+  acts_as_paranoid
+
   belongs_to :user, optional: true
   belongs_to :category, optional: true
   belongs_to :cause, dependent: :destroy

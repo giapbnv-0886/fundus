@@ -2,6 +2,8 @@ class Cause < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: %i(slugged finders)
 
+  acts_as_paranoid
+
   belongs_to :category
   belongs_to :user
   has_many :events, dependent: :destroy

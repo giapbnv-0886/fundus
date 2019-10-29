@@ -1,6 +1,8 @@
 class Donation < ApplicationRecord
   CSV_ATTRIBUTES = %w(id user_name user_email amount description purchased_at)
 
+  acts_as_paranoid
+
   belongs_to :user
   belongs_to :cause
 
