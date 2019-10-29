@@ -1,0 +1,58 @@
+<% provide :title, t("cadmin.view.base.title") %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 form-group">
+    <table id="dttb" class="table table-hover">
+      <thead>
+        <tr>
+          <th> <%= t "cadmin.view.base.model" %> </th>
+          <th> <%= t "cadmin.view.base.last_created" %> </th>
+          <th> <%= t "cadmin.view.base.record" %> </th>
+
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td><%= link_to t("cadmin.view.base.user"), cadmin_users_path  %></td>
+          <td><%= User.last.created_at %></td>
+          <td><%= User.all.count %></td>
+        </tr>
+        <tr>
+          <td><%= link_to t("cadmin.view.base.cause"), cadmin_causes_path  %></td>
+          <td><%= Cause.last.created_at %></td>
+          <td><%= Cause.all.count %></td>
+        </tr>
+        <tr>
+          <td><%= link_to t("cadmin.view.base.event"), cadmin_events_path  %></td>
+          <td><%= Event.last.created_at %></td>
+          <td><%= Event.all.count %></td>
+        </tr>
+        <tr>
+          <td><%= link_to t("cadmin.view.base.blog"), cadmin_blogs_path  %></td>
+          <td><%= Blog.last.created_at %></td>
+          <td><%= Blog.all.count %></td>
+        </tr>
+        <tr>
+          <td><%= link_to t("cadmin.view.base.tag"), cadmin_tags_path  %></td>
+          <td><%= Tag.last.created_at %></td>
+          <td><%= Tag.all.count %></td>
+        </tr>
+        <tr>
+          <td><%= link_to t("cadmin.view.base.categories"), cadmin_categories_path  %></td>
+          <td><%= Category.last.created_at %></td>
+          <td><%= Category.all.count %></td>
+        </tr>
+        <tr>
+          <td><%= link_to t("cadmin.view.base.attendances"), cadmin_attendances_path  %></td>
+          <td><%= Attendance.last.created_at %></td>
+          <td><%= Attendance.all.count %></td>
+        </tr>
+        <tr>
+          <td><%= link_to t("cadmin.view.base.comments"), cadmin_comments_path  %></td>
+          <td><%= Comment.last.created_at %></td>
+          <td><%= Comment.all.count %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

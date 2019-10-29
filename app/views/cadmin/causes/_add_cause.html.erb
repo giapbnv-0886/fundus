@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-4">
+  </div>
+  <div class="col-sm-4">
+    <button class="btn btn-success" id="open-cause" ><%= t("cadmin.view.cause.create_new") %> </button>
+    <div id="dialog-cause" >
+      <%= render 'cadmin/causes/form', cause: Cause.new, f_cause_url: cadmin_causes_path %>
+    </div>
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>

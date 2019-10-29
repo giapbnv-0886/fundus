@@ -1,0 +1,35 @@
+<% provide :title, t("cadmin.view.comment.title") %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 form-group">
+    <%= link_to t("cadmin.view.comment.create_new"), new_cadmin_comment_path, class: "btn btn-success" %>
+    <table id="dttb" class="table table-hover">
+      <thead>
+        <tr>
+          <th> <%= t "cadmin.view.comment.id" %> </th>
+          <th> <%= t "cadmin.view.comment.content" %> </th>
+          <th> <%= t "cadmin.view.comment.blog_id" %> </th>
+          <th> <%= t "cadmin.view.comment.user_id" %> </th>
+          <th> <%= t "cadmin.view.comment.parent_id" %> </th>
+          <th> <%= t "cadmin.view.comment.created_at" %> </th>
+          <th> <%= t "cadmin.view.comment.updated_at" %> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @comments.each do |comment| %>
+        <tr>
+          <td><%= link_to comment.id, cadmin_comment_path(id: comment.id) %></td>
+          <td><%= link_to comment.content, cadmin_comment_path(id: comment.id) %></td>
+          <td><%= link_to comment.blog_id %></td>
+          <td><%= link_to comment.user_id %></td>
+          <td><%= link_to comment.parent_id %></td>
+          <td><%= link_to comment.created_at, cadmin_comment_path(id: comment.id) %></td>
+          <td><%= link_to comment.updated_at, cadmin_comment_path(id: comment.id) %></td>
+          <td><%= link_to "", cadmin_comment_path(id: comment.id), class:"mr5 ti-eye" %></td>
+          <td><%= link_to "", edit_cadmin_comment_path(id: comment.id), class:"mr5 ti-pencil" %></td>
+          <td><%= link_to "", cadmin_comment_path(id: comment.id), method: :delete, data: { confirm: t("cadmin.view.comment.sure")}, class:"mr5 ti-trash" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

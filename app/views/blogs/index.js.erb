@@ -16,3 +16,17 @@ if(willpage != null){
   create_item.html('<%= j link_to t("cause.view.create_new"), new_cause_blog_path(@cause), class: "btn btn-primary" %>');
 <% end %>
 
+<% if @cause.user == current_user %>
+  create_item.html('<%= j render "dialog_blog" %>');
+  var dialog_3 = $("#dialog-3");
+  var opener_3 = $("#opener-3");
+
+  dialog_3.dialog({
+    autoOpen: false,
+    width: 800,
+    left: 200,
+  });
+  opener_3.click(function() {
+    dialog_3.dialog("open")
+  });
+<% end %>

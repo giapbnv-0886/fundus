@@ -1,0 +1,7 @@
+<% provide :title, t("cadmin.view.comment.title") %>
+<% provide :button_text, t("cadmin.view.comment.sa") %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 form-group">
+   <%= render "form_comment", comment: @comment, f_comment_url: cadmin_comment_path %>
+  </div>
+</div>

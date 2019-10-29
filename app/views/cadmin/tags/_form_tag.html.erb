@@ -1,0 +1,9 @@
+<%= form_for tag, url: f_tag_url do |f| %>
+    <div class="field">
+      <%= f.label t("cadmin.view.tag.name") %> <br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+    </div>
+    <div class="actions">
+      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    </div>
+    <% end %>

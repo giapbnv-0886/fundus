@@ -1,0 +1,7 @@
+<% provide :title, t("cadmin.view.category.title") %>
+<% provide :button_text, t("cadmin.view.category.create") %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 form-group">
+    <%= render "form", category: @category, f_category_url: cadmin_categories_path %>
+  </div>
+</div>

@@ -6,7 +6,7 @@ class Blog < ApplicationRecord
 
   belongs_to :user, optional: true
   belongs_to :category, optional: true
-  belongs_to :cause, dependent: :destroy
+  belongs_to :cause
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :tags
   validates :user_id, presence: true

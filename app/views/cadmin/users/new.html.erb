@@ -1,0 +1,19 @@
+<% provide :title, t("devise.registrations.sign_up") %>
+<% provide :button_text, t("cadmin.view.user.create") %>
+<section id="way-help" class="way-help-section">
+  <div class="container">
+    <div class="row section-content">
+
+      <div class="section-title text-center">
+        <div class="section-title-text text-uppercase">
+          <h2><%= t "cadmin.view.user.create_account" %></h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 form-group">
+          <%= render "form_user", user: @user, f_user: cadmin_users_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

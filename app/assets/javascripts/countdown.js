@@ -1,4 +1,4 @@
-		var target_date = new Date().getTime() + (1000*3600*48); // set the countdown date
+var target_date = new Date().getTime() + (1000*3600*48); // set the countdown date
 var days, hours, minutes, seconds; // variables for time units
 
 var countdown = document.getElementById("tiles"); // get tag element
@@ -23,7 +23,7 @@ function getCountdown(){
 	seconds = pad( parseInt( seconds_left % 60 ) );
 
 	// format countdown string + set tag value
-	countdown.innerHTML = "<span>" + days + "</span><span>" + hours + "</span><span>" + minutes + "</span><span>" + seconds + "</span>"; 
+	countdown.innerHTML = "<span>" + days + "</span><span>" + hours + "</span><span>" + minutes + "</span><span>" + seconds + "</span>";
 }
 
 function pad(n) {

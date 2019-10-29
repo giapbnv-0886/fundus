@@ -12,12 +12,15 @@
 //
 
 //= require jquery
+//= require jquery_ujs
 //= require bootstrap
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require jquery-ui
 //= require google_map
 //= require ckeditor/init
 //= require datatables
 //= require jquery_ujs
+//= require jquery-ui/widgets/autocomplete
 //= require_tree .

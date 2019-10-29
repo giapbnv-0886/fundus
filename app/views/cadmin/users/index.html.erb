@@ -1,0 +1,31 @@
+<% provide :title, t("cadmin.view.user.title") %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 form-group">
+    <%= link_to t("cadmin.view.user.create_account"), new_cadmin_user_path, class: "btn btn-success" %>
+    <table id="dttb" class="table table-hover">
+      <thead>
+        <tr>
+          <th> <%= t "cadmin.view.user.id" %> </th>
+          <th> <%= t "cadmin.view.user.name" %></th>
+          <th> <%= t "cadmin.view.user.email" %> </th>
+          <th> <%= t "cadmin.view.user.created" %> </th>
+          <th> <%= t "cadmin.view.user.updated" %> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.id, cadmin_user_path(id: user.id) %></td>
+          <td><%= link_to user.email, cadmin_user_path(id: user.id) %></td>
+          <td><%= link_to user.name, cadmin_user_path(id: user.id) %></td>
+          <td><%= link_to user.created_at, cadmin_user_path(id: user.id) %></td>
+          <td><%= link_to user.updated_at, cadmin_user_path(id: user.id) %></td>
+          <td><%= link_to "", cadmin_user_path(id: user.id), class:"mr5 ti-eye" %></td>
+          <td><%= link_to "", edit_cadmin_user_path(id: user.id), class:"mr5 ti-pencil" %></td>
+          <td><%= link_to "", cadmin_user_path(id: user.id), method: :delete, data: { confirm: "You sure?" }, class:"mr5 ti-trash" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-4">
+  </div>
+  <div class="col-sm-4">
+    <button class="btn btn-success" id="open-blog" ><%= t("cadmin.view.blog.create_new") %> </button>
+    <div id="dialog-blog" >
+      <%= render 'cadmin/blogs/form', blog: Blog.new, f_blog_url: cadmin_blogs_path %>
+    </div>
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>

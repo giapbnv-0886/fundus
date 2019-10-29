@@ -1,0 +1,21 @@
+<% provide :title, t("cadmin.view.category.title") %>
+<div class="row">
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 form-group">
+
+    <%= label_tag t("cadmin.view.category.name") %><br />
+    <%= text_field_tag :name, @category.name, class: "form-control", disabled: "disabled" %>
+
+    <%= label_tag t("cadmin.view.category.causes") %><br />
+    <%= text_field_tag :causes, @category.causes.count, class: "form-control", disabled: "disabled" %>
+
+    <%= label_tag t("cadmin.view.category.events") %><br />
+    <%= text_field_tag :events, @category.events.count, class: "form-control", disabled: "disabled" %>
+
+    <%= label_tag t("cadmin.view.category.blogs") %><br />
+    <%= text_field_tag :blogs, @category.blogs.count, class: "form-control", disabled: "disabled" %>
+  </div>
+</div>
+</div>
+

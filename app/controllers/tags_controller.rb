@@ -8,7 +8,6 @@ class TagsController < ApplicationController
     else
       render "static_pages/404"
     end
-
   end
 
 end

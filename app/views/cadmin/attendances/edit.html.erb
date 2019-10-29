@@ -1,0 +1,7 @@
+<% provide :title, t("cadmin.view.attendance.title") %>
+<% provide :button_text, t("cadmin.view.attendance.sa") %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 form-group">
+   <%= render "form", attendance: @attendance, f_attendance_url: cadmin_attendance_path %>
+  </div>
+</div>

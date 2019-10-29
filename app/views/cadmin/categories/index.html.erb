@@ -1,0 +1,29 @@
+<% provide :title, t("cadmin.view.category.title") %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 form-group">
+    <%= link_to t("cadmin.view.category.create_new"), new_cadmin_category_path, class: "btn btn-success" %>
+    <table id="dttb" class="table table-hover">
+      <thead>
+        <tr>
+          <th> <%= t "cadmin.view.category.id" %> </th>
+          <th> <%= t "cadmin.view.category.name" %> </th>
+          <th> <%= t "cadmin.view.category.created_at" %> </th>
+          <th> <%= t "cadmin.view.category.updated_at" %> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @categories.each do |category| %>
+        <tr>
+          <td><%= link_to category.id, cadmin_category_path(id: category.id) %></td>
+          <td><%= link_to category.name, cadmin_category_path(id: category.id) %></td>
+          <td><%= link_to category.created_at, cadmin_category_path(id: category.id) %></td>
+          <td><%= link_to category.updated_at, cadmin_category_path(id: category.id) %></td>
+          <td><%= link_to "Show", cadmin_category_path(id: category.id) %></td>
+          <td><%= link_to "Edit", edit_cadmin_category_path(id: category.id) %></td>
+          <td><%= link_to "Destroy", cadmin_category_path(id: category.id), method: :delete, data: { confirm: t("cadmin.view.category.sure") } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

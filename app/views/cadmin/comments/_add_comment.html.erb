@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-4">
+  </div>
+  <div class="col-sm-4">
+    <button class="btn btn-success" id="open-comment" ><%= t "cadmin.view.comment.create_new" %> </button>
+    <div id="dialog-comment" >
+      <%= render 'cadmin/comments/form_comment', comment: Comment.new, f_comment_url: cadmin_comments_path %>
+    </div>
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>

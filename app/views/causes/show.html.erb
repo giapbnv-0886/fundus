@@ -22,7 +22,9 @@
   </div>
 </div>
 </section>
+<script>
 
+</script>
 <section id="cause-details-content" class="cause-details-section">
   <div class="container">
     <div class="row section-content">
@@ -47,22 +49,25 @@
                   <p><%= t "cause.view.reached" %>  <%= number_to_currency @cause.reached_money %> </p>
                 </div>
                 <div class="count-reached pull-right">
-                  <p><%= t "cause.view.goal" %>  <%= number_to_currency @cause.goal_money %> </p>
+                  <p><%= t "cause.view.goal" %>  <%= number_to_currency @cause.goal_money %></p>
                 </div>
               </div>
               <div class="donate-now-btn">
-                <div class="donate-btn text-uppercase">
-                 <%= link_to t("cause.view.donate_now"), new_cause_purchases_path(@cause), remote: true %>
+                <div class="donate-btn text-uppercase" id="opener" >
+                  <%= t "cause.view.donate_now" %>
                 </div>
               </div>
               <div class="form-donate">
+                <div id="dialog-1" title="<%= t "cause.view.donate_now" %>" >
+                  <%= render "shared/donate_form", cause: @cause %>
+                </div>
               </div>
             </div>
             <div class="cause-details-title">
               <div class="section-title-text mb20">
                 <h2><%= @cause.title %></h2>
               </div>
-              <p><i>author: </i><%= link_to @cause.user.name, user_path(@cause.user) %></p>
+              <p><i><%= t "cause.view.author" %> </i><%= link_to @cause.user.name, user_path(@cause.user) %></p>
               <div class="row">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                   <li class="nav-item">
@@ -93,7 +98,6 @@
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
           <div class="col-sm-4">

@@ -4,7 +4,7 @@
 
 File:           JS Core
 Version:        1.0
-Last change:    00/00/00 
+Last change:    00/00/00
 Author:         Suelo
 
 -------------------------------------------------------------------------------- */
@@ -13,7 +13,7 @@ Author:         Suelo
 
 var Fundme = {
 	init: function() {
-		this.Basic.init();  
+		this.Basic.init();
 	},
 
 	Basic: {
@@ -38,19 +38,19 @@ preloader: function (){
 $(window).load(function(){
 	$('#preloader').fadeOut('slow',function(){$(this).remove();});
 });
-},		
+},
 
 /* - Start Search box
 ================================================*/
 searchBar: function () {
 
 function buttonUp(){
- var valux = $('.sb-search-input').val(); 
+ var valux = $('.sb-search-input').val();
  valux = $.trim(valux).length;
  if(valux !== 0){
   $('.sb-search-submit').css('z-index','99');
 } else{
-  $('.sb-search-input').val(''); 
+  $('.sb-search-input').val('');
   $('.sb-search-submit').css('z-index','-999');
 }
 }
@@ -409,3 +409,4 @@ mainSlide: function() {
 $(document).ready(function (){
 	Fundme.init();
 });
+

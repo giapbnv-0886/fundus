@@ -1,0 +1,2 @@
+module Cadmin::CategoriesHelper
+end

@@ -25,14 +25,14 @@ class PurchasesController < ApplicationController
 
   def express_checkout amount_in_cents, return_url, cancel_url, items
     response = EXPRESS_GATEWAY.setup_purchase(amount_in_cents,
-                                              ip: request.remote_ip,
-                                              return_url: return_url,
-                                              cancel_return_url: cancel_url,
-                                              currency: "USD",
-                                              allow_guest_checkout: true,
-                                              items: items,
-                                              no_shipping: 1
-    )
+      ip: request.remote_ip,
+      return_url: return_url,
+      cancel_return_url: cancel_url,
+      currency: t("purchase.cause.usd"),
+      allow_guest_checkout: true,
+      items: items,
+      no_shipping: 1
+      )
     redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
   end
 end

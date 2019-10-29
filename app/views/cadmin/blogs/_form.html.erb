@@ -1,0 +1,28 @@
+<%= form_for blog, url: f_blog_url do |f| %>
+
+<div class="field">
+  <%= f.label t("cadmin.view.blog.cause") %>
+  <%= f.collection_select :cause_id, Cause.all, :id, :title , options = {},html_options = {class: "form-control"} %><br>
+</div>
+
+<div class="field">
+  <%= f.label t("cadmin.view.blog.ti") %> <br />
+  <%= f.text_field :title, class: "form-control"  %>
+</div>
+<div class="field">
+  <%= f.label t("cadmin.view.blog.hash_tag") %> <br />
+  <%= f.text_field :hash_tag, class: "form-control"  %>
+</div>
+<div class="field">
+  <%= f.label t("cadmin.view.blog.content") %> <br />
+  <%= f.cktext_area :content, class: "form-control", ckeditor: {toolbar: 'Full'} %><br>
+</div>
+
+<div class="field">
+  <%= f.label t("cadmin.view.blog.category_id") %>
+  <%= f.collection_select :category_id, Category.all, :id, :name , options = {},html_options = {class: "form-control"} %><br>
+</div>
+<div class="actions">
+  <%= f.submit yield(:button_text), class: "btn btn-primary"%>
+</div>
+<% end %>

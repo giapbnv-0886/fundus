@@ -1,0 +1,24 @@
+<% provide :title, t("cadmin.view.user.title") %>
+<% provide :button_text, t("cadmin.view.user.lo") %>
+<section id="way-help" class="way-help-section">
+  <div class="container">
+    <div class="row section-content">
+
+      <div class="section-title text-center">
+        <div class="section-title-text text-uppercase">
+          <h2><%= t "cadmin.view.user.update_account" %></h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 form-group">
+          <%= render 'form_user', user: @user, f_user: cadmin_user_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<%= render 'cadmin/causes/add_cause' %>
+<br>
+<%= render 'cadmin/events/add_new' %>
+<br>
+<%= render 'cadmin/blogs/add_blog' %>
