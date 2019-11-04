@@ -103,6 +103,8 @@
           </div>
         </div>
       </div>
+      <%= render partial: "shared/share_to", locals: { title: @cause.title, des: @cause.title, url: cause_url(@cause) } %>
+      <%= render partial: "shared/comment_fb", locals: { post_link: cause_url(@cause) } %>
     </div>
   </div>
 </section>

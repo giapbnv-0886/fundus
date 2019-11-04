@@ -36,6 +36,9 @@ en:
       email: "E-mail"
       phone: "Phone Number"
       attended_at: "Attended at"
+    notice:
+      logged_in: "Log in! success."
+      unlogged_in: "You must login to do it!"
 
   blog:
     view:
@@ -131,6 +134,7 @@ en:
       blogs: "Informations"
       list_donators: "List of Donators"
       create_new: "Create New"
+      share_to: "Share to"
     model:
       errorTime: "can't in the pass"
     statistical:
@@ -206,3 +210,6 @@ en:
       show:
         elemen: "blogs, events and cause"
     model:
+
+  social_share_link:
+    fb: "https://www.facebook.com/sharer/sharer.php?u=%{url}&display=popup&quote=%{des}"
