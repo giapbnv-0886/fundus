@@ -252,7 +252,7 @@ Devise.setup do |config|
   # The "*/*" below is required to match Internet Explorer requests.
   # config.navigational_formats = ['*/*', :html]
 
-  # The default HTTP method used to sign out a resource. Default is :delete.
+  # The default HTTP method used to sign out a facebookauth_callbacks. Default is :delete.
   config.sign_out_via = :delete
 
   # ==> OmniAuth
@@ -260,7 +260,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :facebook, ENV["APP_ID"], ENV["APP_SECRET"],
-    { secure_image_url: true, display: "popup", image_size: "large" }
+    { secure_image_url: false, display: "popup", image_size: "large" }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
