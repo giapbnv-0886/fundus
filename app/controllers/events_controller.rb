@@ -49,15 +49,15 @@ class EventsController < ApplicationController
 
   def destroy
     if @event.destroy
-      redirect_to user_path id: @event.user_id
+      redirect_to user_path id: @event.cause_id
     else
-      redirect_to user_path id: @event.user_id
+      redirect_to user_path id: @event.cause_id
     end
   end
 
   private
   def event_params
-    (params.require(:event).permit :title, :category_id, :place, :start_time, :end_time, :content, :expiration_date).reverse_merge({user_id: current_user.id})
+    params.require(:event).permit :title, :category_id, :place, :start_time, :end_time, :content, :expiration_date
   end
 
   def correct_user

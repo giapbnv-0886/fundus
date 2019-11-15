@@ -363,6 +363,10 @@ en:
         categories: "Categories"
         attendaces: "Attendaces"
         comments: "Comments"
+    control:
+      base:
+        dan: "Khong co quyen dang nhap"
+
 
 
 

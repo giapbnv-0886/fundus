@@ -31,7 +31,7 @@
           <td><%= link_to event.end_time, cadmin_event_path(id: event.id) %></td>
           <td><%= link_to event.expiration_date, cadmin_event_path(id: event.id) %></td>
           <td><%= link_to event.category.name, cadmin_event_path(id: event.id) %></td>
-          <td><%= link_to event.user_id, cadmin_event_path(id: event.id) %></td>
+          <td><%= link_to event.cause.user_id, cadmin_event_path(id: event.id) %></td>
           <td><%= link_to event.cause_id, cadmin_event_path(id: event.id) %></td>
           <td><%= link_to event.created_at, cadmin_event_path(id: event.id) %></td>
           <td><%= link_to event.updated_at, cadmin_event_path(id: event.id) %></td>

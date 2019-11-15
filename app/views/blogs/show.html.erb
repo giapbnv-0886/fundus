@@ -15,11 +15,11 @@
                 </div>
                 <div class="blog-recent-post-meta">
                   <ul class="meta-list pb20 mb20">
-                    <li><span class = "mr5 ti-pencil"></span><%= link_to @blog.cause_user_name, @blog.cause_user, class: "black" %></li>
+                    <li><span class = "mr5 ti-pencil"></span><%= link_to @blog.cause.user.name, @blog.cause.user, class: "black" %></li>
                     <li><span class="mr5 ti-timer"></span> <span class = "black"> <%= (@blog.created_at).strftime("%D") %></span></li>
                     <li><span class="mr5 ti-comment-alt"></span><%= @blog.comments.count %></li>
                     <% if user_signed_in? %>
-                    <% if current_user == @blog.user %>
+                    <% if current_user == @blog.cause.user %>
                     <li><span class="mr5 ti-trash"></span>
                       <%= link_to t("blog.view.delete"), @blog, method: :delete, data: { confirm: t("blog.view.sure") } %></li>
                       <% end %>

@@ -15,7 +15,7 @@
         </div>
         <div class="blog-meta mt10">
           <ul class="meta-list">
-            <li><span class = "mr5 ti-pencil"></span><%= link_to blog.cause_user_name, blog.cause_user, class: "black" %></li>
+            <li><span class = "mr5 ti-pencil"></span><%= link_to blog.cause.user.name, blog.cause.user, class: "black" %></li>
             <li><span class="mr5 ti-timer"></span> <span class = "black"> <%= blog.created_at.strftime("%D") %>&nbsp;</span></li>
             <li><span class="mr5 ti-comment-alt"></span><%= blog.comments.count %></li>
           </ul>
