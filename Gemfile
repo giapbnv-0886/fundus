@@ -33,7 +33,6 @@ gem "will_paginate-bootstrap"
 gem "bootstrap-kaminari-views"
 gem "omniauth-facebook"
 gem "config"
-# gem "paypal-express"
 gem "activemerchant"
 gem "ransack"
 gem "whenever"
@@ -46,6 +45,7 @@ gem "jquery-datatables"
 gem "rest-client"
 gem "redis"
 gem "bootstrap-growl-rails"
+gem "rest-client"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

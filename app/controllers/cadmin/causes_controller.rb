@@ -2,6 +2,7 @@ class Cadmin::CausesController < Cadmin::BasesController
   before_action :get_cause, only: %i(edit destroy show update)
   def new
     @cause = Cause.new
+    @cause.blogs.build
   end
 
   def index
@@ -40,12 +41,12 @@ class Cadmin::CausesController < Cadmin::BasesController
 
   private
   def cause_params
-    params.require(:cause).permit :title, :detail, :end_time, :category_id, :user_id, :goal_money
+    params.require(:cause).permit :title, :detail, :end_time, :category_id, :user_id, :goal_money, blogs_attributes: [:id, :title, :content, :category_id, :_destroy]
   end
 
   def get_cause
-     @cause = Cause.find_by id: params[:id]
+    @cause = Cause.find_by id: params[:id]
      return if @cause
-     redirect_to cadmin_causes_path
+    redirect_to cadmin_causes_path
   end
 end

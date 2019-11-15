@@ -1,5 +1,5 @@
 class Tag < ApplicationRecord
-  has_and_belongs_to_many :blogs
+  belongs_to :blog, optional: true
   has_and_belongs_to_many :events
   has_and_belongs_to_many :causes
 

@@ -7,6 +7,7 @@ class Cadmin::BlogsController < Cadmin::BasesController
 
   def new
     @blog = Blog.new
+    @blog.tags.build
   end
 
   def show; end

@@ -7,7 +7,10 @@ class Cause < ApplicationRecord
   belongs_to :category
   belongs_to :user
   has_many :events, dependent: :destroy
+
   has_many :blogs, dependent: :destroy
+  accepts_nested_attributes_for :blogs, allow_destroy: true, reject_if: :check_attributes?
+
   has_many :donations, dependent: :destroy
   has_and_belongs_to_many :tags
 
@@ -40,6 +43,10 @@ class Cause < ApplicationRecord
       tag = Tag.find_or_create_by name: hashtag.downcase.delete('#')
       cause.tags << tag
     end
+  end
+
+  def check_attributes? (att)
+    att["title"].blank? && att["content"].blank?
   end
 
   def should_generate_new_friendly_id?

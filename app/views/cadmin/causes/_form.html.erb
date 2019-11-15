@@ -40,8 +40,18 @@
 
 <div class="field">
   <%= f.label t("cadmin.view.cause.updated") %><br />
-  <%= f.date_field:updated_at, class: "form-control" %>
+  <%= f.date_field :updated_at, class: "form-control" %>
 </div>
+
+<p> <%= t "cadmin.view.cause.ad" %> </p>
+<div class="field">
+  <%= f.fields_for :blogs do |blog| %>
+    <%= render "cadmin/blogs/blog_fields", f: blog %>
+  <% end %>
+</div>
+
+<%= link_to_add_blogs t("cadmin.view.cause.ad"), f, :blogs %>
+
 <div class="actions">
   <%= f.submit yield(:button_text), class: "btn btn-primary"%>
 </div>

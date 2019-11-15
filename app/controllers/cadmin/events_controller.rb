@@ -9,6 +9,7 @@ class Cadmin::EventsController < Cadmin::BasesController
   end
 
   def show; end
+
   def create
     @event = Event.new event_params
     if @event.save
