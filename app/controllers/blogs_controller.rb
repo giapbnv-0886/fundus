@@ -6,6 +6,10 @@ class BlogsController < ApplicationController
 
   def new
     @blog = @cause.blogs.build
+    respond_to do |format|
+      format.html{}
+      format.js{}
+    end
   end
 
   def index
@@ -32,7 +36,7 @@ class BlogsController < ApplicationController
       redirect_to blog_path @blog
     else
       flash[:danger] = @blog.errors.messages
-      render :new
+      redirect_to root_path
     end
   end
 
@@ -47,7 +51,7 @@ class BlogsController < ApplicationController
 
   private
   def blog_params
-    params.require(:blog).permit :title, :content, :category_id, :hash_tag
+    (params.require(:blog).permit :title, :content, :category_id, :hash_tag).reverse_merge({user_id: current_user.id})
   end
 
   def correct_user

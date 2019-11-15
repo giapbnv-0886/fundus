@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-4">
+  </div>
+  <div class="col-sm-4">
+    <button class="btn btn-success" id="open-category" ><%= t"cadmin.view.category.create_new" %> </button>
+    <div id="dialog-category" >
+      <%= render 'cadmin/categories/form_category', category: Category.new, f_category_path: cadmin_categories_path %>
+    </div>
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>

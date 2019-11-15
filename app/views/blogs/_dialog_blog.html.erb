@@ -1,0 +1,7 @@
+<div class= "btn btn-primary", id= "opener-3">
+  <%=  t "blog.view.create" %>
+</div><div class="row" id="dialog-3" title="<%=  t "blog.view.create" %>">
+  <div class="col-md-12 form-group">
+    <%=  render("blog_form", blog: @cause.blogs.build, f_url: cause_blogs_path(@cause)) %>
+  </div>
+</div>

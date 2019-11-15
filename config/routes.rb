@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   get "/contact", to: "static_pages#contact"
   get "/search", to: "static_pages#search"
   get "/help", to: "static_pages#help"
-    get "tags/:name", to: "tags#show"
-
+  get "tags/:name", to: "tags#show"
+  get "/cadmin", to: "cadmin/bases#index"
   resources :users, only: %i(index show)
   resources :comments
   resources :attendances, only: %i(create destroy)
@@ -33,6 +33,14 @@ Rails.application.routes.draw do
   end
 
   resources :categories
-
-
+  namespace :cadmin do
+    resources :users
+    resources :tags
+    resources :categories
+    resources :causes
+    resources :events
+    resources :blogs
+    resources :attendances
+    resources :comments
+  end
 end

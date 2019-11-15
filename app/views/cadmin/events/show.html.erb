@@ -1,0 +1,43 @@
+<% provide :title, t("cadmin.view.event.title") %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 form-group">
+    <%= form_for @event do |f| %>
+    <div class="field">
+      <%= f.label t("cadmin.view.event.ti") %> <br />
+      <%= f.text_field :title, class: "form-control", disabled: "disabled" %>
+    </div>
+    <div class="field">
+      <%= f.label t("cadmin.view.event.content") %> <br />
+      <%= f.text_area :content, class: "form-control", disabled: "disabled" %>
+    </div>
+
+    <div class="field">
+      <%= f.label t("cadmin.view.event.place") %> <br />
+      <%= f.text_field :place, class: "form-control", disabled: "disabled" %>
+    </div>
+
+    <div class="field">
+      <%= f.label t("cadmin.view.event.start_time") %> <br />
+      <%= f.text_field :start_time, class: "form-control", disabled: "disabled" %>
+    </div>
+
+    <div class="field">
+      <%= f.label t("cadmin.view.event.end_time") %> <br />
+      <%= f.text_field :end_time, class: "form-control", disabled: "disabled" %>
+    </div>
+
+    <div class="field">
+      <%= f.label t("cadmin.view.event.expiration_date") %> <br />
+      <%= f.text_field :expiration_date, class: "form-control", disabled: "disabled" %>
+    </div>
+
+    <div class="field">
+      <%= f.label t("cadmin.view.event.category_id") %> <br />
+      <%= f.text_field :category_id, class: "form-control", disabled: "disabled" %>
+    </div>
+    <% end %>
+    <%= label_tag t("cadmin.view.event.user") %><br />
+    <%= text_field_tag :user, @event.cause.user_id, class: "form-control", disabled: "disabled" %>
+  </div>
+</div>
+

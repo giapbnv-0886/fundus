@@ -1,0 +1,21 @@
+<%= form_for comment, url: f_comment_url do |f| %>
+<div class="field">
+  <%= f.label t("cadmin.view.comment.content") %> <br />
+  <%= f.text_field :content, class: "form-control"  %>
+</div>
+<div class="field">
+  <%= f.label t("cadmin.view.comment.parent_id") %> <br />
+  <%= f.collection_select :parent_id, Comment.all, :id, :id , options = {},html_options = {class: "form-control"} %><br>
+</div>
+<div class="field">
+  <%= f.label t("cadmin.view.comment.user_id") %> <br />
+  <%= f.collection_select :user_id, User.all, :id, :name , options = {},html_options = {class: "form-control"} %><br>
+</div>
+<div class="field">
+  <%= f.label t("cadmin.view.comment.blog_id") %> <br />
+  <%= f.collection_select :blog_id, Blog.all, :id, :title , options = {},html_options = {class: "form-control"} %><br>
+</div>
+<div class="actions">
+  <%= f.submit yield(:button_text), class: "btn btn-primary"%>
+</div>
+<% end %>

@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 form-group">
+    <%= link_to t("cadmin.view.cause.create_new"), new_cadmin_cause_path, class: "btn btn-success" %>
+    <table id="dttb" class="table table-hover">
+      <thead>
+        <tr>
+          <th> <%= t "cadmin.view.cause.id" %> </th>
+          <th> <%= t "cadmin.view.cause.ti" %> </th>
+          <th> <%= t "cadmin.view.cause.end_time" %> </th>
+          <th> <%= t "cadmin.view.cause.reached" %> </th>
+          <th> <%= t "cadmin.view.cause.goal" %></th>
+          <th> <%= t "cadmin.view.cause.category" %> </th>
+          <th> <%= t "cadmin.view.cause.author" %> </th>
+          <th> <%= t "cadmin.view.cause.created" %> </th>
+          <th> <%= t "cadmin.view.cause.updated" %> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @causes.each do |cause| %>
+        <tr>
+          <td><%= link_to cause.id, cadmin_cause_path(id: cause.id) %></td>
+          <td><%= link_to cause.title, cadmin_cause_path(id: cause.id) %></td>
+          <td><%= link_to cause.end_time, cadmin_cause_path(id: cause.id) %></td>
+          <td><%= link_to cause.reached_money, cadmin_cause_path(id: cause.id) %></td>
+          <td><%= link_to cause.goal_money, cadmin_cause_path(id: cause.id) %></td>
+          <td><%= link_to cause.category.name, cadmin_cause_path(id: cause.id) %></td>
+          <td><%= link_to cause.user_id, cadmin_cause_path(id: cause.id) %></td>
+          <td><%= link_to cause.created_at, cadmin_cause_path(id: cause.id) %></td>
+          <td><%= link_to cause.updated_at, cadmin_cause_path(id: cause.id) %></td>
+          <td><%= link_to "Show", cadmin_cause_path(id: cause.id) %></td>
+          <td><%= link_to "Edit", edit_cadmin_cause_path(id: cause.id) %></td>
+          <td><%= link_to "Destroy", cadmin_cause_path(id: cause.id), method: :delete, data: { confirm: "You sure?" } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<% provide :title, t("cadmin.view.blog.title") %>
+<% provide :button_text, t("cadmin.view.blog.create") %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 form-group">
+   <%= render "form", blog: @blog, f_blog_url: cadmin_blogs_path %>
+  </div>
+</div>

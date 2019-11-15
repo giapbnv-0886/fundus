@@ -1,4 +1,4 @@
 $('#attend_form').html('<%= escape_javascript(render('events/unattend')) %>');
 $('#count-attendee').html('<%= @event.attendances.count %>');
-$('#users_attend').html('<%= j render("events/users_statistical", attendances: @event.attendances) %>')
+$('#users_attend').html('<%= j render('events/users_statistical', attendances: @event.attendances) %>')
 

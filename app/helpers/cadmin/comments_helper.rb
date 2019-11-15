@@ -1,0 +1,2 @@
+module Cadmin::CommentsHelper
+end

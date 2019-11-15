@@ -233,8 +233,8 @@ div#preloader {
 	background: #ffffff /*url('../img/heart.gif') no-repeat center center;*/
 }
 .hades.tparrows:hover:before {
-    background: #000;
-    background: rgb(16, 16, 16);
+	background: #000;
+	background: rgb(16, 16, 16);
 }
 /*-----------------------------------------------------------------------
 Start of Ways of help [*4]
@@ -1542,3 +1542,21 @@ input[type='radio']:checked:after {
 /*-----------------------------------------------------------------------
 End of of  become-a-volentaree-section
 -------------------------------------------------------------------------*/
+.ui-dialog, .ui-corner-all, .ui-widget, .ui-widget-content, .ui-front, .ui-draggable, .ui-resizable {
+	margin: 15px;
+	background:	#F5F5F5;
+}
+.ui-widget-header,.ui-state-default, .ui-button {
+	color: black;
+	text-align: center;
+	font-weight: bold;
+}
+.ui-widget-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #aaaaaa;
+    opacity: 0.3;
+}

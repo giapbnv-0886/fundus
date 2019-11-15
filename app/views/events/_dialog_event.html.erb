@@ -1,0 +1,8 @@
+<div class= "btn btn-primary", id= "opener-2">
+<%=  t "event.view.createEvent" %>
+</div>
+<div class="row" id="dialog-2" title="<%= t "event.view.createEvent" %>">
+<div class="col-md-12 form-group">
+<%=  render("event_form", event: @cause.events.build, f_url: cause_events_path(@cause)) %>
+</div>
+</div>

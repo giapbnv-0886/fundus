@@ -1,0 +1,35 @@
+<% provide :title, t("cadmin.view.blog.title") %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 form-group">
+    <%= link_to t("cadmin.view.blog.create_new"), new_cadmin_blog_path, class: "btn btn-success" %>
+    <table id="dttb" class="table table-hover">
+      <thead>
+        <tr>
+          <th> <%= t "cadmin.view.blog.id" %> </th>
+          <th> <%= t "cadmin.view.blog.ti" %> </th>
+          <th> <%= t "cadmin.view.blog.category_id" %> </th>
+          <th> <%= t "cadmin.view.blog.cause" %> </th>
+          <th> <%= t "cadmin.view.blog.user_id" %> </th>
+          <th> <%= t "cadmin.view.blog.created" %> </th>
+          <th> <%= t "cadmin.view.blog.updated" %> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @blogs.each do |blog| %>
+        <tr>
+          <td><%= link_to blog.id, cadmin_blog_path(id: blog.id) %></td>
+          <td><%= link_to blog.title, cadmin_blog_path(id: blog.id) %></td>
+          <td><%= link_to blog.category_id, cadmin_blog_path(id: blog.id) %></td>
+          <td><%= link_to blog.cause_id, cadmin_blog_path(id: blog.id) %></td>
+          <td><%= link_to blog.cause.user_id, cadmin_blog_path(id: blog.id) %></td>
+          <td><%= link_to blog.created_at, cadmin_blog_path(id: blog.id) %></td>
+          <td><%= link_to blog.updated_at, cadmin_blog_path(id: blog.id) %></td>
+          <td><%= link_to "Show", cadmin_blog_path(id: blog.id) %></td>
+          <td><%= link_to "Edit", edit_cadmin_blog_path(id: blog.id) %></td>
+          <td><%= link_to "Destroy", cadmin_blog_path(id: blog.id), method: :delete, data: { confirm: t("cadmin.view.blog.sure") } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<% provide :title, t("cadmin.view.attendance.title") %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 form-group">
+    <%= link_to <% provide :title, t("cadmin.view.attendance.create_new") %>, new_cadmin_attendance_path, class: "btn btn-success" %>
+    <table id="dttb" class="table table-hover">
+      <thead>
+        <tr>
+          <th> <%= t "cadmin.view.attendance.id" %> </th>
+          <th> <%= t "cadmin.view.attendance.event_id" %> </th>
+          <th> <%= t "cadmin.view.attendance.user_id" %> </th>
+          <th> <%= t "cadmin.view.attendance.created" %> </th>
+          <th> <%= t "cadmin.view.attendance.updated" %> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @attendances.each do |attendance| %>
+        <tr>
+          <td><%= link_to attendance.id, cadmin_attendance_path(id: attendance.id) %></td>
+          <td><%= link_to attendance.event_id, cadmin_attendance_path(id: attendance.id) %></td>
+          <td><%= link_to attendance.user_id, cadmin_attendance_path(id: attendance.id) %></td>
+          <td><%= link_to attendance.created_at, cadmin_attendance_path(id: attendance.id) %></td>
+          <td><%= link_to attendance.updated_at, cadmin_attendance_path(id: attendance.id) %></td>
+          <td><%= link_to "", cadmin_attendance_path(id: attendance.id) %></td>
+          <td><%= link_to "", edit_cadmin_attendance_path(id: attendance.id) %></td>
+          <td><%= link_to "", cadmin_attendance_path(id: attendance.id), method: :delete, data: { confirm: t("cadmin.view.attendance.sure") } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

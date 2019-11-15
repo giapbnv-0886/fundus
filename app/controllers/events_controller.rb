@@ -8,6 +8,10 @@ class EventsController < ApplicationController
 
   def new
     @event = @cause.events.build
+    respond_to do |format|
+      format.html{}
+      format.js{}
+    end
   end
 
   def index
@@ -36,7 +40,7 @@ class EventsController < ApplicationController
       respond_to do |format|
         format.html{
           flash[:danger] = @event.errors
-          render :new
+          redirect_to get_cause
         }
         format.js{}
       end
@@ -79,7 +83,7 @@ class EventsController < ApplicationController
     @cause = Cause.find_by_slug(params[:cause_id]) || Cause.find_by(id: params[:cause_id])
     return if @cause
     flash[:danger] = t "cause.error.not_found"
-    respond_to causes_path
+    redirect_to causes_path
   end
 
   def correct_cause

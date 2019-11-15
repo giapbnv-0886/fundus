@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-4">
+  </div>
+  <div class="col-sm-4"><%= t "cadmin.view.user.create_account" %></button>
+    <div id="dialog-user" >
+      <%= render 'cadmin/users/form_user', user: User.new, f_user_url: cadmin_users_path %>
+    </div>
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>

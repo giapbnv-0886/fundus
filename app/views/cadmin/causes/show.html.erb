@@ -1,0 +1,60 @@
+<% provide :title, t("cadmin.view.cause.title") %>
+<div class="row">
+
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 form-group">
+    <%= form_for @cause do |f| %>
+    <div class="field">
+      <%= f.label t("cadmin.view.cause.ti") %> <br />
+      <%= f.text_field :title, class: "form-control", disabled: "disabled" %>
+    </div>
+    <div class="field">
+      <%= f.label t("cadmin.view.cause.detail") %> <br />
+      <%= f.text_field :detail, class: "form-control", disabled: "disabled" %>
+    </div>
+
+    <div class="field">
+      <%= f.label t("cadmin.view.cause.end_time") %><br />
+      <%= f.email_field :end_time, disabled: "disabled", class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label t("cadmin.view.cause.category") %><br />
+      <%= f.email_field :category_id, disabled: "disabled", class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label t("cadmin.view.cause.user") %><br />
+      <%= f.email_field :user_id, disabled: "disabled", class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label t("cadmin.view.cause.reached") %><br />
+      <%= f.email_field :reached_money, disabled: "disabled", class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label t("cadmin.view.cause.goal") %><br />
+      <%= f.email_field :goal_money, disabled: "disabled", class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label t("cadmin.view.cause.created") %><br />
+      <%= f.email_field :created_at, disabled: "disabled", class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label t("cadmin.view.cause.updated") %><br />
+      <%= f.email_field :updated_at, disabled: "disabled", class: "form-control" %>
+    </div>
+    <% end %>
+
+    <%= label_tag :events %><br />
+    <%= text_field_tag :events, @cause.events.count, class: "form-control", disabled: "disabled" %>
+
+    <%= label_tag :blogs %><br />
+    <%= text_field_tag :blogs, @cause.blogs.count, class: "form-control", disabled: "disabled" %>
+  </div>
+</div>
+

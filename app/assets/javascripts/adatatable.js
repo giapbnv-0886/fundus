@@ -1,6 +1,6 @@
 $(document).ready(()=>{
-    let dt = $('table.datatable');
-    if(dt != null){
-        dt.dataTable();
-    }
+  let dt = $('table.datatable');
+  if(dt != null){
+    dt.dataTable();
+  };
 });

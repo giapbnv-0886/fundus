@@ -1,0 +1,2 @@
+module Cadmin::TagsHelper
+end

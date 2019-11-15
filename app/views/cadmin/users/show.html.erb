@@ -1,0 +1,51 @@
+<% provide :title, t("cadmin.view.user.title") %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 form-group">
+    <%= link_to t("cadmin.user.edit_user"), edit_cadmin_user_path(id: @user.id), class: "btn btn-success" %>
+    <%= form_for @user do |f| %>
+    <div class="field">
+      <%= f.label t("devise.registrations.name") %> <br />
+      <%= f.text_field :name, class: "form-control", disabled: "disabled" %>
+    </div>
+    <div class="field">
+      <%= f.label t("cadmin.view.user.role") %> <br />
+      <%= f.text_field :role, class: "form-control", disabled: "disabled" %>
+    </div>
+
+    <div class="field">
+      <%= f.label t("devise.registrations.email") %><br />
+      <%= f.email_field :email, disabled: "disabled", class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label t("cadmin.view.user.create_at") %><br />
+      <%= f.email_field :created_at, disabled: "disabled", class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label t("cadmin.view.user.update_at") %><br />
+      <%= f.email_field :updated_at, disabled: "disabled", class: "form-control" %>
+    </div>
+    <% end %>
+    <%= label_tag t("cadmin.view.user.causes") %><br />
+    <%= text_field_tag :causes, @user.causes.count, class: "form-control", disabled: "disabled" %>
+
+    <%= label_tag t("cadmin.view.user.events") %><br />
+    <%= text_field_tag :events, @user.events.count, class: "form-control", disabled: "disabled" %>
+
+    <%= label_tag t("cadmin.view.user.blogs") %><br />
+    <%= text_field_tag :blogs, @user.blogs.count, class: "form-control", disabled: "disabled" %>
+
+    <%= label_tag t("cadmin.view.user.comments") %><br />
+    <%= text_field_tag :comments, @user.comments.count, class: "form-control", disabled: "disabled" %>
+
+    <%= label_tag t("cadmin.view.user.following") %><br />
+    <%= text_field_tag :following, @user.following.count, class: "form-control", disabled: "disabled" %>
+
+    <%= label_tag t("cadmin.view.user.follower") %><br />
+    <%= text_field_tag :followers, @user.followers.count, class: "form-control", disabled: "disabled" %>
+
+    <%= label_tag t("cadmin.view.user.attend_events") %><br />
+    <%= text_field_tag :attend_events, @user.attend_events.count, class: "form-control", disabled: "disabled" %>
+  </div>
+</div>

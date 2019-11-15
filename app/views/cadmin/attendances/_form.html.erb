@@ -1,0 +1,13 @@
+<%= form_for attendance, url: f_attendance_url do |f| %>
+<div class="field">
+  <%= f.label t("cadmin.view.attendance.user_id") %> <br />
+  <%= f.collection_select :user_id, User.all, :id, :name , options = {},html_options = {class: "form-control"} %><br>
+</div>
+<div class="field">
+  <%= f.label t("cadmin.view.attendance.event_id") %> <br />
+  <%= f.collection_select :event_id, Event.all, :id, :title , options = {},html_options = {class: "form-control"} %><br>
+</div>
+<div class="actions">
+  <%= f.submit yield(:button_text), class: "btn btn-primary"%>
+</div>
+<% end %>

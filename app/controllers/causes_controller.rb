@@ -1,5 +1,4 @@
 class CausesController < ApplicationController
-
   before_action :authenticate_user!, only: %i{new create destroy}
 
   before_action :get_cause, only: %i(show)

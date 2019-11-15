@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-4">
+  </div>
+  <div class="col-sm-4">
+    <button class="btn btn-success" id="open-event" ><%= t("cadmin.view.event.create_new") %> </button>
+    <div id="dialog-event" >
+      <%= render 'cadmin/events/form_event', event: Event.new, f_event_url: cadmin_events_path %>
+    </div>
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>

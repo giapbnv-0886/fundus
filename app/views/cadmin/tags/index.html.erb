@@ -1,0 +1,29 @@
+<% provide :title, t("cadmin.view.tag.title") %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 form-group">
+    <%= link_to t("cadmin.view.tag.create_new"), new_cadmin_tag_path, class: "btn btn-success" %>
+    <table id="dttb" class="table table-hover">
+      <thead>
+        <tr>
+          <th> <%= t "cadmin.view.tag.id" %> </th>
+          <th> <%= t "cadmin.view.tag.name" %> </th>
+          <th> <%= t "cadmin.view.tag.created" %> </th>
+          <th> <%= t "cadmin.view.tag.updated" %> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tags.each do |tag| %>
+        <tr>
+          <td><%= link_to tag.id, cadmin_tag_path(id: tag.id) %></td>
+          <td><%= link_to tag.name, cadmin_tag_path(id: tag.id) %></td>
+          <td><%= link_to tag.created_at, cadmin_tag_path(id: tag.id) %></td>
+          <td><%= link_to tag.updated_at, cadmin_tag_path(id: tag.id) %></td>
+          <td><%= link_to "", cadmin_tag_path(id: tag.id), class:"mr5 ti-eye" %></td>
+          <td><%= link_to "", edit_cadmin_tag_path(id: tag.id), class:"mr5 ti-pencil" %></td>
+          <td><%= link_to "", cadmin_tag_path(id: tag.id), method: :delete, data: { confirm: t("cadmin.view.tag.sure") }, class:"mr5 ti-trash" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

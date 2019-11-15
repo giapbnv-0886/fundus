@@ -7,11 +7,22 @@ create_item.html('');
 exportcsv.html('');
 
 if(cause_content != null){
-    cause_content.html('<%= j render @events %>');
+  cause_content.html('<%= j render @events %>');
 }
 if(willpage != null){
-    willpage.html('<%= j will_paginate @events %>');
+  willpage.html('<%= j will_paginate @events %>');
 }
 <% if @cause.user == current_user %>
-create_item.html('<%= j link_to t("cause.view.create_new"), new_cause_event_path(@cause), class: "btn btn-primary" %>');
+  create_item.html('<%= j render "dialog_event" %>');
+  var dialog_2 = $("#dialog-2");
+  var opener_2 = $("#opener-2");
+
+  dialog_2.dialog({
+    autoOpen: false,
+    width: 800,
+    left: 200,
+  });
+  opener_2.click(function() {
+    dialog_2.dialog("open")
+  });
 <% end %>

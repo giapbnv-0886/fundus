@@ -1,0 +1,44 @@
+<%= form_for event, url: f_event_url do |f| %>
+
+<div class="field">
+  <%= f.label t("cadmin.view.event.cause") %>
+  <%= f.collection_select :cause_id, Cause.all, :id, :title , options = {},html_options = {class: "form-control"} %><br>
+</div>
+
+<div class="field">
+  <%= f.label t("cadmin.view.event.ti") %> <br />
+  <%= f.text_field :title, class: "form-control"  %>
+</div>
+<div class="field">
+  <%= f.label t("cadmin.view.event.content") %> <br />
+  <%= f.cktext_area :content, class: "form-control", ckeditor: {toolbar: 'Full'} %><br>
+</div>
+
+<div class="field">
+  <%= f.label t("cadmin.view.event.place") %> <br />
+  <%= f.text_field :place, class: "form-control" %>
+</div>
+
+<div class="field">
+  <%= f.label t("cadmin.view.event.updated") %> <br />
+  <%= f.date_field :expiration_date, class: "form-control" %>
+</div>
+
+<div class="field">
+  <%= f.label t("cadmin.view.event.start_time") %> <br />
+  <%= f.date_field :start_time, class: "form-control"  %>
+</div>
+
+<div class="field">
+  <%= f.label t("cadmin.view.event.end_time") %> <br />
+  <%= f.date_field :end_time, class: "form-control"  %>
+</div>
+
+<div class="field">
+  <%= f.label t("cadmin.view.event.category_id") %>
+  <%= f.collection_select :category_id, Category.all, :id, :name , options = {},html_options = {class: "form-control"} %><br>
+</div>
+<div class="actions">
+  <%= f.submit yield(:button_text), class: "btn btn-primary"%>
+</div>
+<% end %>

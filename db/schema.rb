@@ -22,10 +22,11 @@ ActiveRecord::Schema.define(version: 2019_10_26_075529) do
 
   create_table "blogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
+    t.string "hash_tag"
     t.text "content"
     t.text "photo", limit: 4294967295, collation: "utf8mb4_bin"
-    t.bigint "user_id"
     t.bigint "category_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "cause_id"
@@ -94,7 +95,7 @@ ActiveRecord::Schema.define(version: 2019_10_26_075529) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
-    t.integer "reply_for", default: 0
+    t.integer "parent_id"
     t.bigint "blog_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false

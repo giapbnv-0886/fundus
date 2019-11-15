@@ -1,0 +1,52 @@
+<% provide :title, t("cadmin.view.category.title") %>
+<% provide :button_text, t("cadmin.view.category.sa") %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 form-group">
+    <%= render "form", category: @category, f_category_url: cadmin_category_path %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-4">
+  </div>
+  <div class="col-sm-4">
+    <button class="btn btn-success" id= "open-cause" ><%= t "cadmin.view.cause.create_new" %> </button>
+    <div id="dialog-event" >
+      <%= render "cadmin/causes/form", @cause = @cause %>
+    </div>
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-4">
+  </div>
+  <div class="col-sm-4">
+    <button class="btn btn-info" id = "open-blog" ><%= t "cadmin.view.blog.create_new" %></button>
+  </div>
+  <div id="dialog-event" >
+    <%= render "cadmin/blogs/form" %>
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-4">
+  </div>
+  <div class="col-sm-4">
+    <button class="btn btn-primary" id = "open-event"
+    ><%= t "cadmin.view.event.create_new" %> </button>
+  </div>
+  <div id="dialog-event" >
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>

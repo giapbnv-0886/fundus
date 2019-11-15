@@ -1,0 +1,48 @@
+<%= form_for cause, url: f_cause_url do |f| %>
+<div class="field">
+  <%= f.label t("cadmin.view.cause.ti") %> <br />
+  <%= f.text_field :title, class: "form-control" %>
+</div>
+<div class="field">
+  <%= f.label t("cadmin.view.cause.detail") %> <br />
+  <%= f.cktext_area :detail, class: "form-control", ckeditor: {toolbar: 'Full'} %><br>
+</div>
+
+<div class="field">
+  <%= f.label t("cadmin.view.cause.end_time") %><br />
+  <%= f.date_field :end_time, class: "form-control" %>
+</div>
+
+<div class="field">
+  <%= f.label t("cadmin.view.cause.category") %>
+  <%= f.collection_select :category_id, Category.all, :id, :name , options = {},html_options = {class: "form-control"} %><br>
+</div>
+
+<div class="field">
+  <%= f.label t("cadmin.view.cause.user") %><br />
+  <%= f.text_field :user_id, class: "form-control" %>
+</div>
+
+<div class="field">
+  <%= f.label t("cadmin.view.cause.reached") %><br />
+  <%= f.text_field :reached_money, class: "form-control" %>
+</div>
+
+<div class="field">
+  <%= f.label t("cadmin.view.cause.goal") %><br />
+  <%= f.text_field :goal_money, class: "form-control" %>
+</div>
+
+<div class="field">
+  <%= f.label t("cadmin.view.cause.created") %><br />
+  <%= f.date_field :created_at, class: "form-control" %>
+</div>
+
+<div class="field">
+  <%= f.label t("cadmin.view.cause.updated") %><br />
+  <%= f.date_field:updated_at, class: "form-control" %>
+</div>
+<div class="actions">
+  <%= f.submit yield(:button_text), class: "btn btn-primary"%>
+</div>
+<% end %>
