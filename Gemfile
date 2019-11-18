@@ -43,6 +43,8 @@ gem "friendly_id"
 gem "paranoia"
 gem "ajax-datatables-rails"
 gem "jquery-datatables"
+gem "rest-client"
+
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
 end

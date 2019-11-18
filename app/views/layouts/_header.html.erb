@@ -55,6 +55,7 @@
                 </li>
               <% else %>
                 <li><%= link_to t("application.header.sign_in"), new_user_session_path %></li>
+                <li><%= link_to t("application.header.sign_in_FB"), sign_in_with_FB_path %></li>
               <% end %>
               <li class="header__menu frmsearch">
                 <%= form_with url: search_path, local: true, method: :get, html: {class: "form-inline"} do |f| %>

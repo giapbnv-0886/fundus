@@ -2,6 +2,7 @@ en:
   application:
     header:
       sign_in: "Sign in"
+      sign_in_FB: "Sign in with FB"
       sign_up: "Sign up"
       sign_out: "Sign out"
       change_pw: "Change password"

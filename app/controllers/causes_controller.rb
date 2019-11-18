@@ -1,6 +1,5 @@
 class CausesController < ApplicationController
   before_action :authenticate_user!, only: %i{new create destroy}
-
   before_action :get_cause, only: %i(show)
   before_action :correct_user, only: %i{destroy}
   before_action :get_cause, only: %i(show edit)
@@ -20,6 +19,7 @@ class CausesController < ApplicationController
 
   def create
     @cause = current_user.causes.build cause_params
+    authorize @cause
     if @cause.save
       redirect_to @cause
     else

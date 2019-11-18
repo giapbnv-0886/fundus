@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   get "/help", to: "static_pages#help"
   get "tags/:name", to: "tags#show"
   get "/cadmin", to: "cadmin/bases#index"
+  get "/sign_in_with_FB", to: "facebookauth_callbacks#new"
+  get "/success_facebookauth_callback", to: "facebookauth_callbacks#success"
+  get "/failure_facebookauth_callback", to: "facebookauth_callbacks#failure"
+
   resources :users, only: %i(index show)
   resources :comments
   resources :attendances, only: %i(create destroy)
@@ -31,7 +35,6 @@ Rails.application.routes.draw do
     resources :events, only: %i(new index create update)
     resources :blogs, only: %i(new index create update)
   end
-
   resources :categories
   namespace :cadmin do
     resources :users
