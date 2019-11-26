@@ -9,9 +9,15 @@
   <%= f.label t("cadmin.view.blog.ti") %> <br />
   <%= f.text_field :title, class: "form-control"  %>
 </div>
+
 <div class="field">
   <%= f.label :tag_ids, t("cadmin.view.blog.hash_tag") %> <br />
   <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, class: "form-control"%>
+<div class="field">
+  <%= f.label :tag_ids, t("cadmin.view.blog.hash_tag") %> <br />
+  <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, class: "form-control"%>
+</div>
+
 <div class="field">
   <%= f.label :tag_ids, t("cadmin.view.blog.hash_tag") %> <br />
   <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, class: "form-control"%>

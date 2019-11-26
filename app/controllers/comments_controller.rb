@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    (params.require(:comment).permit(:content, :parent_id)).reverse_merge!({blog_id: params[:blog_id], parent_id: params[:parent_id]})
+    (params.require(:comment).permit(:content, :parent_id)).reverse_merge!({blog_id: @blog.id, parent_id: params[:parent_id]})
   end
 
   def get_blog

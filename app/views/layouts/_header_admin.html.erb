@@ -5,7 +5,7 @@
         <div class="header-top">
           <div class="head-top-info pull-left">
             <ul class="top-info">
-              <li>Admin</li>
+              <li><%= t "application.header.admin" %></li>
             </ul>
           </div>
           <!-- /head-top-info -->
@@ -14,7 +14,6 @@
               <ul class="social-list">
                 <li><%= link_to current_user.name, "#" %></li>
                 <li><%= link_to t("application.header.sign_out"), destroy_user_session_path, method: :delete %></li>
-
               </ul>
             </div>
           </div>
@@ -44,42 +43,42 @@
                 <li><%= link_to "Category", cadmin_categories_path %>
                   <li><%= link_to "Attendances", cadmin_attendances_path %>
                     <li><%= link_to "Tags", cadmin_tags_path %>
-              </li>
-              <li class="header__menu frmsearch">
-                <%= form_with url: search_path, local: true, method: :get, html: {class: "form-inline"} do |f| %>
-                <%= f.text_field :q, placeholder: t("static_pages.search.search"), data: {behavior: "autocomplete"} %>
-                <label for="frmsearch" class="btn-submit"><i class="ti-search"></i></label>
-                <%= f.submit t("static_pages.search.search"), html_options = {class: "sb-search-submit", id: "frmsearch"} %>
-                <% end %>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <div class="wrap">
-          <!--MENU-->
-          <div id="main-menu">
-            <div class="menu-btn">
-              <div class="menu-btn-line menu-btn-line-1"></div>
-              <div class="menu-btn-line menu-btn-line-2"></div>
-              <div class="menu-btn-line menu-btn-line-3"></div>
+                    </li>
+                    <li class="header__menu frmsearch">
+                      <%= form_with url: search_path, local: true, method: :get, html: {class: "form-inline"} do |f| %>
+                      <%= f.text_field :q, placeholder: t("static_pages.search.search"), data: {behavior: "autocomplete"} %>
+                      <label for="frmsearch" class="btn-submit"><i class="ti-search"></i></label>
+                      <%= f.submit t("static_pages.search.search"), html_options = {class: "sb-search-submit", id: "frmsearch"} %>
+                      <% end %>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+              <div class="wrap">
+                <!--MENU-->
+                <div id="main-menu">
+                  <div class="menu-btn">
+                    <div class="menu-btn-line menu-btn-line-1"></div>
+                    <div class="menu-btn-line menu-btn-line-2"></div>
+                    <div class="menu-btn-line menu-btn-line-3"></div>
+                  </div>
+                  <div class="moduletable_menu">
+                    <ul class="nav menu">
+                      <li><%= link_to t("application.header.home"), root_path %></li>
+                      <li><%= link_to t("application.header.cause"), causes_path %>
+                      </li>
+                      <li><%= link_to t("application.header.event"), events_path %>
+                      </li>
+                      <li><%= link_to t("application.header.blog"), blogs_path %>
+                      </li>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div class="moduletable_menu">
-              <ul class="nav menu">
-                <li><%= link_to "Home", root_path %></li>
-                <li><%= link_to "Causes", causes_path %>
-                </li>
-                <li><%= link_to "Events", events_path %>
-                </li>
-                <li><%= link_to "Blogs", blogs_path %>
-                </li>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- END menu -->
-      </div><!--/wrap  -->
-    </div><!--/row  -->
-  </div><!--/container  -->
-</header>
-<!-- End of Header -->
+            <!-- END menu -->
+          </div><!--/wrap  -->
+        </div><!--/row  -->
+      </div><!--/container  -->
+    </header>
+    <!-- End of Header -->

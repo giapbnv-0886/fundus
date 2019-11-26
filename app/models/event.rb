@@ -11,6 +11,9 @@ class Event < ApplicationRecord
   has_many :users, through: :attendances, source: :user
 
   has_and_belongs_to_many :tags
+  has_many :tag_events, dependent: :destroy
+  has_many :tags, through: :tag_events
+  #accepts_nested_attributes_for :tag_events
 
   validates :title, presence: true, length: {maximum: 100}
   validates :place, presence: true, length: {maximum: 150}
@@ -25,6 +28,7 @@ class Event < ApplicationRecord
 
   scope :sort_by_created, ->{order created_at: :desc}
   scope :recent_post, -> {limit 3}
+  scope :search_events, ->(search){where "content LIKE ?", "%#{search}%"}
 
   def compareDate
     if end_time < start_time
