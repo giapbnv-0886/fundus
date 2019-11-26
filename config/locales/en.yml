@@ -18,9 +18,12 @@ en:
       cause: "Cause"
       contact: "Contact"
       about: "About us"
+      notification: "Notification(%{count})"
     ggmap:
       geo_error: "Geocode was not successful for the following reason: "
-
+    notification:
+      unread: "Unread(%{count})"
+      markread: "Mark all as read"
 
   user:
     view:
@@ -40,6 +43,7 @@ en:
     notice:
       logged_in: "Log in! success."
       unlogged_in: "You must login to do it!"
+      not_permit: "You don't have permission! Try again!"
 
   blog:
     view:
@@ -113,6 +117,10 @@ en:
     notice:
       created: "Created success!"
       failed: "Failed! please try again!"
+
+    notification:
+      notice:
+        incoming: "Event: %{title} will start at %{time}. Please check again!"
 
   cause:
     view:

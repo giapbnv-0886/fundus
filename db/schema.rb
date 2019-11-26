@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_26_075529) do
+ActiveRecord::Schema.define(version: 2019_11_26_100627) do
 
   create_table "attendances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "event_id"
@@ -183,6 +183,17 @@ ActiveRecord::Schema.define(version: 2019_10_26_075529) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "notifiable_type"
+    t.integer "notifiable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "read", default: false
+    t.text "notice"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -246,4 +257,5 @@ ActiveRecord::Schema.define(version: 2019_10_26_075529) do
   add_foreign_key "events", "users"
   add_foreign_key "events_tags", "events"
   add_foreign_key "events_tags", "tags"
+  add_foreign_key "notifications", "users"
 end

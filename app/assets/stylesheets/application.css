@@ -11,7 +11,8 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
-*= require datatables
+ *= require datatables
+ *= require animate
  *= require_self
  *= require jquery-ui
  */

@@ -22,6 +22,7 @@ class Event < ApplicationRecord
   validate :compareDate
 
   after_commit :create_hash_tags, on: :create
+  after_save -> {NotificationAttendencesRelayJob.set(wait_until: (start_time - 1.days)).perform_later self}
 
   scope :sort_by_created, ->{order created_at: :desc}
   scope :recent_post, -> {limit 3}
