@@ -50,7 +50,6 @@ Rails.application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
-
   # Suppress logger output for asset requests.
   config.assets.quiet = true
   #Mailer config
@@ -82,4 +81,6 @@ Rails.application.configure do
     }
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
   end
+
+  config.x.default_url_options = { host: ENV.fetch("HOST_APP", "127.0.0.1"), port: ENV.fetch("PORT_APP", "3000") }
 end

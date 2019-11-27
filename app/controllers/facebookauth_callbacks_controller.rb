@@ -6,8 +6,7 @@ class FacebookauthCallbacksController < ApplicationController
     cancel_uri = failure_facebookauth_callback_url
     csrf_protect_token = Devise.friendly_token[0, 20]
     session["FacebookAuth_csrf_token"] = csrf_protect_token
-    redirect_to "#{FacebookClient::AUTHORIZE_URL}?client_id=#{ENV["APP_ID"]}&redirect_uri=#{redirect_uri}
-      &cancel_uri=#{cancel_uri}&auth_type=rerequest&display=popup&state=#{csrf_protect_token}&scope=email"
+    redirect_to "#{FacebookClient::AUTHORIZE_URL}?client_id=#{ENV["APP_ID"]}&redirect_uri=#{redirect_uri}&cancel_uri=#{cancel_uri}&auth_type=rerequest&state=#{csrf_protect_token}&scope=email"
   end
 
   def success

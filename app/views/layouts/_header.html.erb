@@ -57,14 +57,17 @@
                 <li><%= link_to t("application.header.sign_in"), new_user_session_path %></li>
                 <li><%= link_to t("application.header.sign_in_FB"), sign_in_with_FB_path %></li>
               <% end %>
-              <li class="header__menu frmsearch">
-                <%= form_with url: search_path, local: true, method: :get, html: {class: "form-inline"} do |f| %>
-                  <%= f.text_field :q, placeholder: t("static_pages.search.search"), data: {behavior: "autocomplete"} %>
+              <li>
+                <%= form_with url: search_path, local: true, method: :get, html: {class: "navbar-form navbar-left"} do |f| %>
+                  <div class="form-group">
+                    <%= f.text_field :q, placeholder: t("static_pages.search.search"), data: {behavior: "autocomplete"} %>
+                  </div>
                   <label for="frmsearch" class="btn-submit"><i class="ti-search"></i></label>
                   <%= f.submit t("static_pages.search.search"), html_options = {class: "sb-search-submit", id: "frmsearch"} %>
                 <% end %>
               </li>
             </ul>
+            <%= render partial: "shared/notifications", locals: { notifications: current_user.notifications.latest } if user_signed_in? %>
           </div>
         </nav>
         <div class="wrap">

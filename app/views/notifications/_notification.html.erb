@@ -1,0 +1,16 @@
+<li>
+  <div class="col-md-3 col-sm-3 col-xs-3">
+    <div class="notify-img">
+      <% if  notification.read? %>
+        <%= image_tag "read_notification.png" %>
+      <% else %>
+        <%= image_tag "unread_notification.png" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+    <%= link_to notification.notice, url_for(notification.notifiable) %>
+    <hr>
+    <p class="time"><%= notification.created_at.to_s %></p>
+  </div>
+</li>
