@@ -7,49 +7,79 @@
           <th> <%= t "cadmin.view.base.model" %> </th>
           <th> <%= t "cadmin.view.base.last_created" %> </th>
           <th> <%= t "cadmin.view.base.record" %> </th>
-
         </tr>
       </thead>
       <tbody>
-
         <tr>
           <td><%= link_to t("cadmin.view.base.user"), cadmin_users_path  %></td>
+          <% if User.any? %>
           <td><%= User.last.created_at %></td>
+          <% else %>
+          <td></td>
+          <% end %>
           <td><%= User.all.count %></td>
         </tr>
         <tr>
           <td><%= link_to t("cadmin.view.base.cause"), cadmin_causes_path  %></td>
+          <% if Cause.any? %>
           <td><%= Cause.last.created_at %></td>
+          <% else %>
+          <td></td>
+          <% end %>
           <td><%= Cause.all.count %></td>
         </tr>
         <tr>
           <td><%= link_to t("cadmin.view.base.event"), cadmin_events_path  %></td>
+          <% if Event.any? %>
           <td><%= Event.last.created_at %></td>
+          <% else %>
+          <td></td>
+          <% end %>
           <td><%= Event.all.count %></td>
         </tr>
         <tr>
           <td><%= link_to t("cadmin.view.base.blog"), cadmin_blogs_path  %></td>
+          <% if Blog.any? %>
           <td><%= Blog.last.created_at %></td>
+          <% else %>
+          <td></td>
+          <% end %>
           <td><%= Blog.all.count %></td>
         </tr>
         <tr>
           <td><%= link_to t("cadmin.view.base.tag"), cadmin_tags_path  %></td>
+          <% if Tag.any? %>
           <td><%= Tag.last.created_at %></td>
+          <% else %>
+          <td></td>
+          <% end %>
           <td><%= Tag.all.count %></td>
         </tr>
         <tr>
           <td><%= link_to t("cadmin.view.base.categories"), cadmin_categories_path  %></td>
+          <% if Category.any? %>
           <td><%= Category.last.created_at %></td>
+          <% else %>
+          <td></td>
+          <% end %>
           <td><%= Category.all.count %></td>
         </tr>
         <tr>
           <td><%= link_to t("cadmin.view.base.attendances"), cadmin_attendances_path  %></td>
+          <% if Attendance.any? %>
           <td><%= Attendance.last.created_at %></td>
+          <% else %>
+          <td></td>
+          <% end %>
           <td><%= Attendance.all.count %></td>
         </tr>
         <tr>
           <td><%= link_to t("cadmin.view.base.comments"), cadmin_comments_path  %></td>
-          <td><%= Comment.last.created_at %></td>
+          <% if Comment.any? %>
+          <td><%= Comment.last %></td>
+          <% else %>
+          <td></td>
+          <% end %>
           <td><%= Comment.all.count %></td>
         </tr>
       </tbody>

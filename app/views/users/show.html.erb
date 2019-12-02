@@ -36,26 +36,45 @@
         </div>
       </div>
     </div>
-  </section>
-  <div>
-    <% if user_signed_in? %>
-    <% if current_user == @user %>
-    <button class="btn btn-primary"><%= link_to t("user.view.createblog"), new_blog_path %></button>
-    <button class="btn btn-success"><%= link_to t("user.view.createEvent"), new_event_path %></button>
-    <button class="btn btn-danger"><%= link_to t("user.view.createCause"), new_cause_path %></button>
-    <% end %>
-    <% end %>
-  </div>
-  <div>
-    <% if @user.blogs.any? %>
-    <h3><%= t "user.view.blogs" %> (<%= @user.blogs.count %>)</h3><br>
-    <ol>
-      <%= render @blogs %>
-    </ol>
-    <div class="pagination">
-      <%= will_paginate @blogs %>
+    <div>
+      <% if user_signed_in? %>
+      <% if current_user == @user %>
+      <button class="btn btn-danger"><%= link_to t("user.view.createCause"), new_cause_path %></button>
+      <% end %>
+      <% end %>
     </div>
-    <% end %>
-  </div>
 
-
+    <div>
+      <% if @user.blogs.any? %>
+      <h3><%= t "user.view.blogs" %> (<%= @user.blogs.count %>)</h3><br>
+      <ol>
+        <%= render @blogs %>
+      </ol>
+      <div class="pagination">
+        <%= will_paginate @blogs %>
+      </div>
+      <% end %>
+    </div>
+    <div>
+      <% if @user.events.any? %>
+      <h3><%= t "user.view.events" %> (<%= @user.events.count %>)</h3><br>
+      <ol>
+        <%= render @events %>
+      </ol>
+      <div class="pagination">
+        <%= will_paginate @events %>
+      </div>
+      <% end %>
+    </div>
+    <div>
+      <% if @user.causes.any? %>
+      <h3><%= t "user.view.causes" %> (<%= @user.causes.count %>)</h3><br>
+      <ol>
+        <%= render @causes %>
+      </ol>
+      <div class="pagination">
+        <%= will_paginate @causes %>
+      </div>
+      <% end %>
+    </div>
+  </section>

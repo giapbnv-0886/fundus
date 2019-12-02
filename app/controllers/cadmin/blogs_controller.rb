@@ -45,8 +45,6 @@ class Cadmin::BlogsController < Cadmin::BasesController
   end
 
   def blog_params
-    @cause = Cause.find_by id: params[:blog][:cause_id]
-    u_id = @cause.user_id
-    params.require(:blog).permit(:cause_id, :title, :content, :hash_tag, :category_id).merge(user_id: u_id)
+    params.require(:blog).permit :cause_id, :title, :content, :category_id, tag_ids:[]
   end
 end

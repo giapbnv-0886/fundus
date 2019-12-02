@@ -9,7 +9,7 @@ class Cadmin::BasesController < ApplicationController
   private
   def user_admin
     return if current_user.role == "admin"
-    flash[:danger] = "Khong co quyen dang nhap"
+    flash[:danger] = t "cadmin.control.base.dan"
     redirect_to root_path
   end
 end

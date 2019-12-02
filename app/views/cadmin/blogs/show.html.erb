@@ -1,11 +1,7 @@
 <% provide :title, t("cadmin.view.blog.title") %>
 <div class="row">
-
-</div>
-<div class="row">
   <div class="col-md-6 col-md-offset-3 form-group">
     <%= form_for @blog do |f| %>
-
     <div class="field">
       <%= f.label t("cadmin.view.blog.ti") %> <br />
       <%= f.text_field :title, class: "form-control", disabled: "disabled" %>
@@ -15,19 +11,16 @@
       <%= f.text_area :content, class: "form-control", disabled: "disabled" %>
     </div>
     <div class="field">
-      <%= f.label t("cadmin.view.blog.user_id") %> <br />
-      <%= f.text_area :user_id, class: "form-control", disabled: "disabled" %>
-    </div>
-    <div class="field">
       <%= f.label t("cadmin.view.blog.category_id") %> <br />
       <%= f.text_field :category_id, class: "form-control", disabled: "disabled" %>
     </div>
     <div class="field">
       <%= f.label t("cadmin.view.blog.hash_tag") %><br />
-      <%= f.text_field :hash_tag, class: "form-control", disabled: "disabled" %>
+      <%= f.text_field :tag_ids, class: "form-control", disabled: "disabled" %>
     </div>
     <% end %>
-
+    <%= label_tag t("cadmin.view.blog.user_id") %> <br />
+    <%= text_area_tag :user_id,@blog.cause.user_id, class: "form-control", disabled: "disabled" %>
     <%= label_tag t("cadmin.view.blog.comment") %><br />
     <%= text_field_tag :comment, @blog.comments.count, class: "form-control", disabled: "disabled" %>
   </div>

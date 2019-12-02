@@ -39,11 +39,8 @@ class Cadmin::EventsController < Cadmin::BasesController
   end
 
   private
-
   def event_params
-    @cause = Cause.find_by id: params[:event][:cause_id]
-    u_id = @cause.user_id
-    params.require(:event).permit(:title, :category_id, :place, :content, :start_time, :end_time, :expiration_date, :cause_id).merge(user_id: u_id)
+    params.require(:event).permit :title, :category_id, :place, :content, :start_time, :end_time, :expiration_date, :cause_id
   end
 
   def get_event

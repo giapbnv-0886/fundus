@@ -51,12 +51,7 @@ class BlogsController < ApplicationController
 
   private
   def blog_params
-    (params.require(:blog).permit :title, :content, :category_id, :hash_tag).reverse_merge({user_id: current_user.id})
-  end
-
-  def correct_user
-    @blog = current_user.blogs.find_by id: params[:id]
-    redirect_to root_path if @blog.nil?
+    params.require(:blog).permit :title, :content, :category_id, :hash_tag
   end
 
   def get_cause
@@ -73,7 +68,8 @@ class BlogsController < ApplicationController
   end
 
   def correct_blog
-    return if @blog.cause_user == current_user
+    @blog = Blog.find_by_slug(params[:id]) || Blog.find_by(id: params[:id])
+    return if @blog.cause.user == current_user
     flash[:warning] = t "blog.notice.not_permit"
     redirect_to root_path
   end

@@ -11,10 +11,9 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.json :photos
       t.json :geocode
       t.references :category, foreign_key: true
-      t.references :user, foreign_key: true
 
       t.timestamps
     end
-    add_index :events, [:user_id, :created_at]
+    add_index :events, [:created_at]
   end
 end
