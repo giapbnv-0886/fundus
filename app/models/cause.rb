@@ -57,5 +57,7 @@ class Cause < ApplicationRecord
     slug.blank? || title_changed? || super
   end
 
-
+  def amount_per_month
+    donations.group_by_month(:purchased_at).sum(:amount).map{ |k, v| [k.strftime("%B %Y"), v] }
+  end
 end

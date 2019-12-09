@@ -13,7 +13,7 @@ class Donation < ApplicationRecord
   scope :purchased, -> { where.not purchased_at: nil }
 
   delegate :name, :email, to: :user, prefix: true, allow_nil: true
-  delegate :title, to: :cause, prefix: true, allow_nil: true
+  delegate :title, :category, to: :cause, prefix: true, allow_nil: true
 
   def token=(token)
     self[:token] = token

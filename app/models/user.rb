@@ -26,7 +26,29 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: {maximum: 50}
 
+  def amount_donated_for category
+    category.total_amount_of self
+  end
 
+  def amount_donated_by_week_for category
+    category.total_amount_by_week_of self
+  end
+
+  def amount_donated_by_month_for category
+    category.total_amount_by_month_of self
+  end
+
+  def total_amount_donated
+    donations.where.not(purchased_at: nil).sum(:amount)
+  end
+
+  def total_amount_donated_by_week
+    donations.where.not(purchased_at: nil).group_by_week(:purchased_at).sum(:amount)
+  end
+
+  def total_amount_donated_by_month
+    donations.where.not(purchased_at: nil).group_by_month(:purchased_at).sum(:amount)
+  end
 
   class << self
     def from_omniauth auth

@@ -22,4 +22,7 @@
 //= require datatables
 //= require jquery-ui/widgets/autocomplete
 //= require bootstrap-notify
+//= require chartkick
+//= require highcharts
+//= require highcharts/modules/data
 //= require_tree .

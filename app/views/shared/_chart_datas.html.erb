@@ -1,0 +1,8 @@
+<div class="row">
+  <div id="<%= chart_id %>" class="chart"></div>
+</div>
+<datalist id="chart-datas" chart-id="<%= chart_id %>" chart-title="<%= chart_title %>">
+  <% chart_datas.each do |chart_data| %>
+    <data name="<%= chart_data[:name] %>" chart-type="<%= chart_data[:chart_type] %>" data-link="<%= chart_data[:data_link] %>"></data>
+  <% end %>
+</datalist>

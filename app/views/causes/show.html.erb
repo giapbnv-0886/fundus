@@ -12,7 +12,8 @@
           </div>
           <div class="page-breadcrumb">
             <ul class="breadcrumb">
-              <li class="breadcrumb-item"><a href="home-1.html"><span class="mr5 ti-home"></span><%= t "cause.view.home" %></a></li>
+              <li class="breadcrumb-item">
+                <a href="home-1.html"><span class="mr5 ti-home"></span><%= t "cause.view.home" %></a></li>
               <li class="breadcrumb-item active"><%= yield :title %></li>
             </ul>
           </div>
@@ -20,7 +21,7 @@
       </div>
     </div>
   </div>
-</div>
+  </div>
 </section>
 <script>
 
@@ -30,9 +31,9 @@
     <div class="row section-content">
       <div class="cause-details">
         <div class="cause-details-slide">
-          <%= image_tag src="cause-1.jpg" %>
-          <%= image_tag src="cause-1.jpg" %>
-          <%= image_tag src="cause-1.jpg" %>
+          <%= image_tag src = "cause-1.jpg" %>
+          <%= image_tag src = "cause-1.jpg" %>
+          <%= image_tag src = "cause-1.jpg" %>
         </div>
       </div>
       <div class="cause-details-content">
@@ -53,12 +54,12 @@
                 </div>
               </div>
               <div class="donate-now-btn">
-                <div class="donate-btn text-uppercase" id="opener" >
+                <div class="donate-btn text-uppercase" id="opener">
                   <%= t "cause.view.donate_now" %>
                 </div>
               </div>
               <div class="form-donate">
-                <div id="dialog-1" title="<%= t "cause.view.donate_now" %>" >
+                <div id="dialog-1" title="<%= t "cause.view.donate_now" %>">
                   <%= render "shared/donate_form", cause: @cause %>
                 </div>
               </div>
@@ -107,8 +108,8 @@
           </div>
         </div>
       </div>
-      <%= render partial: "shared/share_to", locals: { title: @cause.title, des: @cause.title, url: cause_url(@cause) } %>
-      <%= render partial: "shared/comment_fb", locals: { post_link: cause_url(@cause) } %>
+      <%= render partial: "shared/share_to", locals: {title: @cause.title, des: @cause.title, url: cause_url(@cause)} %>
+      <%= render partial: "shared/comment_fb", locals: {post_link: cause_url(@cause)} %>
     </div>
   </div>
 </section>

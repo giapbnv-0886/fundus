@@ -34,6 +34,13 @@ Rails.application.routes.draw do
     resource :purchases, only: %i(new create)
     resources :events, only: %i(new index create update)
     resources :blogs, only: %i(new index create update)
+    resource :amount_per_months, module: "causes", only: %i(show)
+  end
+  resources :users do
+    resource :donation_by_months, module: "users", only: %i(show)
+    resource :donation_by_weeks, module: "users", only: %i(show)
+    resource :total_donation_by_months, module: "users", only: %i(show)
+    resource :total_donation_by_weeks, module: "users", only: %i(show)
   end
   resources :categories
   namespace :cadmin do

@@ -379,10 +379,14 @@ en:
     control:
       base:
         dan: "Khong co quyen dang nhap"
-
-
-
-
-
-
-
+  chart:
+    cause:
+      total_amount: "Total Amount"
+    amount_for: "Amount for %{name}"
+    message:
+      empty: "No data!"
+    title: "Chart of %{title}"
+    user:
+      donation:
+        title: "user's donation!"
+        statis: "Donation Statistical"

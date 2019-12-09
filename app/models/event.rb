@@ -19,7 +19,7 @@ class Event < ApplicationRecord
   validates :place, presence: true, length: {maximum: 150}
   validates :start_time, presence: true
   validates :end_time, presence: true
-  validates :content, presence: true, length: {maximum: 200}
+  validates :content, presence: true, length: {maximum: 2000}
   validates :expiration_date, presence: true
   validate :compareDate
 

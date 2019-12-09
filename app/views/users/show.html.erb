@@ -38,12 +38,25 @@
     </div>
     <div>
       <% if user_signed_in? %>
-      <% if current_user == @user %>
-      <button class="btn btn-danger"><%= link_to t("user.view.createCause"), new_cause_path %></button>
-      <% end %>
+        <% if current_user == @user %>
+          <button class="btn btn-danger"><%= link_to t("user.view.createCause"), new_cause_path %></button>
+        <% end %>
       <% end %>
     </div>
 
+    <%= render partial: 'shared/chart_datas',
+      locals: {chart_datas: donations_data_by_month(@user), chart_id: "user_donations_chart",
+        chart_title: t("chart.title", title: t("chart.user.donation.title"))} %>
+
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8" id="donations-statistical">
+        <div id="user_donations_chart" class="chart-manual"></div>
+        <br>
+        <div class="row">
+          <label for="donations-statistical"><%= t "chart.user.donation.statis" %></label>
+        </div>
+      </div>
+    </div>
     <div>
       <% if @user.blogs.any? %>
       <h3><%= t "user.view.blogs" %> (<%= @user.blogs.count %>)</h3><br>
@@ -75,6 +88,10 @@
       <div class="pagination">
         <%= will_paginate @causes %>
       </div>
+      <% end %>
+    </div>
+    <div>
+      <% if @user.donations.any? %>
       <% end %>
     </div>
   </section>

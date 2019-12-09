@@ -47,7 +47,7 @@
               <li><%= link_to t("application.header.contact"), contact_path %></li>
               <li><%= link_to t("application.header.about"), about_path %></li>
               <% if user_signed_in? %>
-                <li><%= link_to current_user.name, "#" %>
+                <li><%= link_to current_user.name, user_path(current_user) %>
                   <ul class="menu-dropdown">
                     <li><%= link_to t("application.header.change_pw"), edit_user_registration_path %></li>
                     <li><%= link_to t("application.header.sign_out"), destroy_user_session_path, method: :delete %></li>
