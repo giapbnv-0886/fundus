@@ -16,6 +16,7 @@ class Cadmin::TagsController < Cadmin::BasesController
     if @tag.save
       redirect_to cadmin_tag_path @tag
     else
+      flash[:danger] = "XXX"
       redirect_to cadmin_tags_path
     end
   end

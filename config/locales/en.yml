@@ -312,6 +312,7 @@ en:
         author: "author"
         create_new: "Create new cause"
         sa: "Save"
+        ad: "Add New Blog"
       category:
         title: "Category"
         name: "name"
@@ -339,6 +340,7 @@ en:
         updated: "updated_at"
         sure: "You sure?"
         sa: "Save"
+        remo: "remove"
       attendance:
         title: "Attendance"
         user_id: "user_id"

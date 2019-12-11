@@ -2,4 +2,13 @@ module ApplicationHelper
   def log_in user
     session[:user_id] = user.id
   end
+
+  def link_to_add_blogs(name, f, association)
+    new_object = f.object.send(association).klass.new
+    id = new_object.object_id
+    blogs = f.fields_for(association, new_object, child_index: id) do |blog|
+      render("cadmin/blogs/"+association.to_s.singularize + "_fields", f: blog)
+    end
+    content_tag(:p, name, class: "add_blogs", data: {id: id, blogs: blogs})
+  end
 end

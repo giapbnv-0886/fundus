@@ -199,10 +199,21 @@ ActiveRecord::Schema.define(version: 2019_11_27_020344) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "tag_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_tag_events_on_event_id"
+    t.index ["tag_id"], name: "index_tag_events_on_tag_id"
+  end
+
   create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "blog_id"
+    t.index ["blog_id"], name: "index_tags_on_blog_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -251,4 +262,5 @@ ActiveRecord::Schema.define(version: 2019_11_27_020344) do
   add_foreign_key "events_tags", "events"
   add_foreign_key "events_tags", "tags"
   add_foreign_key "notifications", "users"
+  add_foreign_key "tags", "blogs"
 end

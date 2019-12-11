@@ -5,7 +5,6 @@ class Event < ApplicationRecord
   acts_as_paranoid
 
   belongs_to :category
-  #belongs_to :user, optional: true
   belongs_to :cause, optional: true
 
   has_many :attendances, dependent: :destroy

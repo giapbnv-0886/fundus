@@ -1,0 +1,23 @@
+<fieldset>
+  <div class="field">
+    <%= f.label t("cadmin.view.blog.ti") %> <br />
+    <%= f.text_field :title, class: "form-control"  %>
+  </div>
+
+  <div>
+    <%= f.label :tag_ids, t("cadmin.view.blog.hash_tag") %> <br />
+    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, class: "form-control"%>
+  </div>
+
+  <div class="field">
+    <%= f.label t("cadmin.view.blog.content") %> <br />
+    <%= f.cktext_area :content, class: "form-control", ckeditor: {toolbar: 'Full'} %><br>
+  </div>
+
+  <div class="field">
+    <%= f.label t("cadmin.view.blog.category_id") %>
+    <%= f.collection_select :category_id, Category.all, :id, :name , options = {},html_options = {class: "form-control"} %><br>
+  </div>
+  <%= f.hidden_field :_destroy %>
+  <p class= "remove_blogs"><%= t "cadmin.view.blog.remo" %> </p>
+</fieldset>
