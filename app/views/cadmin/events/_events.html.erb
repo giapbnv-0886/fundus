@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 form-group">
+    <%= link_to t("cadmin.view.event.create_new"), new_cadmin_event_path, class: "btn btn-success" %>
+    <table id="dttb" class="table table-hover">
+      <thead>
+        <tr>
+          <th> <%= t "cadmin.view.event.id" %> </th>
+          <th> <%= t "cadmin.view.event.ti" %> </th>
+          <th> <%= t "cadmin.view.event.content" %> </th>
+          <th> <%= t "cadmin.view.event.place" %> </th>
+          <th> <%= t "cadmin.view.event.total" %> </th>
+          <th> <%= t "cadmin.view.event.start_time" %> </th>
+          <th> <%= t "cadmin.view.event.end_time" %> </th>
+          <th> <%= t "cadmin.view.event.expiration_date" %> </th>
+          <th> <%= t "cadmin.view.event.category_id" %> </th>
+          <th><%= t "cadmin.view.event.user" %> </th>
+          <th> <%= t "cadmin.view.event.cause" %> </th>
+          <th> <%= t "cadmin.view.event.created_at" %> </th>
+          <th> <%= t "cadmin.view.event.updated_at" %> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @events.each do |event| %>
+        <tr>
+          <td><%= link_to event.id, cadmin_event_path(id: event.id) %></td>
+          <td><%= link_to event.title, cadmin_event_path(id: event.id) %></td>
+          <td><%= link_to event.content, cadmin_event_path(id: event.id) %></td>
+          <td><%= link_to event.place, cadmin_event_path(id: event.id) %></td>
+          <td><%= link_to event.users.count, cadmin_event_path(id: event.id) %></td>
+          <td><%= link_to event.start_time, cadmin_event_path(id: event.id) %></td>
+          <td><%= link_to event.end_time, cadmin_event_path(id: event.id) %></td>
+          <td><%= link_to event.expiration_date, cadmin_event_path(id: event.id) %></td>
+          <td><%= link_to event.category.name, cadmin_event_path(id: event.id) %></td>
+          <td><%= link_to event.cause.user_id, cadmin_event_path(id: event.id) %></td>
+          <td><%= link_to event.cause_id, cadmin_event_path(id: event.id) %></td>
+          <td><%= link_to event.created_at, cadmin_event_path(id: event.id) %></td>
+          <td><%= link_to event.updated_at, cadmin_event_path(id: event.id) %></td>
+          <td><%= link_to "", cadmin_event_path(id: event.id), class:"mr5 ti-eye" %></td>
+          <td><%= link_to "", edit_cadmin_event_path(id: event.id), class:"mr5 ti-pencil" %></td>
+          <td><%= link_to "", cadmin_event_path(id: event.id), method: :delete, data: { confirm: t("cadmin.view.event.sure") }, class:"mr5 ti-trash" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @events %>
+  </div>
+</div>

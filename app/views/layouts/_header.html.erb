@@ -80,15 +80,15 @@
             </div>
             <div class="moduletable_menu">
               <ul class="nav menu">
-                <li><%= link_to "Home", root_path %></li>
-                <li><%= link_to "Causes", causes_path %>
+                <li><%= link_to t("application.header.home"), root_path %></li>
+                <li><%= link_to t("application.header.cause"), causes_path %>
                 </li>
-                <li><%= link_to "Events", events_path %>
+                <li><%= link_to t("application.header.event"), events_path %>
                 </li>
-                <li><%= link_to "Blogs", blogs_path %>
+                <li><%= link_to t("application.header.blog"), blogs_path %>
                 </li>
-                <li><%= link_to "Contact", contact_path %></li>
-                <li><%= link_to "About us", about_path %></li>
+                <li><%= link_to t("application.header.contact"), contact_path %></li>
+                <li><%= link_to t("application.header.about"), about_path %></li>
                 <% if user_signed_in? %>
                   <li><%= link_to current_user.name, "#" %>
                     <ul class="menu-dropdown">

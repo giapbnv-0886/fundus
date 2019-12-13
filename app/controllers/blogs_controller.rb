@@ -3,6 +3,7 @@ class BlogsController < ApplicationController
   before_action :correct_blog, only: %i{destroy}
   before_action :get_cause, only: %i(new index create update)
   before_action :correct_cause, only:  %i(new create update)
+  before_action :get_blog, only: %i(show)
 
   def new
     @blog = @cause.blogs.build
@@ -23,7 +24,6 @@ class BlogsController < ApplicationController
   end
 
   def show
-    @blog = Blog.find_by_slug(params[:id]) || Blog.find_by(id: params[:id])
     @comments = @blog.comments.parent_comments.paginate page: params[:page], per_page: 5
     @category = @blog.category
     @categories = Category.all
@@ -73,4 +73,10 @@ class BlogsController < ApplicationController
     flash[:warning] = t "blog.notice.not_permit"
     redirect_to root_path
   end
+
+  def get_blog
+    return if @blog = Blog.find_by_slug(params[:id]) || Blog.find_by(id: params[:id])
+    render "static_pages/404"
+  end
+
 end

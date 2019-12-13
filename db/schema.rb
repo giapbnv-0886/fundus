@@ -263,4 +263,6 @@ ActiveRecord::Schema.define(version: 2019_11_27_020344) do
   add_foreign_key "events_tags", "tags"
   add_foreign_key "notifications", "users"
   add_foreign_key "tags", "blogs"
+  add_foreign_key "notifications", "users"
+  add_foreign_key "tags", "blogs"
 end

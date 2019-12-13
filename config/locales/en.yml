@@ -19,6 +19,7 @@ en:
       contact: "Contact"
       about: "About us"
       notification: "Notification(%{count})"
+      admin: "Admin"
     ggmap:
       geo_error: "Geocode was not successful for the following reason: "
     notification:
@@ -284,6 +285,7 @@ en:
         sure: "You sure?"
         sav: "Save"
         create_new: "Create new event"
+        search: "Search"
       comment:
         title: "Comment"
         content: "content"

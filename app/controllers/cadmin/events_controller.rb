@@ -4,8 +4,9 @@ class Cadmin::EventsController < Cadmin::BasesController
   def new
     @event = Event.new
   end
+
   def index
-    @events = Event.all
+      @events = Event.search_events(params[:content]).paginate page: params[:page], per_page: 5
   end
 
   def show; end
