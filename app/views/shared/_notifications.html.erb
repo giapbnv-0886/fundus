@@ -1,7 +1,7 @@
 <ul class="nav navbar-nav">
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-      aria-haspopup="true" aria-expanded="false"><%= t "application.header.notification", count: notifications.count{ |n| not n.read? } %></a>
+    aria-haspopup="true" aria-expanded="false"><%= t "application.header.notification", count: notifications.count{ |n| not n.read? } %></a>
     <ul class="dropdown-menu notify-drop">
       <div class="notify-drop-title">
         <div class="row">
@@ -13,12 +13,21 @@
       <!-- notify content -->
       <div class="drop-content">
         <%= render notifications %>
+        <% if activities %>
+        <% activities.each do |activity| %>
+        <div class="activity">
+          <%= link_to activity.owner.name, activity.owner if activity.owner %>
+          <%= render_activity activity %>
+        </div>
+        <% end %>
+        <% end %>
       </div>
       <div class="notify-drop-footer text-center">
         <%= link_to url: "" do %>
-          <i class="fa fa-eye"></i> <%= t "application.notification.markread" %>
+        <i class="fa fa-eye"></i> <%= t "application.notification.markread" %>
         <% end %>
       </div>
     </ul>
   </li>
+
 </ul>

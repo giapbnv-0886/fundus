@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_020344) do
+ActiveRecord::Schema.define(version: 2019_12_16_080135) do
+
+  create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "trackable_type"
+    t.bigint "trackable_id"
+    t.string "owner_type"
+    t.bigint "owner_id"
+    t.string "key"
+    t.text "parameters"
+    t.string "recipient_type"
+    t.bigint "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
+    t.index ["owner_type", "owner_id"], name: "index_activities_on_owner_type_and_owner_id"
+    t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
+    t.index ["recipient_type", "recipient_id"], name: "index_activities_on_recipient_type_and_recipient_id"
+    t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
+    t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable_type_and_trackable_id"
+  end
 
   create_table "attendances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "event_id"
@@ -148,6 +167,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_020344) do
     t.bigint "cause_id"
     t.string "slug"
     t.datetime "deleted_at"
+    t.integer "views", default: 0
     t.index ["category_id"], name: "index_events_on_category_id"
     t.index ["cause_id"], name: "index_events_on_cause_id"
     t.index ["created_at"], name: "index_events_on_created_at"
@@ -262,7 +282,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_020344) do
   add_foreign_key "events_tags", "events"
   add_foreign_key "events_tags", "tags"
   add_foreign_key "notifications", "users"
-  add_foreign_key "tags", "blogs"
-  add_foreign_key "notifications", "users"
+  add_foreign_key "tag_events", "events"
+  add_foreign_key "tag_events", "tags"
   add_foreign_key "tags", "blogs"
 end

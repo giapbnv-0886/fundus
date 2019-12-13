@@ -11,4 +11,16 @@ module ApplicationHelper
     end
     content_tag(:p, name, class: "add_blogs", data: {id: id, blogs: blogs})
   end
+
+  def get_cause_title idd
+    return @cause.title if @cause = Cause.all.unscoped.find_by(id: idd)
+  end
+
+  def get_actions
+    @activities = PublicActivity::Activity.all.where(owner_type: "User").order created_at: :desc
+  end
+
+  def get_notifications
+    @notifications = current_user.notifications.latest
+  end
 end

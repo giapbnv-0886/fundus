@@ -1,0 +1,5 @@
+<% if activity.trackable_type %>
+<%= t "public_activity.cause.destroy" %> <span class="mr5 ti-trash"></span><%= link_to get_cause_title(activity.trackable_id), activity.trackable %><%= content_for :action %>
+<% else %>
+<%= t "public_activity.cause.add" %>
+<% end %>

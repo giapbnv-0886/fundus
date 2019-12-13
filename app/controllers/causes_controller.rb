@@ -4,6 +4,7 @@ class CausesController < ApplicationController
   before_action :correct_user, only: %i{destroy}
   before_action :get_cause, only: %i(show edit)
   before_action :get_category, only: %i(index show)
+  after_action :create_activity_create, only: %i(create)
 
   def new
     @cause = current_user.causes.build
@@ -19,7 +20,6 @@ class CausesController < ApplicationController
 
   def create
     @cause = current_user.causes.build cause_params
-    authorize @cause
     if @cause.save
       redirect_to @cause
     else
@@ -41,5 +41,9 @@ class CausesController < ApplicationController
 
   def get_category
     @categories = Category.all
+  end
+
+  def create_activity_create
+      @cause.create_activity :create, owner: current_user
   end
 end

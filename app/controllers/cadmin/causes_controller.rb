@@ -1,5 +1,8 @@
 class Cadmin::CausesController < Cadmin::BasesController
   before_action :get_cause, only: %i(edit destroy show update)
+  after_action :create_activity_create, only: %i(create)
+  after_action :create_activity_update, only: %i(update)
+  after_action :create_activity_destroy, only: %i(destroy)
   def new
     @cause = Cause.new
     @cause.blogs.build
@@ -48,5 +51,21 @@ class Cadmin::CausesController < Cadmin::BasesController
     @cause = Cause.find_by id: params[:id]
      return if @cause
     redirect_to cadmin_causes_path
+  end
+
+  def get_user
+    @user = @cause.user
+  end
+
+  def create_activity_create
+      @cause.create_activity :create, owner: get_user
+  end
+
+  def create_activity_update
+    @cause.create_activity :update, owner: current_user
+  end
+
+  def create_activity_destroy
+    @cause.create_activity :destroy, owner: current_user
   end
 end
