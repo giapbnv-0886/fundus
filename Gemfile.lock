@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/pokonski/public_activity.git
+  revision: aff5b50ff474c9434e619c0fb0f8daa6acf47655
+  specs:
+    public_activity (2.0)
+      actionpack (>= 3.0.0)
+      activerecord (>= 3.0)
+      i18n (>= 0.5.0)
+      railties (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -435,6 +445,7 @@ DEPENDENCIES
   mysql2 (>= 0.4.4, < 0.6.0)
   omniauth-facebook
   paranoia
+  public_activity!
   puma (~> 3.11)
   pundit
   rails (~> 5.2.3)

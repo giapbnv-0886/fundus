@@ -1,4 +1,6 @@
 class Comment < ApplicationRecord
+  #include PublicActivity::Model
+
   belongs_to :blog
   belongs_to :user
   belongs_to :parent,  class_name: "Comment", optional: true

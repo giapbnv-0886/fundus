@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pundit
+
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -24,5 +25,10 @@ class ApplicationController < ActionController::Base
   def logged_in_user
     return if user_signed_in?
     redirect_to user_session_path
+  end
+
+  def get_actions
+    byebug
+    @activities = PublicActivity::Activity.all.where(owner_type: "User")
   end
 end

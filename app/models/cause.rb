@@ -1,4 +1,7 @@
 class Cause < ApplicationRecord
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) { controller && controller.current_user }
+
   extend FriendlyId
   friendly_id :title, use: %i(slugged finders)
 
@@ -25,6 +28,7 @@ class Cause < ApplicationRecord
 
   scope :sort_by_created, -> { order created_at: :desc }
   scope :recent_post, -> { limit 3 }
+  #scope :get_cause, ->(_id){where id: "#{_id}" }
 
   def check_time
     if end_time < Date.today
@@ -52,4 +56,6 @@ class Cause < ApplicationRecord
   def should_generate_new_friendly_id?
     slug.blank? || title_changed? || super
   end
+
+
 end

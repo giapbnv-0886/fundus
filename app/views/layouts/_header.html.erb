@@ -67,7 +67,7 @@
                 <% end %>
               </li>
             </ul>
-            <%= render partial: "shared/notifications", locals: { notifications: current_user.notifications.latest } if user_signed_in? %>
+            <%= render partial: "shared/notifications", locals: { notifications: get_notifications, activities: get_actions } if user_signed_in? %>
           </div>
         </nav>
         <div class="wrap">

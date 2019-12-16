@@ -1,0 +1,5 @@
+<% if activity.trackable %>
+<%= t "public_activity.cause.create" %> <span class="mr5 ti-pencil"></span><%= link_to activity.trackable.title, activity.trackable %>
+<% else %>
+<%= t "public_activity.cause.remove" %>
+<% end %>

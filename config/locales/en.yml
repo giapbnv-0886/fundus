@@ -227,6 +227,15 @@ en:
   social_share_link:
     fb: "https://www.facebook.com/sharer/sharer.php?u=%{url}&display=popup&quote=%{des}"
 
+  public_activity:
+    cause:
+      create: "create a new cause"
+      remove: "which has since been removed"
+      destroy: "removed a cause"
+      add: "which has since been added"
+      update: "updated cause"
+
+
 
   cadmin:
     view:

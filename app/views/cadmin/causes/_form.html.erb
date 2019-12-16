@@ -46,7 +46,7 @@
 <p> <%= t "cadmin.view.cause.ad" %> </p>
 <div class="field">
   <%= f.fields_for :blogs do |blog| %>
-    <%= render "cadmin/blogs/blog_fields", f: blog %>
+  <%= render "cadmin/blogs/blog_fields", f: blog %>
   <% end %>
 </div>
 
@@ -55,3 +55,4 @@
 <div class="actions">
   <%= f.submit yield(:button_text), class: "btn btn-primary"%>
 </div>
+<% end %>

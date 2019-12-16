@@ -46,6 +46,7 @@ gem "rest-client"
 gem "redis"
 gem "bootstrap-growl-rails"
 gem "rest-client"
+gem "public_activity", github: 'pokonski/public_activity'
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
